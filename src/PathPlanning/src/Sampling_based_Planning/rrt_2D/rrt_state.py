@@ -8,13 +8,13 @@ import sys
 import math
 import numpy as np
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)) +
-                "/../../../control_aware_planner/script/")
+base_path = os.path.dirname(os.path.abspath(__file__)) + "/../../../../../"
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)) +
-                "/../../Sampling_based_Planning/")
+sys.path.append(base_path + "src/control_aware_planner/src/")
 
-# print(sys.path)
+sys.path.append(base_path + "src/PathPlanning/src/Sampling_based_Planning/")
+
+print(sys.path)
 
 from rrt_2D import env, plotting, utils
 from pathGen import PathGen
@@ -165,18 +165,14 @@ def main():
 
     if path:
         # rrt.plotting.plot_traj(traj)
-        rrt.plotting.animation(rrt.vertex, path, "RRT", True)
-        # export_traj(traj)
+        # rrt.plotting.animation(rrt.vertex, path, "RRT", True)
+        export_traj(traj)
     else:
         print("No Path Found!")
 
-def export_traj(traj):
-    # Export the path to a CSV file in directory named "output"
-    # with open(os.path.dirname(os.path.abspath(__file__)) + "/../output/rrt_path.csv", "w") as f:
-    #     for i in range(len(traj)):
-    #         f.write(str(traj[i][0]) + "," + str(traj[i][1]) + "," + str(traj[i][2]) + "\n")    
+def export_traj(traj):  
     np.array(traj)
-    np.save(os.path.dirname(os.path.abspath(__file__)) + "/../output/rrt_path.npy", traj)
+    np.save(base_path + "data/uv_traj.npy", traj)
     
 
 if __name__ == '__main__':

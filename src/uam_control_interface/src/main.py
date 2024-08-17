@@ -7,9 +7,11 @@ import numpy as np
 if __name__ == '__main__':
     uc = UamControl()
 
+    base_path = os.path.dirname(__file__) + '/../../../'
+
     task_pub = rospy.Publisher('/uam_control_interface/in_task', Bool, queue_size=10)
 
-    traj = np.load(os.path.join(os.path.dirname(__file__), '../input/rrt_vel.npy'))
+    traj = np.load(base_path + 'data/state_traj.npy')
 
     count = 0
 

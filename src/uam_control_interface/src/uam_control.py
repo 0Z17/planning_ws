@@ -99,7 +99,4 @@ class UamControl:
 
         self.position_target_pub.publish(pose)
 
-    def set_joint_pos(self, joint_pos):
-        
-
 
