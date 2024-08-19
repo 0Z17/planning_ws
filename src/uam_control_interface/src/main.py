@@ -17,15 +17,15 @@ if __name__ == '__main__':
 
     rate = rospy.Rate(20)
     while not rospy.is_shutdown() and count < traj.shape[0]:
-        # uc.set_vel(0, 0, 2, 0)
+        uc.set_vel(5, 0, 0, 0)
         # uc.set_acc(0.1, 0.1, 1)
         # uc.set_force(0, 0, 0.1)
 
-        vx = traj[count, 0]
-        vy = traj[count, 1]
-        vz = traj[count, 2]
+        # vx = traj[count, 0]
+        # vy = traj[count, 1]
+        # vz = traj[count, 2]
 
-        uc.set_vel(vx, vy, vz, 0)
+        # uc.set_vel(vx, vy, vz, 0)
         task_pub.publish(True)
         count += 1
 
