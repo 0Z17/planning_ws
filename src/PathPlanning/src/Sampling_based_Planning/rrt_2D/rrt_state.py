@@ -43,10 +43,11 @@ class Node:
 
 
 class RrtState:
-    def __init__(self, s_start, s_goal, step_len, goal_sample_rate, iter_max):
+    def __init__(self, s_start, s_goal, step_len, time_step, goal_sample_rate, iter_max):
         self.s_start = Node(s_start)
         self.s_goal = Node(s_goal)
         self.step_len = step_len
+        self.time_step = time_step
         self.goal_sample_rate = goal_sample_rate
         self.iter_max = iter_max
         self.vertex = [self.s_start]
@@ -79,7 +80,9 @@ class RrtState:
                 dist, _ = self.get_distance_and_angle(node_new, self.s_goal)
 
                 if dist <= self.step_len and not self.utils.is_collision(node_new, self.s_goal):
-                    self.new_state(node_new, self.s_goal)
+                    if node_new is not self.s_goal:
+                        node_new,t = self.new_state(node_new, self.s_goal)
+                        node_new.get_traj(self.pg,t)
                     return self.extract_path(node_new), self.extract_traj(node_new)
 
         return None
@@ -115,12 +118,13 @@ class RrtState:
     def new_state(self, node_start, node_end):
         t = self.get_duration(node_start, node_end)
 
-        t_new = min(self.step_len, t)
+        t_new = min(self.time_step, t)
 
         if t_new == t:
             node_new = node_end
+            print("duration time less than the time step")
         else:
-            n = np.array(self.pg.get_waypoints_with_time(self.step_len))
+            n = np.array(self.pg.get_waypoints_with_time(self.time_step))
             node_new = Node(np.ravel(n))
 
         node_new.parent = node_start
@@ -129,7 +133,8 @@ class RrtState:
         return node_new, t_new
 
     def extract_path(self, node_end):
-        path = [(self.s_goal.x, self.s_goal.y)]
+        # path = [(self.s_goal.x, self.s_goal.y)]
+        path = [(node_end.x, node_end.y)]
         node_now = node_end
 
         while node_now.parent is not None:
@@ -140,12 +145,13 @@ class RrtState:
 
 
     def extract_traj(self, node_end):
-        traj = [([self.s_goal.x, self.s_goal.y],[self.s_goal.vx, self.s_goal.vy], [self.s_goal.ax, self.s_goal.ay])]
+        traj = [([node_end.x, node_end.y],[node_end.vx, node_end.vy], [node_end.ax, node_end.ay])]
         node_now = node_end
 
         while node_now.parent is not None:
-            node_now = node_now.parent
             traj.extend(node_now.traj[::-1])
+            node_now = node_now.parent
+
 
         return traj
 
@@ -158,20 +164,21 @@ class RrtState:
 
 def main():
     x_start = (2, 2, 0, 0, 0, 0)  # Starting node
-    x_goal = (49, 24, 0, 0, 0, 0)  # Goal node
+    x_goal = (10, 10, 0, 0, 0, 0)  # Goal node
 
-    rrt = RrtState(x_start, x_goal, 0.5, 0.05, 10000)
+    rrt = RrtState(x_start, x_goal, step_len=0.5, time_step=2, goal_sample_rate=0.05, iter_max=10000)
     path, traj = rrt.planning()
 
     if path:
-        # rrt.plotting.plot_traj(traj)
-        # rrt.plotting.animation(rrt.vertex, path, "RRT", True)
+        rrt.plotting.plot_traj(traj)
+        rrt.plotting.animation(rrt.vertex, path, "RRT", True)
         export_traj(traj)
+        print("Path Found!")
     else:
         print("No Path Found!")
 
-def export_traj(traj):  
-    np.array(traj)
+def export_traj(traj):
+    traj.reverse()  
     np.save(base_path + "data/uv_traj.npy", traj)
     
 

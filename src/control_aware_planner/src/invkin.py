@@ -1,5 +1,6 @@
 import numpy as np
 import os
+from scipy.interpolate import interp1d
 
 class IkSolver:
 
@@ -16,7 +17,7 @@ class IkSolver:
         """
         vx = np.array(u)
         vy = np.array(v)
-        vz = np.full(len(vx), 0.0)
+        vz = np.full(len(vx), 2.0)
 
         return np.stack((vx, vy, vz), axis=1)
     
@@ -34,7 +35,7 @@ class IkSolver:
         interpolate the value at time step t
         """
         t = np.linspace(0, 1, len(val))
-        f = np.interp1d(t, val, kind=kind)
+        f = interp1d(t, val, kind=kind)
         t_new = np.linspace(0, 1, num)
         val_new = f(t_new)
         return val_new, f
@@ -48,9 +49,13 @@ if __name__ == '__main__':
 
     traj = np.load(base_path + 'data/uv_traj.npy')
 
+    pos_u = traj[:, 0, 0]
+    pos_v = traj[:, 0, 1]
+    pos = ik_solver.uv_to_se3(pos_u, pos_v)
+
     vel_u = traj[:, 1, 0]
     vel_v = traj[:, 1, 1]
+    vel = ik_solver.uv_to_se3(vel_u, vel_v)
 
-    vel = ik_solver.uv2xyz(vel_u, vel_v)
-
-    np.save(os.path.join(base_path, 'data/state_traj.npy'), vel)
+    np.save(os.path.join(base_path, 'data/state_traj_pos.npy'), pos)
+    print('path saved!')

@@ -1,27 +1,21 @@
 
 import rospy
-import math
+import numpy as np
 from geometry_msgs.msg import PoseStamped
-from mavros_msgs.msg import State, PositionTarget ,ActuatorControl
-from mavros_msgs.srv import CommandBool, CommandBoolRequest, SetMode, SetModeRequest
- 
-current_state = State()
- 
-def state_cb(msg):
-    global current_state
-    current_state = msg
- 
-local_pos = PoseStamped()
- 
-def local_pos_cb(local_pos_msg):
-    global local_pos
-    local_pos = local_pos_msg
+from mavros_msgs.msg import State, PositionTarget 
+from tf.transformations import euler_from_quaternion
+from gazebo_msgs.srv import GetJointProperties
+from std_msgs.msg import Float32
+
  
 class UamControl:
 
     def __init__(self):
         rospy.init_node("uam_control_py")
 
+        self.joint_name = "operator_1_joint"
+        self.vehicle_name = "skyvortex"
+        
         self.current_state = State()
         self.local_pos = PoseStamped()
  
@@ -29,7 +23,29 @@ class UamControl:
         self.state_sub = rospy.Subscriber("mavros/state", State, callback = self.state_cb)
 
         self.position_target_pub = rospy.Publisher("mavros/setpoint_raw/local", PositionTarget, queue_size=10)
-        self.joint_pos_pub = rospy.Publisher("mavros/actuator_control", ActuatorControl, queue_size=10)
+        self.joint_pos_pub = rospy.Publisher(self.vehicle_name + "/" + self.joint_name + "/pos_cmd", Float32, queue_size=10)
+
+        # # initialize the joint service
+        rospy.wait_for_service("gazebo/get_joint_properties")
+        self.joint_client = rospy.ServiceProxy("gazebo/get_joint_properties", GetJointProperties)
+        self.joint_offset = np.pi/6
+
+        # param relate to the trans controler
+        self.Kp = 0.01
+        self.Kd = 0.01
+        self.Ki = 0.001
+
+        self.integral_error = 0.0
+        self.prev_error = 0.0
+
+        # param relate to the yaw controler
+        self.Kp_yaw = 0.01
+        self.Kd_yaw = 0.01
+        self.Ki_yaw = 0.001
+
+        self.integral_error_yaw = 0.0
+        self.prev_error_yaw = 0.0
+
 
     def state_cb(self, msg):
         self.current_state = msg
@@ -38,6 +54,9 @@ class UamControl:
         self.local_pos = local_pos_msg
 
     def set_pose(self, x, y, z, yaw):
+        """
+        Set the position and yaw (in radians) of the UAV
+        """
         pose = PositionTarget()
         pose.header.stamp = rospy.Time.now()
         pose.coordinate_frame = 1
@@ -98,5 +117,95 @@ class UamControl:
         pose.acceleration_or_force.z = fz
 
         self.position_target_pub.publish(pose)
+
+    def set_joint_pos(self, joint_pos):
+        """
+        set the joint position (in radians)
+        """
+        joint_pos_msg = Float32()
+        joint_pos_msg.data = joint_pos - self.joint_offset
+        self.joint_pos_pub.publish(joint_pos_msg)
+
+    def get_joint_pos(self):
+        """
+        get the joint position (in radians)
+        """
+        response = self.joint_client(self.joint_name)
+        joint_pos = response.position[0] + self.joint_offset
+        return joint_pos
+
+    def get_current_config(self):
+        """
+        move to the given state from the current state
+        """
+        # get the current position and yaw
+        current_x = self.local_pos.pose.position.x
+        current_y = self.local_pos.pose.position.y
+        current_z = self.local_pos.pose.position.z
+        current_orientation = self.local_pos.pose.orientation
+        current_yaw = euler_from_quaternion([current_orientation.w, current_orientation.x, current_orientation.y, current_orientation.z])[2]
+        
+        # current_joint_pos =self.get_joint_pos()
+
+        current_position = np.array([current_x, current_y, current_z])
+
+        return current_position, current_yaw, None #current_joint_pos
+    
+    def trans_contrl(self, dir_p, dir_v, dt):
+        """
+        control the volecity via pid control
+        """
+        pos = self.get_current_config()
+        
+        # Proportional term
+        err_p = dir_p - pos
+        P_out = self.Kp * err_p
+
+        # Integral term
+        self.integral_error += err_p * dt
+        I_out = self.Ki * self.integral_error
+
+        # Derivative term
+        err_d = (err_p - self.prev_error) / dt
+        D_out = self.Kd * err_d
+
+        # combile all terms
+        # vel = dir_v + P_out + I_out + D_out
+        vel = dir_v + P_out + D_out
+
+        # update previous error
+        self.prev_error = err_p
+
+        return vel
+
+    def yaw_contrl(self, dir_p_yaw, dir_v_yaw, dt):
+        """
+        control the yaw via pid control
+        """
+        _, yaw, _ = self.get_current_config()
+
+        # Proportional term
+        err_p = dir_p_yaw - yaw
+        P_out = self.Kp * err_p
+
+        # Integral term
+        self.integral_error_yaw += err_p * dt
+        I_out = self.Ki * self.integral_error
+
+        # Derivative term
+        err_d = (err_p - self.prev_error) / dt
+        D_out = self.Kd * err_d
+
+        # combile all terms
+        # vel = dir_v + P_out + I_out + D_out
+        vel = dir_v_yaw + P_out + D_out
+
+        return vel
+
+
+    
+
+
+
 
 
