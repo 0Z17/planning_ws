@@ -22,10 +22,15 @@ body_pose = None
 body_link_id = 3
 end_link_id = 5
 
+# other params
+last_request = rospy.Time.now()
+
 def task_cb(msg):
+    global last_request
     is_intask = msg.data
-    if is_intask:
+    if is_intask and (rospy.Time.now() - last_request > rospy.Duration(5.0)):
         rospy.loginfo("In task")
+        last_request = rospy.Time.now()
     
     is_record = rospy.get_param('record_traj', False)
     if is_record and (end_pose is not None):
@@ -108,7 +113,6 @@ while not rospy.is_shutdown():
 
     is_record = rospy.get_param('record_traj', False)
 
-    
     # publish the real body path
     if is_record and (body_pose is not None):
         real_body_pose_msg = gen_pose(body_pose[0], body_pose[1], body_pose[2])

@@ -25,10 +25,9 @@ class UamControl:
         self.position_target_pub = rospy.Publisher("mavros/setpoint_raw/local", PositionTarget, queue_size=10)
         self.joint_pos_pub = rospy.Publisher(self.vehicle_name + "/" + self.joint_name + "/pos_cmd", Float32, queue_size=10)
 
-        # # initialize the joint service
+        # initialize the joint service
         rospy.wait_for_service("gazebo/get_joint_properties")
         self.joint_client = rospy.ServiceProxy("gazebo/get_joint_properties", GetJointProperties)
-        self.joint_offset = np.pi/6
 
         # param relate to the trans controler
         self.Kp = 0.01
@@ -46,6 +45,9 @@ class UamControl:
         self.integral_error_yaw = 0.0
         self.prev_error_yaw = 0.0
 
+        # the system offset
+        self.pose_offset = [0.0, 0.0, 0.0]
+        self.joint_offset = np.pi/6
 
     def state_cb(self, msg):
         self.current_state = msg
@@ -139,9 +141,9 @@ class UamControl:
         move to the given state from the current state
         """
         # get the current position and yaw
-        current_x = self.local_pos.pose.position.x
-        current_y = self.local_pos.pose.position.y
-        current_z = self.local_pos.pose.position.z
+        current_x = self.local_pos.pose.position.x + self.pose_offset[0]
+        current_y = self.local_pos.pose.position.y + self.pose_offset[1]
+        current_z = self.local_pos.pose.position.z + self.pose_offset[2]
         current_orientation = self.local_pos.pose.orientation
         current_yaw = euler_from_quaternion([current_orientation.w, current_orientation.x, current_orientation.y, current_orientation.z])[2]
         

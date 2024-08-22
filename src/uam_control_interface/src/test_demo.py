@@ -1,3 +1,5 @@
+#! /usr/bin/env python3
+
 import rospy
 import os
 import numpy as np
@@ -18,7 +20,8 @@ traj_data = np.load(base_path + 'data/state_traj_pos.npy')
 # start and goal pose
 start_pose = traj_data[0, :]
 start_yaw = 0.0
-start_thresh = 0.5
+start_thresh = 0.2
+target_thresh = 0.2
 
 target_pose = traj_data[-1, :]
 target_yaw = 0.0
@@ -41,6 +44,7 @@ if __name__ == '__main__':
 
     offboard_state = False
     reach_start = False
+    traj_msg_end = False
     reach_target = False
 
     rate = rospy.Rate(10)
@@ -67,7 +71,7 @@ if __name__ == '__main__':
                     rospy.set_param('record_traj', True)
                 reach_start = True
 
-        if reach_start and (not reach_target):
+        if reach_start and (not traj_msg_end):
             uc.set_pose(traj_x[count], traj_y[count], traj_z[count], 0)
             uc.set_joint_pos(-np.pi/2)
             rospy.loginfo("set state pos: ({}, {}, {})".format( \
@@ -75,15 +79,18 @@ if __name__ == '__main__':
             count += 1
             msg_out("moving along the trajectory")
             if (count >= traj_x.shape[0]):
-                if not reach_target:
-                    rospy.set_param('record_traj', False)
-                reach_target = True
+                traj_msg_end = True
 
-        if reach_target:
+        if traj_msg_end:
             uc.set_pose(target_pose[0], target_pose[1], target_pose[2], target_yaw)
             uc.set_joint_pos(-np.pi/2)
             msg_out("moving to target pose")
-
+            if (np.linalg.norm(np.array(uc.get_current_config()[0] - target_pose)) < target_thresh):
+                if not reach_target:
+                    rospy.set_param('record_traj', False)
+                    pass
+                reach_target = True
+        
         rate.sleep()
 
 
