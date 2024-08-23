@@ -1,0 +1,15 @@
+<launch>
+  <param  name="robot_description"  textfile="$(find uam_control_interface)/urdf/skyvortex.urdf" />
+
+  <!-- Takeoff the drone -->
+  <node pkg="uam_control_interface" type="takeoff.py" name="takeoff" output="screen" />
+
+  <!-- Visualize the trajectory -->
+  <node pkg="uam_control_interface" type="visualize_traj.py" name="visualize_traj" output="screen" />
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find uam_control_interface)/config/traj_tracking.rviz" output="screen" />
+
+  <!-- Trajectory tracking -->
+  <node pkg="uam_control_interface" type="traj_tracking.py" name="traj_tracking" output="screen">
+    <param name="record_traj" type="bool" value="false" />
+  </node>
+</launch>
