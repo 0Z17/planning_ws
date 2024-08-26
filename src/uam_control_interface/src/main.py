@@ -80,6 +80,8 @@ if __name__ == '__main__':
     while not rospy.is_shutdown():
         task_pub.publish(Bool(True))
 
+        # uc.set_force(0,0,1)
+
         if(uc.current_state.mode!= "OFFBOARD"):
             uc.set_pose(start_pose[0], start_pose[1], start_pose[2], start_yaw)
             last_req = rospy.Time.now()

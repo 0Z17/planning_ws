@@ -6,20 +6,22 @@ class IkSolver:
 
     def __init__(self):
         self.link_length = None
+        self.curve = None
 
     def set_link_lengths(self, link_length):
         self.link_length = link_length
 
-    ## only consider the flat plane for now
+    def update_curve(self, curve):
+        self.curve = curve
+
     def uv_to_se3(self, u, v):
         """
         convert the vectors in the uv frame to the se3 frame
         """
-        vx = np.array(u)
-        vy = np.array(v)
-        vz = np.full(len(vx), 2.0)
-
-        return np.stack((vx, vy, vz), axis=1)
+        if self.curve is None:
+            raise ValueError("No curve is set")
+        
+        return self.curve.get_position(u, v)
     
     def se3_to_state(self,position, normal):
         """

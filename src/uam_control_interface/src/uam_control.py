@@ -6,6 +6,7 @@ from mavros_msgs.msg import State, PositionTarget
 from tf.transformations import euler_from_quaternion
 from gazebo_msgs.srv import GetJointProperties
 from std_msgs.msg import Float32
+from uam_control_interface.msg import SetPosition
 
  
 class UamControl:
@@ -23,7 +24,8 @@ class UamControl:
         self.state_sub = rospy.Subscriber("mavros/state", State, callback = self.state_cb)
 
         self.position_target_pub = rospy.Publisher("mavros/setpoint_raw/local", PositionTarget, queue_size=10)
-        self.joint_pos_pub = rospy.Publisher(self.vehicle_name + "/" + self.joint_name + "/pos_cmd", Float32, queue_size=10)
+        # self.joint_pos_pub = rospy.Publisher(self.vehicle_name + "/" + self.joint_name + "/pos_cmd", Float32, queue_size=10)
+        self.joint_pos_pub = rospy.Publisher("/set_position", SetPosition, queue_size=10)
 
         # initialize the joint service
         rospy.wait_for_service("gazebo/get_joint_properties")
@@ -47,7 +49,10 @@ class UamControl:
 
         # the system offset
         self.pose_offset = [0.0, 0.0, 0.0]
-        self.joint_offset = np.pi/6
+        
+        # the joint msg convertion 
+        self.JOINT_POS_INIT = 6144
+        self.JOINT_POS_INC = -5120/(np.pi/2)
 
     def state_cb(self, msg):
         self.current_state = msg
@@ -120,13 +125,20 @@ class UamControl:
 
         self.position_target_pub.publish(pose)
 
-    def set_joint_pos(self, joint_pos):
+    def set_joint_pos(self, joint_pos, id = 1):
         """
         set the joint position (in radians)
         """
-        joint_pos_msg = Float32()
-        joint_pos_msg.data = joint_pos - self.joint_offset
+        # joint_pos_msg = Float32()
+        # joint_pos_msg.data = joint_pos - self.joint_offset
+        # self.joint_pos_pub.publish(joint_pos_msg)
+        joint_pos_msg = SetPosition()
+        joint_pos_num = self.joint_convert(joint_pos)
+        joint_pos_msg.id = id
+        joint_pos_msg.position = joint_pos_num
         self.joint_pos_pub.publish(joint_pos_msg)
+
+        
 
     def get_joint_pos(self):
         """
@@ -152,6 +164,12 @@ class UamControl:
         current_position = np.array([current_x, current_y, current_z])
 
         return current_position, current_yaw, None #current_joint_pos
+    
+    def joint_convert(self, joint_pos):
+        """
+        convert the joint position to the pos number 
+        """
+        return int(joint_pos * self.JOINT_POS_INC + self.JOINT_POS_INIT)
     
     def trans_contrl(self, dir_p, dir_v, dt):
         """

@@ -2,6 +2,7 @@
 
 import numpy as np
 from geomdl import fitting
+np.float = float
 from geomdl.visualization import VisMPL
 from coppeliasim_zmqremoteapi_client import RemoteAPIClient
 
@@ -97,7 +98,6 @@ class CurveGen:
             pos_list.append(pos)
             normal_list.append(normal)
         return pos_list, normal_list
-
 
 
 

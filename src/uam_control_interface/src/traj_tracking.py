@@ -5,6 +5,7 @@ import os
 import numpy as np
 from uam_control import UamControl
 from std_msgs.msg import Bool
+from scipy.interpolate import interp1d
 
 base_path = os.path.dirname(__file__) + '/../../../'
 
@@ -16,6 +17,8 @@ def msg_out(msg):
 
 # import the traj data
 traj_data = np.load(base_path + 'data/state_traj_pos.npy')
+
+
 
 # start and goal pose
 start_pose = traj_data[0, :]
@@ -42,8 +45,24 @@ if __name__ == '__main__':
 
     uc = UamControl()
 
+    # //////////////////////////////////////////////////////////////
+    start_joint_pos = 0.0
+    target_joint_pos = np.pi/2
+    f = interp1d([0,1], [start_joint_pos, target_joint_pos], kind='linear')
+    t = np.linspace(0, 1, traj_data.shape[0])
+    traj_joint = f(t)
+
+    # set fixed point of the x, y, z
+    set_point_pos = uc.get_current_config()[0]
+    set_point_pos[2] = 1.2
+    
+    traj_x[:] = set_point_pos[0]
+    traj_y[:] = set_point_pos[1]
+    traj_z[:] = set_point_pos[2]
+    # //////////////////////////////////////////////////////////////
+
     offboard_state = False
-    reach_start = False
+    reach_start = True
     traj_msg_end = False
     reach_target = False
 
@@ -55,7 +74,7 @@ if __name__ == '__main__':
         task_pub.publish(Bool(True))
 
         if(uc.current_state.mode!= "OFFBOARD"):
-            uc.set_pose(start_pose[0], start_pose[1], start_pose[2], start_yaw)
+            # uc.set_pose(start_pose[0], start_pose[1], start_pose[2], start_yaw)
             last_req = rospy.Time.now()
             msg_out("waiting for OFFBOARD mode")
         elif(uc.current_state.mode == "OFFBOARD"):
@@ -63,8 +82,8 @@ if __name__ == '__main__':
 
         # check if the current pose arrived the start pose
         if offboard_state and (not reach_start):
-            uc.set_pose(start_pose[0], start_pose[1], start_pose[2], start_yaw)
-            uc.set_joint_pos(-np.pi/2)
+            # uc.set_pose(start_pose[0], start_pose[1], start_pose[2], start_yaw)
+            uc.set_joint_pos(traj_joint[0])
             msg_out("moving to start pose")
             if (np.linalg.norm(np.array(uc.get_current_config()[0] - start_pose)) < start_thresh):
                 if not reach_start:
@@ -72,8 +91,8 @@ if __name__ == '__main__':
                 reach_start = True
 
         if reach_start and (not traj_msg_end):
-            uc.set_pose(traj_x[count], traj_y[count], traj_z[count], 0)
-            uc.set_joint_pos(-np.pi/2)
+            # uc.set_pose(traj_x[count], traj_y[count], traj_z[count], 0)
+            uc.set_joint_pos(traj_joint[count])
             rospy.loginfo("set state pos: ({}, {}, {})".format( \
                 traj_x[count], traj_y[count], traj_z[count]))
             count += 1
@@ -82,8 +101,8 @@ if __name__ == '__main__':
                 traj_msg_end = True
 
         if traj_msg_end:
-            uc.set_pose(target_pose[0], target_pose[1], target_pose[2], target_yaw)
-            uc.set_joint_pos(-np.pi/2)
+            # uc.set_pose(target_pose[0], target_pose[1], target_pose[2], target_yaw)
+            uc.set_joint_pos(traj_joint[0])
             msg_out("moving to target pose")
             if (np.linalg.norm(np.array(uc.get_current_config()[0] - target_pose)) < target_thresh):
                 if not reach_target:
