@@ -21,7 +21,7 @@ class IkSolver:
         if self.curve is None:
             raise ValueError("No curve is set")
         
-        return self.curve.get_position(u, v)
+        return self.curve.getPoint(u, v)
     
     def se3_to_state(self,position, normal):
         """

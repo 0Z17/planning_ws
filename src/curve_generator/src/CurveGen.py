@@ -18,6 +18,7 @@ class PointConverter:
         self.sim = client.require('sim')
 
         self.handle = self.sim.getObject(name)
+        self.data = None
 
     def updateData(self):
         # get the points in the camera frame
@@ -84,7 +85,7 @@ class CurveGen:
         normal = normal / np.linalg.norm(normal)
         return normal
 
-    def getPoints(self, u,v):
+    def getPoint(self, u,v):
         # get the position and normal of the point at the given u and v values
         pos = self.getPointPos(u,v)
         normal = self.getPointNormal(u,v)

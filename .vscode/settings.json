@@ -1,10 +1,18 @@
 {
     "python.autoComplete.extraPaths": [
         "/home/z017/proj/firmware_ws/devel/lib/python3/dist-packages",
-        "/opt/ros/noetic/lib/python3/dist-packages"
+        "/opt/ros/noetic/lib/python3/dist-packages",
+        "/home/z017/proj/planning_ws/src/control_aware_planner/src",
+        "/home/z017/proj/planning_ws/src/curve_generator/src",
+        "/home/z017/proj/planning_ws/src/path_planning/src",
+        "/home/z017/proj/planning_ws/src/uam_control_interface/src"
     ],
     "python.analysis.extraPaths": [
         "/home/z017/proj/firmware_ws/devel/lib/python3/dist-packages",
-        "/opt/ros/noetic/lib/python3/dist-packages"
+        "/opt/ros/noetic/lib/python3/dist-packages",
+        "/home/z017/proj/planning_ws/src/control_aware_planner/src",
+        "/home/z017/proj/planning_ws/src/curve_generator/src",
+        "/home/z017/proj/planning_ws/src/path_planning/src",
+        "/home/z017/proj/planning_ws/src/uam_control_interface/src"
     ]
 }
