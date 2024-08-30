@@ -5,7 +5,8 @@
         "/home/z017/proj/planning_ws/src/control_aware_planner/src",
         "/home/z017/proj/planning_ws/src/curve_generator/src",
         "/home/z017/proj/planning_ws/src/path_planning/src",
-        "/home/z017/proj/planning_ws/src/uam_control_interface/src"
+        "/home/z017/proj/planning_ws/src/uam_control_interface/src",
+        "/home/z017/proj/planning_ws/src/planning_utils/src"
     ],
     "python.analysis.extraPaths": [
         "/home/z017/proj/firmware_ws/devel/lib/python3/dist-packages",
@@ -13,6 +14,8 @@
         "/home/z017/proj/planning_ws/src/control_aware_planner/src",
         "/home/z017/proj/planning_ws/src/curve_generator/src",
         "/home/z017/proj/planning_ws/src/path_planning/src",
-        "/home/z017/proj/planning_ws/src/uam_control_interface/src"
-    ]
+        "/home/z017/proj/planning_ws/src/uam_control_interface/src",
+        "/home/z017/proj/planning_ws/src/planning_utils/src"
+    ],
+    "cmake.sourceDirectory": "/home/z017/proj/planning_ws/build/catkin_tools_prebuild"
 }

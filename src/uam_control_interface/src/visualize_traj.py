@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import rospy
+import rospy, rospkg
 import os
 import numpy as np
 from std_msgs.msg import Bool
@@ -8,7 +8,8 @@ from gazebo_msgs.msg import LinkStates
 from geometry_msgs.msg import PoseStamped
 from nav_msgs.msg import Path
 
-base_path = os.path.dirname(__file__) + '/../../../'
+rospkg = rospkg.RosPack()
+utils_path = rospkg.get_path('planning_utils')
 
 rospy.init_node('visualize_end')
 
@@ -63,7 +64,7 @@ def gen_pose(x , y, z):
     return pose_msg
     
 # import the traj data
-traj_data = np.load(base_path + 'data/state_traj_pos.npy')
+traj_data = np.load(utils_path + '/data/state_traj.npy')
 
 # setup subscribers
 tasksub = rospy.Subscriber('/uam_control_interface/in_task', Bool, task_cb)

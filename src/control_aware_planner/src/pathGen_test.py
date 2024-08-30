@@ -1,4 +1,5 @@
 from pathGen import PathGen
+import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
     pg = PathGen(3)
@@ -13,10 +14,36 @@ if __name__ == '__main__':
 
     pg.generate_path(start_pos, start_vel, start_acc, end_pos, end_vel, end_acc)
 
-    print(pg.duration)
 
-    pg.generate_path(end_pos, end_vel, end_acc, start_pos, start_vel, start_acc)
+    pos = []
+    vel = []
+    acc = []
 
-    print(pg.duration)    
+    for i in range(0,100):
+        traj = pg.get_waypoints_with_scale(0.01 *i)
+        pos.append(traj[0][0])
+        vel.append(traj[1][0])
+        acc.append(traj[2][0])
+    
+    print(sum(vel)*0.01)
 
-    print(pg.get_waypoints_with_scale(0.2))
+    # plot the path vel and acc 
+    plt.subplot(3, 1, 1)
+
+    plt.plot(pos)
+    plt.xlabel('Time')
+    plt.ylabel('Position')
+
+    plt.subplot(3, 1, 2)
+
+    plt.plot(vel)
+    plt.xlabel('Time')
+    plt.ylabel('Velocity')
+
+    plt.subplot(3, 1, 3)
+
+    plt.plot(acc)
+    plt.xlabel('Time')
+    plt.ylabel('Acceleration')
+
+    plt.show()  

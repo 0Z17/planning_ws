@@ -27,10 +27,10 @@ class IkSolver:
         """
         Compute the state of the UAM given the position and normal vectors of the target point
         """
-        theta = np.arctan2(normal[1],normal[0])
-        phi = -np.arctan2(normal[2],np.sqrt(normal[0]**2 + normal[1]**2))
-        pos = position + normal*self.link_len
-        return pos, theta, phi
+        yaw = np.pi - np.arctan2(normal[1],normal[0])
+        joint_pos = -np.arctan2(normal[2],np.sqrt(normal[0]**2 + normal[1]**2))
+        pos = position + normal*self.link_length
+        return np.append(pos, [yaw, joint_pos])
     
     def time_alloc(self, val, num = 100, kind = 'cubic'):
         """

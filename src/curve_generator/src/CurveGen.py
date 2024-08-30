@@ -5,6 +5,7 @@ from geomdl import fitting
 np.float = float
 from geomdl.visualization import VisMPL
 from coppeliasim_zmqremoteapi_client import RemoteAPIClient
+from geomdl import exchange
 
 
 class PointConverter:
@@ -14,7 +15,8 @@ class PointConverter:
     '''
     def __init__(self, name='/sensor',):
         
-        client = RemoteAPIClient()
+        # client = RemoteAPIClient()
+        client = RemoteAPIClient("172.30.144.1")
         self.sim = client.require('sim')
 
         self.handle = self.sim.getObject(name)
@@ -100,8 +102,35 @@ class CurveGen:
             normal_list.append(normal)
         return pos_list, normal_list
 
+    def saveCurve(self, filename):
+        """
+        Save the curve as a JSON file.
+        """
+        exchange.export_json(self.curve, filename)
 
+    def getPointCurvature(self, u, v, kind='mean'):
+        """
+        Get the curvature of the point at the given u and v values.
+        """
+        deriv = self.curve.derivatives(u, v, order=2)
+        uu = np.array(deriv[2][0])
+        uv = np.array(deriv[1][1])
+        vv = np.array(deriv[0][2])
+        norm = self.getPointNormal(u, v)
+        g1 = np.dot(uu, norm)
+        g2 = np.dot(uv, norm)
+        g3 = np.dot(vv, norm)
 
-
+        G = np.array([[g1,g2],
+                      [g2,g3]])
+        eign = np.linalg.eigvals(G)
+        if kind =='max':
+            k = np.max(eign)
+        elif kind =='mean':
+            k = np.mean(eign)
+        elif kind =='gauss':
+            k = eign[0] * eign[1]
+           
+        return k
 
 

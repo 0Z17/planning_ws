@@ -7,14 +7,13 @@ import os
 import sys
 import math
 import numpy as np
+import rospkg
 
-base_path = os.path.dirname(os.path.abspath(__file__)) + "/../../../../../"
-
-sys.path.append(base_path + "src/control_aware_planner/src/")
-
-sys.path.append(base_path + "src/PathPlanning/src/Sampling_based_Planning/")
-
-print(sys.path)
+ca_planner_path = rospkg.RosPack().get_path('control_aware_planner')
+planning_path = rospkg.RosPack().get_path('path_planning')
+utils_path = rospkg.RosPack().get_path('planning_utils')
+sys.path.append(ca_planner_path + "/src/")
+sys.path.append(planning_path + "/src/Sampling_based_Planning/")
 
 from rrt_2D import env, plotting, utils
 from pathGen import PathGen
@@ -66,7 +65,7 @@ class RrtState:
         self.obs_rectangle = self.env.obs_rectangle
         self.obs_boundary = self.env.obs_boundary
 
-        self.pg = PathGen(2, max_vel=[0.2] * 2)
+        self.pg = PathGen(2, max_vel = [4,4], max_acc = [10,10])
         
 
     def planning(self):
@@ -155,6 +154,10 @@ class RrtState:
 
 
         return traj
+    
+    def unscale(self, traj, curve_scale):
+        traj = [[(p[0][0]/curve_scale, p[0][1]/curve_scale), (p[1][0]/curve_scale, p[1][1]/curve_scale), (p[2][0]/curve_scale, p[2][1]/curve_scale)] for p in traj]
+        return traj
 
     @staticmethod
     def get_distance_and_angle(node_start, node_end):
@@ -164,11 +167,15 @@ class RrtState:
 
 
 def main():
-    x_start = (2, 2, 0, 0, 0, 0)  # Starting node
-    x_goal = (10, 10, 0, 0, 0, 0)  # Goal node
+    curve_scale = 1.7878971 * 10
+    x_start = np.array([0.2, 0.2, 0, 0, 0, 0]) * curve_scale  # Starting node
+    x_goal = np.array([0.8, 0.8, 0, 0, 0, 0]) * curve_scale   # Goal node
 
-    rrt = RrtState(x_start, x_goal, step_len=0.5, time_step=2, goal_sample_rate=0.05, iter_max=10000)
+    rrt = RrtState(x_start, x_goal, step_len=0.05, time_step=0.5, goal_sample_rate=0.05, iter_max=10000)
     path, traj = rrt.planning()
+
+    traj = rrt.unscale(traj, 1.7878971 *10)
+    traj.reverse()
 
     if path:
         rrt.plotting.plot_traj(traj)
@@ -178,9 +185,8 @@ def main():
     else:
         print("No Path Found!")
 
-def export_traj(traj):
-    traj.reverse()  
-    np.save(base_path + "data/uv_traj.npy", traj)
+def export_traj(traj):  
+    np.save(utils_path + "/data/uv_traj.npy", traj)
     
 
 if __name__ == '__main__':
