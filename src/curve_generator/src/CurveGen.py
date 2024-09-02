@@ -40,8 +40,7 @@ class PointConverter:
         return self.data.copy()
 
 class CurveGen:
-    def __init__(self, waypointConverter = PointConverter()):
-        self.waypointConverter = waypointConverter
+    def __init__(self,  file_name = None):
 
         # curve parameters
         self.degree_u = 3
@@ -51,7 +50,11 @@ class CurveGen:
 
         # curve object
         self.curve = None
-        self.updateCurve()
+        if file_name is None:
+            self.waypointConverter =  PointConverter()
+            self.updateCurve()
+        else:
+            self.curve = exchange.import_json(file_name)[0]
 
     def updateCurve(self):
         # get the waypoints
@@ -142,14 +145,26 @@ class CurveGen:
         return deriv
 
     def getPointNormalDeriv(self, u, v):
-        deriv = self.curve.derivatives(u, v, order=3)
-        tu = np.array(deriv[1][0])
-        tv = np.array(deriv[0][1])
-        tuu = np.array(deriv[2][0])
-        tuv = np.array(deriv[1][1])
-        tvv = np.array(deriv[0][2])
+            
+            deriv = self.curve.derivatives(u, v, order=3)
+            n = self.getPointNormal(u, v)
+            tu = np.array(deriv[1][0])
+            tv = np.array(deriv[0][1])
+            tuu = np.array(deriv[2][0])
+            tuv = np.array(deriv[1][1])
+            tvv = np.array(deriv[0][2])
 
-        dnorm = np.stack((np.cross(tuu, tv) + np.cross(tu, tuv), np.cross(tuv,tv) + np.cross(tu, tvv))) 
+            E = tu.dot(tu)
+            F = tu.dot(tv)
+            G = tv.dot(tv)
+            
+            e = tuu.dot(n)
+            f = tuv.dot(n)
+            g = tvv.dot(n)
+            
+            nu = (f*F-e*G)/(E*G-F**2)*tu + (e*F-f*E)/(E*G-F**2)*tv
+            nv = (g*F-f*G)/(E*G-F**2)*tu + (f*F-g*E)/(E*G-F**2)*tv
+            
+            dnorm = np.stack((nu, nv)) 
 
-        return dnorm
-        
+            return dnorm
