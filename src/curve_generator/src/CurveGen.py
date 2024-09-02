@@ -86,6 +86,7 @@ class CurveGen:
             Exception("Normal vector is zero")
         normal = normal / np.linalg.norm(normal)
         return normal
+    
 
     def getPoint(self, u,v):
         # get the position and normal of the point at the given u and v values
@@ -133,4 +134,22 @@ class CurveGen:
            
         return k
 
+    def getPointDeriv(self, u, v, order=1):
+        """
+        Get the derivative of the point at the given u and v values.
+        """
+        deriv = self.curve.derivatives(u, v, order=order)
+        return deriv
 
+    def getPointNormalDeriv(self, u, v):
+        deriv = self.curve.derivatives(u, v, order=3)
+        tu = np.array(deriv[1][0])
+        tv = np.array(deriv[0][1])
+        tuu = np.array(deriv[2][0])
+        tuv = np.array(deriv[1][1])
+        tvv = np.array(deriv[0][2])
+
+        dnorm = np.stack((np.cross(tuu, tv) + np.cross(tu, tuv), np.cross(tuv,tv) + np.cross(tu, tvv))) 
+
+        return dnorm
+        

@@ -41,13 +41,60 @@ class IkSolver:
         t_new = np.linspace(0, 1, num)
         val_new = f(t_new)
         return val_new, f
+    
+    def get_dpsi(self, n, dn, du, dv):
+        """
+        convert the vectors in the dzeta frame to the dq in end-effector frame
+        """
+        dn = dn[0]*du + dn[1]*dv
+        dpsi = n[0]/(n[0]**2 + n[1]**2)*dn[1] - n[1]/(n[0]**2 + n[1]**2)*dn[0]
+        return dpsi
+    
+    def get_dtheta(self, n, dn, du, dv):
+        """
+        convert the vectors in the dzeta frame to the dq in end-effector frame
+        """
+        n_ = np.sqrt(n[0]**2 + n[1]**2)
+        dn = dn[0]*du + dn[1]*dv
+        dtheta = n_/(n[0]**2 + n[1]**2 + n[2]**2)*dn[2] \
+                - n[2]/(n[0]**2 + n[1]**2 + n[2]**2) \
+                * (n[0]/n_*dn[0] + n[1]/n_*dn[1])
+                
+        return dtheta
+    
+    def get_jaccobian(self, theta, l):
+        """
+        compute the jacobian matrix of the end-effector frame w.r.t. thestate
+        """
+        jac = np.array([[np.cos(theta), 0, -np.sin(theta), 0, 0],
+                        [ 0, 1, 0,  l*np.cos(theta), 0],
+                        [np.sin(theta), 0,  np.cos(theta), 0, l],
+                        [0, 0, 0, 1, 0],
+                        [0, 0, 0, 0, 1]])
+        return jac
+    
+    def zeta_to_vse3(self,u,v,du, dv):
+        """
+        convert the vectors in the zeta frame to the se3 frame
+        """
+        deriv = self.curve.getPointDeriv(u, v)
+        n = self.curve.getPointNormal(u,v)
+        dn = self.curve.getPointNormalDeriv(u,v)
+        tu =np.array(deriv[1][0])
+        tv = np.array(deriv[0][1])
+        dp = tu*du + tv*dv
+        dpsi = self.get_dpsi(n, dn, du, dv)
+        dtheta = self.get_dtheta(n, dn, du, dv)
+
+        return np.append(dp, [dpsi, dtheta])
+
 
 if __name__ == '__main__':
 
     base_path = os.path.dirname(__file__) + '/../../../'
 
     ik_solver = IkSolver()
-    ik_solver.set_link_lengths(0.5)
+    ik_solver.set_link_lengths(0.95)
 
     traj = np.load(base_path + 'data/uv_traj.npy')
 

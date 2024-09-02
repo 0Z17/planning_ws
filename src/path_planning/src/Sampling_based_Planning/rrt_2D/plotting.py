@@ -133,6 +133,12 @@ class Plotting:
         # plot the velocity of traj, x-axis is time, y-axis is velocity
         plt.plot(range(t), [x[1][0] for x in traj], '-r', label='vx')
         plt.plot(range(t), [x[1][1] for x in traj], '-b', label='vy')
+        # ///////////////////////////// Debug //////////////////////////
+        diff_pos_x = [(traj[i][0][0] - traj[i-1][0][0])*10 for i in range(1, t-1)]
+        diff_pos_y = [(traj[i][0][1] - traj[i-1][0][1])*10 for i in range(1, t-1)]
+        plt.plot(range(1, t-1), diff_pos_x, '--r', label='diff_pos_x')
+        plt.plot(range(1, t-1), diff_pos_y, '--b', label='diff_pos_y')
+        # //////////////////////////// Debug ///////////////////////////
         plt.legend()
         plt.xlabel('time')
         plt.ylabel('velocity')
@@ -142,6 +148,12 @@ class Plotting:
         # plot the acceleration of traj, x-axis is time, y-axis is acceleration
         plt.plot(range(t), [x[2][0] for x in traj], '-r', label='ax')
         plt.plot(range(t), [x[2][1] for x in traj], '-b', label='ay')
+        # ///////////////////////////// Debug //////////////////////////
+        diff_vel_x = [(traj[i][1][0] - traj[i-1][1][0])*10 for i in range(1, t-1)]
+        diff_vel_y = [(traj[i][1][1] - traj[i-1][1][1])*10 for i in range(1, t-1)]
+        plt.plot(range(1, t-1), diff_vel_x, '--r', label='diff_vel_x')
+        plt.plot(range(1, t-1), diff_vel_y, '--b', label='diff_vel_y')
+        # //////////////////////////// Debug ///////////////////////////
         plt.legend()
         plt.xlabel('time')
         plt.ylabel('acceleration')
