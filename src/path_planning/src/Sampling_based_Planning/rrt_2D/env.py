@@ -6,19 +6,27 @@ Environment for rrt_2D
 
 class Env:
     def __init__(self):
-        self.x_range = (0, 1.7878971*10)
-        self.y_range = (0, 1.7878971*10)
+        # self.x_range = (0, 1.7878971*10)
+        # self.y_range = (0, 1.7878971*10)
+        self.x_range = (20, 80)
+        self.y_range = (20, 80)
         self.obs_boundary = self.obs_boundary()
         # self.obs_circle = self.obs_circle()
         # self.obs_rectangle = self.obs_rectangle()
 
     @staticmethod
     def obs_boundary():
+        # obs_boundary = [
+        #     [0, 0, 1, 30],
+        #     [0, 30, 50, 1],
+        #     [1, 0, 50, 1],
+        #     [50, 1, 1, 30]
+        # ]
         obs_boundary = [
-            [0, 0, 1, 30],
-            [0, 30, 50, 1],
-            [1, 0, 50, 1],
-            [50, 1, 1, 30]
+            [0, 0, 1, 100],
+            [0, 100, 100, 1],
+            [1, 0, 100, 1],
+            [100, 1, 1, 100]
         ]
         return obs_boundary
 

@@ -4,9 +4,9 @@ from scipy.interpolate import interp1d
 
 class IkSolver:
 
-    def __init__(self):
-        self.link_length = None
-        self.curve = None
+    def __init__(self, curve=None, link_length=0.95):
+        self.curve = curve
+        self.link_length = link_length
 
     def set_link_lengths(self, link_length):
         self.link_length = link_length
@@ -27,10 +27,10 @@ class IkSolver:
         """
         Compute the state of the UAM given the position and normal vectors of the target point
         """
-        yaw = np.pi - np.arctan2(normal[1],normal[0])
-        joint_pos = -np.arctan2(normal[2],np.sqrt(normal[0]**2 + normal[1]**2))
+        psi = np.arctan2(-normal[1],-normal[0])
+        theta = np.arctan2( - normal[2],np.sqrt(normal[0]**2 + normal[1]**2))
         pos = position + normal*self.link_length
-        return np.append(pos, [yaw, joint_pos])
+        return np.append(pos, [psi, theta])
     
     def time_alloc(self, val, num = 100, kind = 'cubic'):
         """
@@ -56,8 +56,8 @@ class IkSolver:
         """
         n_ = np.sqrt(n[0]**2 + n[1]**2)
         dn = dn[0]*du + dn[1]*dv
-        dtheta = n_/(n[0]**2 + n[1]**2 + n[2]**2)*dn[2] \
-                - n[2]/(n[0]**2 + n[1]**2 + n[2]**2) \
+        dtheta = - n_/(n[0]**2 + n[1]**2 + n[2]**2)*dn[2] \
+                + n[2]/(n[0]**2 + n[1]**2 + n[2]**2) \
                 * (n[0]/n_*dn[0] + n[1]/n_*dn[1])
                 
         return dtheta

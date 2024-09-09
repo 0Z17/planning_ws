@@ -5,7 +5,7 @@ import numpy as np
 class UAM:
     def __init__(self,name='/skyvortex',joint_name='/operator_1_joint'):
 
-        client = RemoteAPIClient()
+        client = RemoteAPIClient("172.30.144.1")
         self.sim = client.require('sim')
 
         self.handle = self.sim.getObject(name)

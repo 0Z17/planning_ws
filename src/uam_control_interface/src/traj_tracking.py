@@ -17,9 +17,14 @@ def msg_out(msg):
         rospy.loginfo(msg)
 
 # import the traj data
-traj_data = np.load(utils_path + '/data/state_traj.npy')
+# traj_data = np.load(utils_path + '/data/state_traj.npy')
+traj_data = np.load(utils_path + '/data/circle_traj.npy')
 
+start_x = 2.0
+start_y = 1.0
 
+traj_data[:, 0] += start_x
+traj_data[:, 1] += start_y
 
 # start and goal pose
 start_pose = traj_data[0, :3]
@@ -55,7 +60,7 @@ if __name__ == '__main__':
     traj_msg_end = False
     reach_target = False
 
-    rate = rospy.Rate(2)
+    rate = rospy.Rate(20)
 
     last_req = rospy.Time.now()
 

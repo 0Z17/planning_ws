@@ -5,7 +5,8 @@ import time
 from matplotlib import pyplot as plt
 from scipy.io import savemat
 
-data_path = rospkg.RosPack().get_path('planning_utils') + '/data/curve_large/'
+curve_name = 'curve_simple'
+data_path = rospkg.RosPack().get_path('planning_utils') + '/data/curve_complex/'
 
 
 class Bar:
@@ -45,9 +46,9 @@ class Bar:
 
 if __name__ == '__main__':
     bar = Bar()
-    se3_traj = np.load(data_path + 'se3_traj.npy')
-    state_traj = np.load(data_path + 'state_traj.npy')
-    end_vel_traj = np.load(data_path + 'se3_vel_traj.npy')
+    se3_traj = np.load(data_path + 'se3_traj_new.npy')
+    state_traj = np.load(data_path + 'state_traj_new.npy')
+    end_vel_traj = np.load(data_path + 'se3_vel_traj_new.npy')
 
 
     pos_ls = se3_traj[:,0]
@@ -69,51 +70,51 @@ if __name__ == '__main__':
     # plt.plot(end_vel_traj[:,3])
     # plt.subplot(5,1,5)
     # plt.plot(end_vel_traj[:,4])
-    yaw = rot_ls[:,0]
+    # yaw = rot_ls[:,0]
 
-    for i in range(len(yaw)):
-        if yaw[i] > 3/2*np.pi:
-            yaw[i] = - (2*np.pi - yaw[i])
+    # for i in range(len(yaw)):
+    #     if yaw[i] > 3/2*np.pi:
+    #         yaw[i] = - (2*np.pi - yaw[i])
 
 
-    plt.subplot(5,1,1)
-    diff_x = np.diff(pos_ls[:,0])*10
-    diff_x = np.diff(diff_x)*10
-    up_bound = np.full(len(diff_x), 0.4)
-    plt.plot(up_bound, 'r--')
-    plt.plot(diff_x)
-    plt.subplot(5,1,2)
-    diff_y = np.diff(pos_ls[:,1])*10
-    diff_y = np.diff(diff_y)*10
-    up_bound = np.full(len(diff_x), 0.4)
-    plt.plot(up_bound, 'r--')
-    plt.plot(diff_y)
-    plt.subplot(5,1,3)
-    diff_z = np.diff(pos_ls[:,2])*10
-    diff_z = np.diff(diff_z)*10
-    up_bound = np.full(len(diff_x), 0.4)
-    plt.plot(up_bound, 'r--')
-    plt.plot(diff_z)
-    plt.subplot(5,1,4)
-    diff_yaw = np.degrees(np.diff(yaw)*10)
-    diff_yaw = np.diff(diff_yaw)*10
-    yaw_up_bound = np.full(len(diff_x), 10)
-    yaw_low_bound = np.full(len(diff_x), -10)
-    plt.plot(yaw_up_bound, 'r--')
-    plt.plot(yaw_low_bound, 'r--')
-    plt.plot(diff_yaw)
-    plt.subplot(5,1,5)
-    diff_pitch = np.degrees(np.diff(rot_ls[:,1])*10)
-    diff_pitch = np.diff(diff_pitch)*10
-    up_bound = np.full(len(diff_x), 10)
-    low_bound = np.full(len(diff_x), -10)
-    plt.plot(up_bound, 'r--')
-    plt.plot(low_bound, 'r--')
-    plt.plot(diff_pitch)
+    # plt.subplot(5,1,1)
+    # diff_x = np.diff(pos_ls[:,0])*10
+    # diff_x = np.diff(diff_x)*10
+    # up_bound = np.full(len(diff_x), 0.4)
+    # plt.plot(up_bound, 'r--')
+    # plt.plot(diff_x)
+    # plt.subplot(5,1,2)
+    # diff_y = np.diff(pos_ls[:,1])*10
+    # diff_y = np.diff(diff_y)*10
+    # up_bound = np.full(len(diff_x), 0.4)
+    # plt.plot(up_bound, 'r--')
+    # plt.plot(diff_y)
+    # plt.subplot(5,1,3)
+    # diff_z = np.diff(pos_ls[:,2])*10
+    # diff_z = np.diff(diff_z)*10
+    # up_bound = np.full(len(diff_x), 0.4)
+    # plt.plot(up_bound, 'r--')
+    # plt.plot(diff_z)
+    # plt.subplot(5,1,4)
+    # diff_yaw = np.degrees(np.diff(yaw)*10)
+    # diff_yaw = np.diff(diff_yaw)*10
+    # yaw_up_bound = np.full(len(diff_x), 10)
+    # yaw_low_bound = np.full(len(diff_x), -10)
+    # plt.plot(yaw_up_bound, 'r--')
+    # plt.plot(yaw_low_bound, 'r--')
+    # plt.plot(diff_yaw)
+    # plt.subplot(5,1,5)
+    # diff_pitch = np.degrees(np.diff(rot_ls[:,1])*10)
+    # diff_pitch = np.diff(diff_pitch)*10
+    # up_bound = np.full(len(diff_x), 10)
+    # low_bound = np.full(len(diff_x), -10)
+    # plt.plot(up_bound, 'r--')
+    # plt.plot(low_bound, 'r--')
+    # plt.plot(diff_pitch)
 
-    savemat(data_path + 'diff_traj.mat', {'diff_x': diff_x, 'diff_y': diff_y, 'diff_z': diff_z, 'diff_yaw': diff_yaw, 'diff_pitch': diff_pitch})
+    # savemat(data_path + 'diff_traj.mat', {'diff_x': diff_x, 'diff_y': diff_y, 'diff_z': diff_z, 'diff_yaw': diff_yaw, 'diff_pitch': diff_pitch})
 
-    plt.show()
+    # plt.show()
 
     real_vel = []
 
@@ -127,7 +128,7 @@ if __name__ == '__main__':
 
 
     bar.sim.setStepping(True)
-    bar.sim.startSimulation()
+    # bar.sim.startSimulation()
     # sim_time = bar.sim.getSimulationTime()
     # i = 0
 

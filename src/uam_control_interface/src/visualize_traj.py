@@ -64,7 +64,8 @@ def gen_pose(x , y, z):
     return pose_msg
     
 # import the traj data
-traj_data = np.load(utils_path + '/data/state_traj.npy')
+# traj_data = np.load(utils_path + '/data/state_traj.npy')
+traj_data = np.load(utils_path + '/data/circle_traj.npy')
 
 # setup subscribers
 tasksub = rospy.Subscriber('/uam_control_interface/in_task', Bool, task_cb)

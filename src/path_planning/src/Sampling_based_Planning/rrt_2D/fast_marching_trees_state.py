@@ -10,11 +10,13 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+import rospkg
+import time
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) +
                 "/../../Sampling_based_Planning/")
 
-from Sampling_based_Planning.rrt_2D import env, plotting, utils
+from rrt_2D import env, plotting, utils
 
 
 class Node:
@@ -23,11 +25,12 @@ class Node:
         self.y = n[1]
         self.parent = None
         self.cost = np.inf
+        self.q = None
 
 
 
 class FMT:
-    def __init__(self, x_start, x_goal, search_radius, curvature_map, shear_map):
+    def __init__(self, x_start, x_goal, search_radius, curve_map):
         self.x_init = Node(x_start)
         self.x_goal = Node(x_goal)
         self.search_radius = search_radius
@@ -48,11 +51,13 @@ class FMT:
         self.V_unvisited = set()
         self.V_open = set()
         self.V_closed = set()
-        self.sample_numbers = 1000
+        self.sample_numbers = 2000
 
         # the cost realate to the curve
-        curvature_map = None
-        shear_map = None
+        self.curve_map = curve_map
+        self.cost_rsl = 1
+        self.weight = np.array([1, 1, 1, 5, 5])
+
 
 
     def Init(self):
@@ -129,9 +134,25 @@ class FMT:
         else:
             return self.calc_dist(x_start, x_end)
 
-    @staticmethod
-    def calc_dist(x_start, x_end):
-        return math.hypot(x_start.x - x_end.x, x_start.y - x_end.y)
+    def calc_dist(self, x_start, x_end):
+        # disperse the path from x_start to x_end
+        vec = np.array([x_end.x - x_start.x, x_end.y - x_start.y])
+        dis = np.linalg.norm(vec)    # distance from start to end
+        vec = vec / dis               # direction vector
+        loacl_c = np.zeros(5)       # local cost
+        
+        inc_cont = 0
+        while inc_cont * self.cost_rsl < dis:
+            x_t = max(int(x_start.x + vec[0] * inc_cont) -20 ,59)
+            y_t = max(int(x_start.y + vec[1] * inc_cont) -20 ,59)
+            tuv = self.curve_map[x_t][y_t] 
+            loacl_c += abs(tuv[0] * vec[0] + tuv[1] * vec[1])
+            inc_cont += 1
+
+        # TODO: add the cost of the last segment
+
+        return np.linalg.norm(loacl_c.dot(self.weight))
+            
 
     @staticmethod
     def Near(nodelist, z, rn):
@@ -215,10 +236,15 @@ class FMT:
 
 
 def main():
-    x_start = (18, 8)  # Starting node
-    x_goal = (37, 18)  # Goal node
+    x_start = np.array([0.3, 0.4]) * 100  # Starting node
+    x_goal = np.array([0.7, 0.6]) * 100 # Goal node
 
-    fmt = FMT(x_start, x_goal, 40)
+    data_path = rospkg.RosPack().get_path('planning_utils') + "/data/curve_large"
+    
+    # load curve map
+    curve_map = np.load(data_path + "/curve_map.npy")
+
+    fmt = FMT(x_start, x_goal, 50, curve_map)
     fmt.Planning()
 
 
