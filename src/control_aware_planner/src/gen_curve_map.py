@@ -8,7 +8,7 @@ from invkin import IkSolver
 from scipy.io import savemat
 
 # load the curve data 
-curve_name = "curve_simple"
+curve_name = "curve_02"
 data_path = rospkg.RosPack().get_path("planning_utils") + "/data/" + curve_name
 file_name = data_path + "/"  + curve_name + ".json"
 
@@ -40,4 +40,4 @@ map_dv = np.array(map_dv)
 np.save(data_path + "/" + curve_name + "_map.npy", np.stack([map_du, map_dv], axis=2))
 
 # save the map as a mat file
-savemat(data_path + "/" + curve_name + "_map.mat", {"curveMap": np.stack([map_du, map_dv], axis=2)})
+savemat(data_path + "/" + curve_name + "_map.mat", {"curve_map": np.stack([map_du, map_dv], axis=2)})

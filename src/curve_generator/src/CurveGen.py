@@ -45,6 +45,9 @@ class CurveGen:
         # curve parameters
         self.degree_u = 3
         self.degree_v = 3
+        # self.size_u = 10
+        # self.size_v = 10
+
         self.size_u = 10
         self.size_v = 10
 
@@ -116,24 +119,43 @@ class CurveGen:
         """
         Get the curvature of the point at the given u and v values.
         """
-        deriv = self.curve.derivatives(u, v, order=2)
-        uu = np.array(deriv[2][0])
-        uv = np.array(deriv[1][1])
-        vv = np.array(deriv[0][2])
-        norm = self.getPointNormal(u, v)
-        g1 = np.dot(uu, norm)
-        g2 = np.dot(uv, norm)
-        g3 = np.dot(vv, norm)
+        # deriv = self.curve.derivatives(u, v, order=2)
+        # uu = np.array(deriv[2][0])
+        # uv = np.array(deriv[1][1])
+        # vv = np.array(deriv[0][2])
+        # norm = self.getPointNormal(u, v)
+        # g1 = np.dot(uu, norm)
+        # g2 = np.dot(uv, norm)
+        # g3 = np.dot(vv, norm)
 
-        G = np.array([[g1,g2],
-                      [g2,g3]])
-        eign = np.linalg.eigvals(G)
-        if kind =='max':
-            k = np.max(eign)
-        elif kind =='mean':
-            k = np.mean(eign)
-        elif kind =='gauss':
-            k = eign[0] * eign[1]
+        # G = np.array([[g1,g2],
+        #               [g2,g3]])
+        # eign = np.linalg.eigvals(G)
+
+        # if kind =='max':
+        #     k = np.max(eign)
+        # elif kind =='mean':
+        #     k = np.mean(eign)
+        # elif kind =='gauss':
+        #     k = eign[0] * eign[1]
+
+        deriv = self.curve.derivatives(u, v, order=3)
+        n = self.getPointNormal(u, v)
+        tu = np.array(deriv[1][0])
+        tv = np.array(deriv[0][1])
+        tuu = np.array(deriv[2][0])
+        tuv = np.array(deriv[1][1])
+        tvv = np.array(deriv[0][2])
+
+        E = tu.dot(tu)
+        F = tu.dot(tv)
+        G = tv.dot(tv)
+        
+        e = tuu.dot(n)
+        f = tuv.dot(n)
+        g = tvv.dot(n)
+
+        k = -(e*G-2*f*F+g*E)/(2*(E*G-F**2))
            
         return k
 

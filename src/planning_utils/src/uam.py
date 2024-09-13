@@ -29,7 +29,8 @@ class UAM:
         """
         Set the joint position of the UAM in radians
         """
-        self.sim.setJointPosition(self.joint_handle, position - self.joint_angle_offset)
+        # self.sim.setJointPosition(self.joint_handle, position - self.joint_angle_offset)
+        self.sim.setJointTargetPosition(self.joint_handle, position - self.joint_angle_offset)
     
     def get_joint_position(self):
         return self.sim.getJointPosition(self.joint_handle) + self.joint_angle_offset

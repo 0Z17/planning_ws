@@ -5,8 +5,8 @@ import time
 from matplotlib import pyplot as plt
 from scipy.io import savemat
 
-curve_name = 'curve_simple'
-data_path = rospkg.RosPack().get_path('planning_utils') + '/data/curve_complex/'
+curve_name = 'curve_01'
+data_path = rospkg.RosPack().get_path('planning_utils') + '/data' + '/' + curve_name + '/'
 
 
 class Bar:
@@ -23,11 +23,11 @@ class Bar:
         self.theta_joint = self.sim.getObject('/theta_joint')
 
     def set_pose(self, x, y, z, yaw, pitch):
-        self.sim.setJointPosition(self.x_joint, x)
-        self.sim.setJointPosition(self.y_joint, y)
-        self.sim.setJointPosition(self.z_joint, z)
-        self.sim.setJointPosition(self.yaw_joint, yaw)
-        self.sim.setJointPosition(self.theta_joint, -pitch)
+        self.sim.setJointTargetPosition(self.x_joint, x)
+        self.sim.setJointTargetPosition(self.y_joint, y)
+        self.sim.setJointTargetPosition(self.z_joint, z)
+        self.sim.setJointTargetPosition(self.yaw_joint, yaw)
+        self.sim.setJointTargetPosition(self.theta_joint, -pitch)
 
     def set_velocity(self, vx, vy, vz, vyaw, vpitch):
         self.sim.setJointTargetVelocity(self.x_joint, vx)
@@ -46,9 +46,9 @@ class Bar:
 
 if __name__ == '__main__':
     bar = Bar()
-    se3_traj = np.load(data_path + 'se3_traj_new.npy')
-    state_traj = np.load(data_path + 'state_traj_new.npy')
-    end_vel_traj = np.load(data_path + 'se3_vel_traj_new.npy')
+    se3_traj = np.load(data_path + 'se3_path.npy')
+    state_traj = np.load(data_path + 'state_path.npy')
+    # end_vel_traj = np.load(data_path + 'se3_vel_traj.npy')
 
 
     pos_ls = se3_traj[:,0]
@@ -121,14 +121,17 @@ if __name__ == '__main__':
     bar.set_pose(pos_ls[0][0], pos_ls[0][1], pos_ls[0][2], rot_ls[0][0], rot_ls[0][1])
 
 
-    
+    # bar.sim.setStepping(True)
+    bar.sim.startSimulation()
+
     for i in range(len(pos_ls)):
         bar.set_pose(pos_ls[i][0], pos_ls[i][1], pos_ls[i][2], rot_ls[i][0], rot_ls[i][1])
         time.sleep(0.05)
 
+    # bar.sim.stopSimulation()
 
-    bar.sim.setStepping(True)
-    # bar.sim.startSimulation()
+    
+
     # sim_time = bar.sim.getSimulationTime()
     # i = 0
 

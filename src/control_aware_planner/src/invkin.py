@@ -4,7 +4,7 @@ from scipy.interpolate import interp1d
 
 class IkSolver:
 
-    def __init__(self, curve=None, link_length=0.95):
+    def __init__(self, curve=None, link_length=0.947):
         self.curve = curve
         self.link_length = link_length
 
