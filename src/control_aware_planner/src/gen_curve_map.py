@@ -8,7 +8,7 @@ from invkin import IkSolver
 from scipy.io import savemat
 
 # load the curve data 
-curve_name = "curve_02"
+curve_name = "curve_03"
 data_path = rospkg.RosPack().get_path("planning_utils") + "/data/" + curve_name
 file_name = data_path + "/"  + curve_name + ".json"
 

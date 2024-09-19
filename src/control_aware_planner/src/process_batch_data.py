@@ -8,11 +8,11 @@ import numpy as np
 
 curve_name = "curve_03"
 data_path = rospkg.RosPack().get_path('planning_utils')+'/data' + "/" + curve_name 
-path_file = "path_refine.mat"
+path_file = "statistic_data.mat"
 
 ## get the path from the matlab file
-path_refine = loadmat(data_path + "/" + path_file)
-uv_path = path_refine['path_refine']
+statistic_data = loadmat(data_path + "/" + path_file)
+uv_path_all = statistic_data['path_list']
 
 curve_file = data_path + "/" + curve_name + ".json"
 
@@ -37,20 +37,21 @@ iks = IkSolver(cg)
 # ///////////////// DEBUG //////////
 
 # from uv path to the se3 path 
-se3_path = []
-for i in range(len(uv_path[0])):
-    se3_path.append(iks.uv_to_se3(uv_path[0][i], uv_path[1][i]))
+se3_path_all = []
+state_path_all = []
 
-# from se3 path to the state path 
-state_path = []
-for i in range(len(se3_path)):
-    state_path.append(iks.se3_to_state(se3_path[i][0], se3_path[i][1]))
+for i in range(len(uv_path_all[0])):
+    uv_path = uv_path_all[0][i]
+    se3_path = []
+    for j in range(np.shape(uv_path_all[0][i])[1]):
+        se3_path.append(iks.uv_to_se3(uv_path[0][j], uv_path[1][j]))
+    se3_path_all.append(se3_path)
 
-# save the se3 path and state path 
-np.save(data_path + "/se3_path.npy", se3_path)
-np.save(data_path + "/state_path.npy", state_path)
+    # from se3 path to the state path 
+    state_path = []
+    for j in range(len(se3_path)):
+        state_path.append(iks.se3_to_state(se3_path[j][0], se3_path[j][1]))
+    state_path_all.append(state_path)
 
-savemat(data_path + "/path.mat", {'uv_path': uv_path, 'se3_path': se3_path, 
-                                  'state_path': state_path})
-
-
+savemat(data_path + "/output_data.mat", {'se3_path_all': np.array(se3_path_all, dtype=object), 
+                                  'state_path_all': np.array(state_path_all, dtype=object)})

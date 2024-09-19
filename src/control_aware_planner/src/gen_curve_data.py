@@ -6,7 +6,7 @@ from scipy.io import savemat
 from invkin import IkSolver
 
 data_path = rospkg.RosPack().get_path("planning_utils") + "/data/"
-curve_name = "curve_02"
+curve_name = "curve_03"
 file_path = data_path + "/" + curve_name + "/" + curve_name + ".json"
 
 cg = CurveGen(file_path)
