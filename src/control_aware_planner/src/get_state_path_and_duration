@@ -1,0 +1,39 @@
+import rospkg
+import numpy as np
+import time
+import sys
+path = rospkg.RosPack().get_path('planning_utils')
+sys.path.append(path + '/src')
+from scipy.io import savemat
+from scipy.interpolate import interp1d
+
+
+frq = 1/30
+
+
+curve_name = 'curve_03'
+data_path = path + "/data/" + curve_name + "/"
+
+state_traj = np.load(data_path +'state_path_01.npy')
+se3_traj = np.load(data_path +'se3_path_01.npy')
+
+states_diff = np.abs(np.diff(state_traj, axis=0))
+
+max_vel = [0.5,0.5,0.5, np.radians(20), np.radians(5)]
+duration = np.hstack((0,np.max(states_diff/max_vel, axis=1)))
+time_scale = 6.29/sum(duration)
+time_array = np.cumsum(duration) 
+
+f_state = interp1d(time_array, state_traj, axis=0)
+f_se3 = interp1d(time_array, se3_traj, axis=0)
+
+out_put_states = []
+out_put_se3 = []
+count = 0
+while (count + 1)* frq < time_array[-1] * time_scale:
+    count += 1
+    out_put_states.append(f_state(count*frq/time_scale))
+    out_put_se3.append(f_se3(count*frq/time_scale))
+
+savemat(data_path + 'traj_and_duration.mat', {'state_traj': out_put_states, 'se3_traj': out_put_se3})
+

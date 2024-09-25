@@ -8,10 +8,13 @@ import numpy as np
 
 curve_name = "curve_03"
 data_path = rospkg.RosPack().get_path('planning_utils')+'/data' + "/" + curve_name 
-path_file = "path_refine.mat"
+# path_file = "path_refine.mat"
+path_file = "statistic_data.mat"
 
 ## get the path from the matlab file
 path_refine = loadmat(data_path + "/" + path_file)
+
+
 uv_path = path_refine['path_refine']
 
 curve_file = data_path + "/" + curve_name + ".json"

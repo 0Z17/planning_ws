@@ -6,9 +6,9 @@ sys.path.append(rospkg.RosPack().get_path('curve_generator') + "/src")
 from CurveGen import CurveGen
 import numpy as np
 
-curve_name = "curve_03"
+curve_name = "curve_01"
 data_path = rospkg.RosPack().get_path('planning_utils')+'/data' + "/" + curve_name 
-path_file = "statistic_data.mat"
+path_file = "01_statistic_data01.mat"
 
 ## get the path from the matlab file
 statistic_data = loadmat(data_path + "/" + path_file)
@@ -55,3 +55,11 @@ for i in range(len(uv_path_all[0])):
 
 savemat(data_path + "/output_data.mat", {'se3_path_all': np.array(se3_path_all, dtype=object), 
                                   'state_path_all': np.array(state_path_all, dtype=object)})
+
+# select a random path and save it as a mat file
+path_idx = np.random.randint(len(state_path_all))
+state_path = state_path_all[path_idx]
+se3_path = se3_path_all[path_idx]
+
+np.save(data_path + "/state_path.npy", state_path)
+np.save(data_path + "/se3_path.npy", se3_path)
