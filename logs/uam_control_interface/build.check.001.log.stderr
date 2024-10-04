@@ -1,8 +1,0 @@
-[31m[1mCMake Error[0m at /opt/ros/noetic/share/genmsg/cmake/genmsg-extras.cmake:94 (message):
-  add_message_files() directory not found:
-  /home/z017/proj/planning_ws/src/uam_control_interface/msg
-[36mCall Stack (most recent call first):[0m
-  CMakeLists.txt:52 (add_message_files)
-
-
-make: *** [Makefile:530: cmake_check_build_system] Error 1
