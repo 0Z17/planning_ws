@@ -1,0 +1,10 @@
+/usr/bin/ld: CMakeFiles/surface_reconstructor_node_test.dir/src/test_demo.cpp.o: in function `main':
+test_demo.cpp:(.text+0x4ff): undefined reference to `surface_reconstructor::Nurbs::Nurbs(std::shared_ptr<pcl::PointCloud<pcl::PointXYZ> >)'
+/usr/bin/ld: test_demo.cpp:(.text+0x51d): undefined reference to `surface_reconstructor::Nurbs::fitSurface()'
+/usr/bin/ld: test_demo.cpp:(.text+0x58f): undefined reference to `surface_reconstructor::Nurbs::convertToMarker(visualization_msgs::Marker_<std::allocator<void> >&)'
+/usr/bin/ld: test_demo.cpp:(.text+0x60f): undefined reference to `surface_reconstructor::Nurbs::~Nurbs()'
+/usr/bin/ld: test_demo.cpp:(.text+0x7c7): undefined reference to `surface_reconstructor::Nurbs::~Nurbs()'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/surface_reconstructor_node_test.dir/build.make:299: /home/z017/proj/planning_ws/devel/.private/surface_reconstructor/lib/surface_reconstructor/surface_reconstructor_node_test] Error 1
+make[1]: *** [CMakeFiles/Makefile2:179: CMakeFiles/surface_reconstructor_node_test.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

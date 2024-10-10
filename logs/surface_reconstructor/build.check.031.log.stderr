@@ -1,0 +1,15 @@
+[33m[1mCMake Warning[0m at /home/z017/proj/planning_ws/src/surface_reconstructor/CMakeLists.txt:178 (add_executable):
+  Cannot generate a safe runtime search path for target pointcloud_process
+  because there is a cycle in the constraint graph:
+
+    dir 0 is [/opt/ros/noetic/lib]
+    dir 1 is [/home/z017/proj/pcl/build/lib]
+      dir 2 must precede it due to runtime library [libpcl_filters.so.1.14]
+    dir 2 is [/usr/local/lib]
+      dir 1 must precede it due to runtime library [libpcl_surface.so.1.14]
+    dir 3 is [/usr/lib/x86_64-linux-gnu/hdf5/openmpi]
+    dir 4 is [/usr/lib/x86_64-linux-gnu/openmpi/lib]
+
+  Some of these libraries may not be found correctly.
+
+

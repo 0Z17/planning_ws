@@ -1,5 +1,3 @@
-#include <ros/ros.h>
-#include <sensor_msgs/PointCloud2.h>
 #include <pcl/conversions.h>
 #include <pcl/point_cloud.h>
 #include <pcl/surface/on_nurbs/fitting_surface_tdm.h>
@@ -17,7 +15,6 @@ namespace surface_reconstructor {
 class Nurbs
 {
 public:
-    Nurbs();
     Nurbs(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud);
     ~Nurbs();
 
@@ -29,18 +26,26 @@ public:
     
     int get2Deriv(double u, double v, ON_3dVector& du, ON_3dVector& dv, ON_3dVector& duu, ON_3dVector& duv, ON_3dVector& dvv);
 
-    int getCurvature(double u, double v, double* curvature);
+    int getCurvature(double u, double v, double& curvature);
 
-    int setFittingParams(double u_min, double u_max, double v_min, double v_max, int degree_u, int degree_v, int num_ctrl_points_u, int num_ctrl_points_v, double weight_trim);
+    int setFittingParams(
+        double interior_smoothness = 0.1,
+        double interior_weight = 1.0,
+        double boundary_smoothness = 0.1,
+        double boundary_weight = 0.0
+    );
 
     int fitSurface();
+
+    int convertToMarker(visualization_msgs::Marker& marker);
+
 private:
     bool is_fitted_ = false;
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_;
     ON_NurbsSurface surface_;
-    pcl::on_nurbs::FittingSurface::Parameter params;
-    unsigned refinement = 2;
-    unsigned iterations = 10;
+    pcl::on_nurbs::FittingSurface::Parameter params_;
+    unsigned refinement_ = 2;
+    unsigned iterations_ = 10;
 };
 
 }

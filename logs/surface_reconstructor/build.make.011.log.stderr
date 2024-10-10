@@ -1,0 +1,8 @@
+[01m[K/home/z017/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1:10:[m[K [01;31m[Kfatal error: [m[Knurbs_class.h: No such file or directory
+    1 | #include [01;31m[K"nurbs_class.h"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/nurbs_class.dir/build.make:63: CMakeFiles/nurbs_class.dir/src/nurbs_class.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:177: CMakeFiles/nurbs_class.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:141: all] Error 2

@@ -1,0 +1,72 @@
+#include <ros/ros.h>
+#include <nurbs_class.h>
+#include <sensor_msgs/PointCloud2.h>
+#include <visualization_msgs/Marker.h>
+
+// Create Cylinder Points
+void CreateCylinderPoints(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud, pcl::on_nurbs::vector_vec3d &data, unsigned npoints,
+                          double alpha, double h, double r)
+{
+    for (unsigned i = 0; i < npoints; i++)
+    {
+        double da = alpha * double(rand()) / RAND_MAX;
+        double dh = h * (double(rand()) / RAND_MAX - 0.5);
+
+        pcl::PointXYZ p;
+        p.x = float(r * std::cos(da));
+        p.y = float(r * sin(da));
+        p.z = float(dh);
+
+        data.push_back(Eigen::Vector3d(p.x, p.y, p.z));
+        cloud->push_back(p);
+    }
+}
+
+int main(int argc, char **argv)
+{
+    ros::init(argc, argv, "test_demo");
+    ros::NodeHandle nh;
+
+    // Ppint Cloud Publisher
+    ros::Publisher pub = nh.advertise<sensor_msgs::PointCloud2>("cylinder_points", 1);
+    // Mesh Publisher
+    ros::Publisher mesh_pub = nh.advertise<visualization_msgs::Marker>("cylinder_mesh", 1);
+
+    // Create point cloud
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::on_nurbs::NurbsDataSurface data;
+    CreateCylinderPoints(cloud, data.interior, 100, M_PI / 4, 1.0, 0.5);
+
+    // Convert point cloud to ROS message
+    sensor_msgs::PointCloud2 cloud_msg;
+    pcl::toROSMsg(*cloud, cloud_msg);
+    cloud_msg.header.frame_id = "map";
+
+    // Fit NURBS surface
+    ROS_INFO("Fitting NURBS surface...");
+    surface_reconstructor::Nurbs surface(cloud);
+    surface.fitSurface();
+
+    // Initialize mesh marker
+    visualization_msgs::Marker mesh_marker;
+    mesh_marker.header.frame_id = "map";
+    mesh_marker.header.stamp = ros::Time::now();
+    mesh_marker.ns = "cylinder_mesh";
+    mesh_marker.id = 0;
+
+    surface.convertToMarker(mesh_marker);
+    
+    // Publish the point cloud and mesh
+    ROS_INFO("Publishing point cloud and mesh...");
+    ros::Rate rate(10);
+
+    while (ros::ok())
+    {
+        pub.publish(cloud_msg);
+        mesh_pub.publish(mesh_marker);
+        ros::spinOnce();
+    }
+
+    return 0;
+}
+

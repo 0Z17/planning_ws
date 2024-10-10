@@ -1,0 +1,8 @@
+In file included from [01m[K/home/z017/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:7[m[K:
+[01m[K/opt/ros/noetic/include/pcl_ros/point_cloud.h:6:10:[m[K [01;31m[Kfatal error: [m[Kpcl/point_traits.h: No such file or directory
+    6 | #include [01;31m[K<pcl/point_traits.h>[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/pointcloud_process.dir/build.make:63: CMakeFiles/pointcloud_process.dir/src/pointcloud_process.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:181: CMakeFiles/pointcloud_process.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

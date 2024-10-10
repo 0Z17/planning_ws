@@ -1,0 +1,32 @@
+/usr/bin/ld: CMakeFiles/surface_reconstructor_node_test.dir/src/test_demo.cpp.o: in function `main':
+test_demo.cpp:(.text+0x248): undefined reference to `ros::init(int&, char**, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned int)'
+/usr/bin/ld: test_demo.cpp:(.text+0x2da): undefined reference to `ros::NodeHandle::NodeHandle(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::map<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&)'
+/usr/bin/ld: test_demo.cpp:(.text+0x509): undefined reference to `ros::Publisher::~Publisher()'
+/usr/bin/ld: test_demo.cpp:(.text+0x518): undefined reference to `ros::Publisher::~Publisher()'
+/usr/bin/ld: test_demo.cpp:(.text+0x527): undefined reference to `ros::NodeHandle::~NodeHandle()'
+/usr/bin/ld: test_demo.cpp:(.text+0x69d): undefined reference to `ros::Publisher::~Publisher()'
+/usr/bin/ld: test_demo.cpp:(.text+0x6ac): undefined reference to `ros::Publisher::~Publisher()'
+/usr/bin/ld: test_demo.cpp:(.text+0x6bb): undefined reference to `ros::NodeHandle::~NodeHandle()'
+/usr/bin/ld: CMakeFiles/surface_reconstructor_node_test.dir/src/test_demo.cpp.o: in function `__static_initialization_and_destruction_0(int, int)':
+test_demo.cpp:(.text+0x744): undefined reference to `vtkDebugLeaksManager::vtkDebugLeaksManager()'
+/usr/bin/ld: test_demo.cpp:(.text+0x759): undefined reference to `vtkDebugLeaksManager::~vtkDebugLeaksManager()'
+/usr/bin/ld: test_demo.cpp:(.text+0x76d): undefined reference to `vtkObjectFactoryRegistryCleanup::vtkObjectFactoryRegistryCleanup()'
+/usr/bin/ld: test_demo.cpp:(.text+0x782): undefined reference to `vtkObjectFactoryRegistryCleanup::~vtkObjectFactoryRegistryCleanup()'
+/usr/bin/ld: CMakeFiles/surface_reconstructor_node_test.dir/src/test_demo.cpp.o: in function `vtkRenderingCore_AutoInit::vtkRenderingCore_AutoInit()':
+test_demo.cpp:(.text._ZN25vtkRenderingCore_AutoInitC2Ev[_ZN25vtkRenderingCore_AutoInitC5Ev]+0x11): undefined reference to `vtkInteractionStyle_AutoInit_Construct()'
+/usr/bin/ld: test_demo.cpp:(.text._ZN25vtkRenderingCore_AutoInitC2Ev[_ZN25vtkRenderingCore_AutoInitC5Ev]+0x16): undefined reference to `vtkRenderingFreeType_AutoInit_Construct()'
+/usr/bin/ld: test_demo.cpp:(.text._ZN25vtkRenderingCore_AutoInitC2Ev[_ZN25vtkRenderingCore_AutoInitC5Ev]+0x1b): undefined reference to `vtkRenderingOpenGL2_AutoInit_Construct()'
+/usr/bin/ld: CMakeFiles/surface_reconstructor_node_test.dir/src/test_demo.cpp.o: in function `vtkRenderingCore_AutoInit::~vtkRenderingCore_AutoInit()':
+test_demo.cpp:(.text._ZN25vtkRenderingCore_AutoInitD2Ev[_ZN25vtkRenderingCore_AutoInitD5Ev]+0x11): undefined reference to `vtkInteractionStyle_AutoInit_Destruct()'
+/usr/bin/ld: test_demo.cpp:(.text._ZN25vtkRenderingCore_AutoInitD2Ev[_ZN25vtkRenderingCore_AutoInitD5Ev]+0x16): undefined reference to `vtkRenderingFreeType_AutoInit_Destruct()'
+/usr/bin/ld: test_demo.cpp:(.text._ZN25vtkRenderingCore_AutoInitD2Ev[_ZN25vtkRenderingCore_AutoInitD5Ev]+0x1b): undefined reference to `vtkRenderingOpenGL2_AutoInit_Destruct()'
+/usr/bin/ld: CMakeFiles/surface_reconstructor_node_test.dir/src/test_demo.cpp.o: in function `pcl_conversions::fromPCL(unsigned long const&, ros::Time&)':
+test_demo.cpp:(.text._ZN15pcl_conversions7fromPCLERKmRN3ros4TimeE[_ZN15pcl_conversions7fromPCLERKmRN3ros4TimeE]+0x2d): undefined reference to `ros::TimeBase<ros::Time, ros::Duration>::fromNSec(unsigned long)'
+/usr/bin/ld: CMakeFiles/surface_reconstructor_node_test.dir/src/test_demo.cpp.o: in function `ros::Publisher ros::NodeHandle::advertise<sensor_msgs::PointCloud2_<std::allocator<void> > >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned int, bool)':
+test_demo.cpp:(.text._ZN3ros10NodeHandle9advertiseIN11sensor_msgs12PointCloud2_ISaIvEEEEENS_9PublisherERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEjb[_ZN3ros10NodeHandle9advertiseIN11sensor_msgs12PointCloud2_ISaIvEEEEENS_9PublisherERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEjb]+0x139): undefined reference to `ros::NodeHandle::advertise(ros::AdvertiseOptions&)'
+/usr/bin/ld: CMakeFiles/surface_reconstructor_node_test.dir/src/test_demo.cpp.o: in function `ros::Publisher ros::NodeHandle::advertise<visualization_msgs::Marker_<std::allocator<void> > >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned int, bool)':
+test_demo.cpp:(.text._ZN3ros10NodeHandle9advertiseIN18visualization_msgs7Marker_ISaIvEEEEENS_9PublisherERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEjb[_ZN3ros10NodeHandle9advertiseIN18visualization_msgs7Marker_ISaIvEEEEENS_9PublisherERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEjb]+0x139): undefined reference to `ros::NodeHandle::advertise(ros::AdvertiseOptions&)'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/surface_reconstructor_node_test.dir/build.make:84: /home/z017/proj/planning_ws/devel/.private/surface_reconstructor/lib/surface_reconstructor/surface_reconstructor_node_test] Error 1
+make[1]: *** [CMakeFiles/Makefile2:179: CMakeFiles/surface_reconstructor_node_test.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

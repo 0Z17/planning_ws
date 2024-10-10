@@ -13,6 +13,7 @@ find_package(FLANN REQUIRED)
 find_package(PCL REQUIRED COMPONENTS
   surface
   common
+  filters
 )
 
 find_package(VTK REQUIRED)
@@ -153,16 +154,16 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
   ${PCL_INCLUDE_DIRS}
   ${VTK_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
-# add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/surface_reconstructor.cpp
-# )
+add_library(
+  nurbs_class src/nurbs_class.cpp
+)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -173,6 +174,9 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(${PROJECT_NAME}_node src/visualize_surface.cpp)
+add_executable(${PROJECT_NAME}_node_test src/test_demo.cpp)
+add_executable(pointcloud_process src/pointcloud_process.cpp)
+
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -191,6 +195,32 @@ target_link_libraries(${PROJECT_NAME}_node
   ${PCL_SURFACE_LIBRARIES}
   ${VTK_LIBRARIES}
 )
+
+target_link_libraries(nurbs_class
+  ${catkin_LIBRARIES}
+  ${PCL_COMMON_LIBRARIES}
+  ${PCL_SURFACE_LIBRARIES}
+  ${VTK_LIBRARIES}
+)
+
+target_link_libraries(pointcloud_process
+  ${catkin_LIBRARIES}
+  ${PCL_COMMON_LIBRARIES}
+  ${PCL_SURFACE_LIBRARIES}
+  ${PCL_FILTERS_LIBRARIES}
+  ${VTK_LIBRARIES}
+  nurbs_class
+)
+
+target_link_libraries(${PROJECT_NAME}_node_test
+  ${catkin_LIBRARIES}
+  ${PCL_COMMON_LIBRARIES}
+  ${PCL_SURFACE_LIBRARIES}
+  ${VTK_LIBRARIES}
+  nurbs_class
+)
+
+
 
 #############
 ## Install ##
