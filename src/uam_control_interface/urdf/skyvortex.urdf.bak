@@ -1,257 +1,582 @@
-<?xml version="1.0"?>
-<robot name="skyvortex">
-    <link name="robot_base">
-        <inertial>
-            <origin rpy="-3.141593 3.141593 -3.141593" xyz="1.688749 2.000000 0.835816" />
-            <inertia ixx="0.67178340369907" iyz="-0.15491718000502" izz="1.113445567668" iyy="0.69424200721293" ixz="0.11956824915488" ixy="-0.038015640087933" />
-            <mass value="4.1077" />
-        </inertial>
-        <collision name="skyvortex">
-            <origin xyz="1.688750 2.000000 0.975000" rpy="-3.141593 3.141593 3.141593" />
-            <geometry>
-                <box size="1.380000 1.450000 0.080000" />
-            </geometry>
-        </collision>
-        <collision name="skyvortex">
-            <origin xyz="1.719426 1.746450 0.801020" rpy="2.967057 3.495606 2.696426" />
-            <geometry>
-                <cylinder radius="0.03014984" length="0.350893" />
-            </geometry>
-        </collision>
-        <collision name="skyvortex">
-            <origin xyz="1.453830 1.899791 0.801020" rpy="-2.754006 3.173671 -1.649240" />
-            <geometry>
-                <cylinder radius="0.03014984" length="0.350893" />
-            </geometry>
-        </collision>
-        <collision name="skyvortex">
-            <origin xyz="1.923669 2.100210 0.801020" rpy="2.754006 3.109514 -1.649240" />
-            <geometry>
-                <cylinder radius="0.03014984" length="0.350893" />
-            </geometry>
-        </collision>
-        <collision name="skyvortex">
-            <origin xyz="1.658072 2.253550 0.801020" rpy="-2.967055 2.787579 2.696427" />
-            <geometry>
-                <cylinder radius="0.03014984" length="0.350893" />
-            </geometry>
-        </collision>
-        <visual name="skyvortex_base_visual">
-            <origin xyz="-0.000000 -0.000000 -0.000000" rpy="-3.141593 3.141593 -3.141593" />
-            <geometry>
-                <mesh filename="package://uam_control_interface/urdf/mesh/skyvortex_skyvortex_base_visual_vis_1.dae" />
-            </geometry>
-            <material name="skyvortex_base_visual_material">
-                <color rgba="1.000000 1.000000 1.000000 1.0" />
-            </material>
-        </visual>
-    </link>
-    <joint type="continuous" name="operator_1_joint">
-        <axis xyz="0 0 1" />
-        <parent link="robot_base" />
-        <child link="operator_1_Link_collision" />
-        <origin xyz="1.689620 2.000172 1.003455" rpy="-1.570796 3.158584 3.124602" />
-    </joint>
-    <link name="operator_1_Link_collision">
-        <inertial>
-            <origin rpy="1.570637 3.107117 2.064344" xyz="0.063818 -0.008229 0.000384" />
-            <inertia ixx="0.045659232" iyz="0.0" izz="0.043148598" iyy="0.078546978" ixz="0.0" ixy="0.0" />
-            <mass value="1.5594" />
-        </inertial>
-        <collision name="operator_1_Link_collision">
-            <origin xyz="-0.001690 -0.048434 0.000187" rpy="1.570796 3.124602 3.124601" />
-            <geometry>
-                <box size="0.650000 0.070000 0.520000" />
-            </geometry>
-        </collision>
-        <collision name="operator_1_Link_collision">
-            <origin xyz="0.402663 0.199732 0.001404" rpy="1.570637 3.107117 2.064344" />
-            <geometry>
-                <cylinder radius="0.02" length="1.0" />
-            </geometry>
-        </collision>
-        <visual name="operator_1_Link_visual">
-            <origin xyz="-1.672204 -0.975184 2.028590" rpy="1.570796 3.124602 3.124601" />
-            <geometry>
-                <mesh filename="package://uam_control_interface/urdf/mesh/skyvortex_operator_1_Link_visual_vis_1.dae" />
-            </geometry>
-            <material name="operator_1_Link_visual_material">
-                <color rgba="1.000000 1.000000 1.000000 1.0" />
-            </material>
-        </visual>
-    </link>
-    <joint type="revolute" name="rotor_0_joint">
-        <axis xyz="0 0 1" />
-        <limit upper="74532.925199444" effort="10.0" velocity="1e6" lower="-100000.0" />
-        <parent link="robot_base" />
-        <child link="rotor_0_collision_respondable" />
-        <origin xyz="2.130819 2.277801 1.008856" rpy="2.677950 3.394273 -3.081642" />
-    </joint>
-    <link name="rotor_0_collision_respondable">
-        <inertial>
-            <origin rpy="3.113507 3.141725 2.558563" xyz="-0.000000 0.000000 0.000000" />
-            <inertia ixx="3.080466e-06" iyz="1.3798656e-06" izz="2.626998e-06" iyy="1.2628893e-06" ixz="-5.823057e-07" ixy="9.311835e-07" />
-            <mass value="0.0159" />
-        </inertial>
-        <collision name="rotor_0_collision_respondable">
-            <origin xyz="-0.000000 0.000000 0.000000" rpy="3.113507 3.141725 2.558563" />
-            <geometry>
-                <cylinder radius="0.228" length="0.04" />
-            </geometry>
-        </collision>
-        <visual name="rotor_0_collision_visual">
-            <origin xyz="-2.443805 -1.735699 -1.327300" rpy="-2.677950 2.888912 -3.081642" />
-            <geometry>
-                <mesh filename="package://uam_control_interface/urdf/mesh/skyvortex_rotor_0_collision_visual_vis_1.dae" />
-            </geometry>
-            <material name="rotor_0_collision_visual_material">
-                <color rgba="1.000000 1.000000 1.000000 1.0" />
-            </material>
-        </visual>
-    </link>
-    <joint type="revolute" name="rotor_1_joint">
-        <axis xyz="0 0 1" />
-        <limit upper="74532.925199444" effort="10.0" velocity="1e6" lower="-100000.0" />
-        <parent link="robot_base" />
-        <child link="rotor_1_collision_respondable" />
-        <origin xyz="1.708297 2.521750 1.008857" rpy="-3.141592 2.617997 3.141592" />
-    </joint>
-    <link name="rotor_1_collision_respondable">
-        <inertial>
-            <origin rpy="3.141592 3.141593 -1.570796" xyz="-0.000000 0.000000 -0.000000" />
-            <inertia ixx="1.51785e-06" iyz="-7.3332e-07" izz="2.69775e-06" iyy="2.36025e-06" ixz="1.021845e-06" ixy="1.270185e-06" />
-            <mass value="0.015" />
-        </inertial>
-        <collision name="rotor_1_collision_respondable">
-            <origin xyz="-0.000000 0.000000 -0.000000" rpy="3.141592 3.141593 -1.570796" />
-            <geometry>
-                <cylinder radius="0.228" length="0.04" />
-            </geometry>
-        </collision>
-        <visual name="rotor_1_collision_visual">
-            <origin xyz="-0.975004 -2.521752 -1.727840" rpy="3.141592 3.665189 -3.141592" />
-            <geometry>
-                <mesh filename="package://uam_control_interface/urdf/mesh/skyvortex_rotor_1_collision_visual_vis_1.dae" />
-            </geometry>
-            <material name="rotor_1_collision_visual_material">
-                <color rgba="1.000000 1.000000 1.000000 1.0" />
-            </material>
-        </visual>
-    </link>
-    <joint type="revolute" name="rotor_2_joint">
-        <axis xyz="0 0 1" />
-        <limit upper="74532.925199444" effort="10.0" velocity="1e6" lower="-100000.0" />
-        <parent link="robot_base" />
-        <child link="rotor_2_collision_respondable" />
-        <origin xyz="1.227130 2.243950 1.008856" rpy="-2.677949 3.394273 3.081642" />
-    </joint>
-    <link name="rotor_2_collision_respondable">
-        <inertial>
-            <origin rpy="-3.113235 3.141591 -2.558042" xyz="-0.000000 0.000000 -0.000000" />
-            <inertia ixx="3.13442144e-07" iyz="1.2643673e-07" izz="3.40814224e-06" iyy="3.25473128e-06" ixz="-4.95514218e-07" ixy="8.41802858e-07" />
-            <mass value="0.015914" />
-        </inertial>
-        <collision name="rotor_2_collision_respondable">
-            <origin xyz="-0.000000 0.000000 -0.000000" rpy="-3.113235 3.141591 -2.558042" />
-            <geometry>
-                <cylinder radius="0.228" length="0.04" />
-            </geometry>
-        </collision>
-        <visual name="rotor_2_collision_visual">
-            <origin xyz="-1.308067 -2.384135 0.404736" rpy="2.677949 2.888913 3.081642" />
-            <geometry>
-                <mesh filename="package://uam_control_interface/urdf/mesh/skyvortex_rotor_2_collision_visual_vis_1.dae" />
-            </geometry>
-            <material name="rotor_2_collision_visual_material">
-                <color rgba="1.000000 1.000000 1.000000 1.0" />
-            </material>
-        </visual>
-    </link>
-    <joint type="revolute" name="rotor_3_joint">
-        <axis xyz="0 0 1" />
-        <limit upper="74532.925199444" effort="10.0" velocity="1e6" lower="-100000.0" />
-        <parent link="robot_base" />
-        <child link="rotor_3_collision_respondable" />
-        <origin xyz="1.227129 1.756050 1.008856" rpy="2.677950 3.394273 -3.081642" />
-    </joint>
-    <link name="rotor_3_collision_respondable">
-        <inertial>
-            <origin rpy="3.113507 3.141725 2.558563" xyz="0.000000 0.000000 -0.000000" />
-            <inertia ixx="1.97938332e-06" iyz="9.70053784e-07" izz="2.68660148e-06" iyy="2.31039452e-06" ixz="-1.095981266e-06" ixy="1.320925656e-06" />
-            <mass value="0.015914" />
-        </inertial>
-        <collision name="rotor_3_collision_respondable">
-            <origin xyz="0.000000 0.000000 -0.000000" rpy="3.113507 3.141725 2.558563" />
-            <geometry>
-                <cylinder radius="0.228" length="0.04" />
-            </geometry>
-        </collision>
-        <visual name="rotor_3_collision_visual">
-            <origin xyz="-1.540114 -1.213949 -1.327299" rpy="-2.677950 2.888912 -3.081642" />
-            <geometry>
-                <mesh filename="package://uam_control_interface/urdf/mesh/skyvortex_rotor_3_collision_visual_vis_1.dae" />
-            </geometry>
-            <material name="rotor_3_collision_visual_material">
-                <color rgba="1.000000 1.000000 1.000000 1.0" />
-            </material>
-        </visual>
-    </link>
-    <joint type="revolute" name="rotor_4_joint">
-        <axis xyz="0 0 1" />
-        <limit upper="74532.925199444" effort="10.0" velocity="1e6" lower="-100000.0" />
-        <parent link="robot_base" />
-        <child link="rotor_4_collision_respondable" />
-        <origin xyz="1.708296 1.478250 1.008856" rpy="-3.141592 2.617997 3.141592" />
-    </joint>
-    <link name="rotor_4_collision_respondable">
-        <inertial>
-            <origin rpy="3.141592 3.141593 -1.570796" xyz="-0.000000 0.000000 -0.000000" />
-            <inertia ixx="1.508074296e-06" iyz="7.40860356e-07" izz="2.82807694e-06" iyy="2.64045088e-06" ixz="1.143134448e-06" ixy="-1.283241304e-06" />
-            <mass value="0.015914" />
-        </inertial>
-        <collision name="rotor_4_collision_respondable">
-            <origin xyz="-0.000000 0.000000 -0.000000" rpy="3.141592 3.141593 -1.570796" />
-            <geometry>
-                <cylinder radius="0.228" length="0.04" />
-            </geometry>
-        </collision>
-        <visual name="rotor_4_collision_visual">
-            <origin xyz="-0.975004 -1.478251 -1.727840" rpy="3.141592 3.665189 -3.141592" />
-            <geometry>
-                <mesh filename="package://uam_control_interface/urdf/mesh/skyvortex_rotor_4_collision_visual_vis_1.dae" />
-            </geometry>
-            <material name="rotor_4_collision_visual_material">
-                <color rgba="1.000000 1.000000 1.000000 1.0" />
-            </material>
-        </visual>
-    </link>
-    <joint type="revolute" name="rotor_5_joint">
-        <axis xyz="0 0 1" />
-        <limit upper="74532.925199444" effort="10.0" velocity="1e6" lower="-100000.0" />
-        <parent link="robot_base" />
-        <child link="rotor_5_collision_respondable" />
-        <origin xyz="2.130819 1.722200 1.008856" rpy="-2.677949 3.394273 3.081642" />
-    </joint>
-    <link name="rotor_5_collision_respondable">
-        <inertial>
-            <origin rpy="-3.113235 3.141591 -2.558042" xyz="-0.000000 -0.000000 -0.039093" />
-            <inertia ixx="3.13442144e-07" iyz="1.264033106e-07" izz="3.40814224e-06" iyy="3.25489042e-06" ixz="-4.95514218e-07" ixy="8.41802858e-07" />
-            <mass value="0.015914" />
-        </inertial>
-        <collision name="rotor_5_collision_respondable">
-            <origin xyz="-0.000000 -0.000000 -0.039093" rpy="-3.113235 3.141591 -2.558042" />
-            <geometry>
-                <cylinder radius="0.228" length="0.04" />
-            </geometry>
-        </collision>
-        <visual name="rotor_5_collision_visual">
-            <origin xyz="-2.211756 -1.862385 0.404736" rpy="2.677949 2.888913 3.081642" />
-            <geometry>
-                <mesh filename="package://uam_control_interface/urdf/mesh/skyvortex_rotor_5_collision_visual_vis_1.dae" />
-            </geometry>
-            <material name="rotor_5_collision_visual_material">
-                <color rgba="1.000000 1.000000 1.000000 1.0" />
-            </material>
-        </visual>
-    </link>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="uma3_.SLDASM2">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.00068902135107432 -0.00213666483014015 0.00463775138846095"
+        rpy="0 0 0" />
+      <mass
+        value="2.10772457717204" />
+      <inertia
+        ixx="0.00603833496981184"
+        ixy="1.1238804407543E-05"
+        ixz="2.13754375605216E-07"
+        iyy="0.00676008999986549"
+        iyz="-1.75697840055475E-06"
+        izz="0.00908172711118075" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="operator_Link">
+    <inertial>
+      <origin
+        xyz="-0.0531243452638705 0.00298819220580339 -0.0312558802357268"
+        rpy="0 0 0" />
+      <mass
+        value="1.53399501100992" />
+      <inertia
+        ixx="0.00491688885314046"
+        ixy="9.20542943490694E-05"
+        ixz="-0.000713706450764484"
+        iyy="0.0103291597910716"
+        iyz="1.20641248504918E-05"
+        izz="0.00573955793911007" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/operator_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/operator_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="operator_1_joint"
+    type="revolute">
+    <origin
+      xyz="0.000870575084399361 0.000171621257114271 0.0284550617303106"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="operator_Link" />
+    <axis
+      xyz="-0.016990083887519 -0.999855658107456 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="end_Link">
+    <inertial>
+      <origin
+        xyz="-5.55111512312578E-17 -5.55111512312578E-17 -0.000499999999999723"
+        rpy="0 0 0" />
+      <mass
+        value="3.14159265358975E-06" />
+      <inertia
+        ixx="1.04719755119657E-12"
+        ixy="1.57772181044202E-28"
+        ixz="7.11868080871441E-27"
+        iyy="1.04719755119657E-12"
+        iyz="-3.45205532124715E-27"
+        izz="1.57079632679487E-12" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/end_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/end_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="end_Link"
+    type="fixed">
+    <origin
+      xyz="0.832190790551214 -0.0141410330369185 0.480534938269667"
+      rpy="0 1.04719755119663 -0.0169909387168526" />
+    <parent
+      link="operator_Link" />
+    <child
+      link="end_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="camera_Link">
+    <inertial>
+      <origin
+        xyz="-0.00365419302233794 0.00111201751943288 0.0124721732457615"
+        rpy="0 0 0" />
+      <mass
+        value="1.26688452104529" />
+      <inertia
+        ixx="0.000763733472954808"
+        ixy="1.13413097303629E-05"
+        ixz="2.05599740221816E-07"
+        iyy="0.000114529882738913"
+        iyz="-4.07893247234863E-08"
+        izz="0.000771598660007462" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/camera_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/camera_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="depth_optical_frame"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="-1.570796 0 -1.570796"/>
+    <parent
+      link="camera_Link" />
+    <child
+      link="depth_optical_frame" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="depth_optical_frame">
+  </link>
+  <joint
+    name="camera_joint"
+    type="fixed">
+    <origin
+      xyz="-0.1084 0.001842 0.21154"
+      rpy="0 -0.5236 -0.016991" />
+    <parent
+      link="operator_Link" />
+    <child
+      link="camera_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="rotor1_Link">
+    <inertial>
+      <origin
+        xyz="0.00126919959900651 0.000215034464258329 -0.000505322017707865"
+        rpy="0 0 0" />
+      <mass
+        value="0.0159144165937803" />
+      <inertia
+        ixx="0.0001937447681376"
+        ixy="5.85651161711849E-05"
+        ixz="-3.66233002048708E-05"
+        iyy="7.94267135511764E-05"
+        iyz="8.67840947223066E-05"
+        izz="0.000165215889863441" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/rotor1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/rotor1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rotor_0_joint"
+    type="revolute">
+    <origin
+      xyz="0.44207 0.2778 0.033856"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rotor1_Link" />
+    <axis
+      xyz="-0.25 0.43301 0.86603" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="rotor2_Link">
+    <inertial>
+      <origin
+        xyz="0.000229103691855054 0.00102773256709199 -0.000896447295623631"
+        rpy="0 0 0" />
+      <mass
+        value="0.0159143233965928" />
+      <inertia
+        ixx="0.000101186501350833"
+        ixy="8.46794103771876E-05"
+        ixz="6.8123374442065E-05"
+        iyy="0.000157350283718263"
+        iyz="-4.88877757291669E-05"
+        izz="0.000179846749999733" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/rotor2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/rotor2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rotor_1_joint"
+    type="revolute">
+    <origin
+      xyz="0.019547 0.52175 0.033856"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rotor2_Link" />
+    <axis
+      xyz="0.5 0 0.86603" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="rotor3_Link">
+    <inertial>
+      <origin
+        xyz="0.000358061561857248 0.00133569499799241 7.03679676947178E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.0159143198305425" />
+      <inertia
+        ixx="1.96957184827096E-05"
+        ixy="5.28965028950741E-05"
+        ixz="-3.11371809864221E-05"
+        iyy="0.000204524314725846"
+        iyz="7.94496451260278E-06"
+        izz="0.000214162870850251" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/rotor3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/rotor3_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rotor_2_joint"
+    type="revolute">
+    <origin
+      xyz="-0.46162 0.24395 0.033856"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rotor3_Link" />
+    <axis
+      xyz="-0.25 -0.43301 0.86603" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="rotor4_Link">
+    <inertial>
+      <origin
+        xyz="-0.000700003465913479 -0.0011215765182972 -0.000405456856453768"
+        rpy="0 0 0" />
+      <mass
+        value="0.0159142814024756" />
+      <inertia
+        ixx="0.000124378766411408"
+        ixy="8.30036275058268E-05"
+        ixz="-6.88692098313988E-05"
+        iyy="0.000145184276908605"
+        iyz="6.09561317741376E-05"
+        izz="0.000168819044444452" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/rotor4_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/rotor4_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rotor_3_joint"
+    type="revolute">
+    <origin
+      xyz="-0.46162 -0.24395 0.033856"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rotor4_Link" />
+    <axis
+      xyz="-0.25 0.43301 0.86603" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="rotor5_Link">
+    <inertial>
+      <origin
+        xyz="0.000182409255598343 -0.00105980024350483 -0.00086950315847964"
+        rpy="0 0 0" />
+      <mass
+        value="0.0159143909446094" />
+      <inertia
+        ixx="9.47636643093639E-05"
+        ixy="-8.06362557574493E-05"
+        ixz="7.183236381778E-05"
+        iyy="0.000165915502100239"
+        iyz="4.65536520457764E-05"
+        izz="0.000177706037137384" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/rotor5_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/rotor5_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rotor_4_joint"
+    type="revolute">
+    <origin
+      xyz="0.019547 -0.52175 0.033856"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rotor5_Link" />
+    <axis
+      xyz="0.5 0 0.86603" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="rotor6_Link">
+    <inertial>
+      <origin
+        xyz="-2.69532634351588E-05 -0.00076261912008696 -0.00115326591621982"
+        rpy="0 0 0" />
+      <mass
+        value="0.0159142602415204" />
+      <inertia
+        ixx="1.96957477976555E-05"
+        ixy="5.28971915127008E-05"
+        ixz="-3.11368458873026E-05"
+        iyy="0.000204526381148609"
+        iyz="7.94285272056076E-06"
+        izz="0.000214159153809705" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/rotor6_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uam_control_interface/urdf/mesh/rotor6_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rotor_5_joint"
+    type="revolute">
+    <origin
+      xyz="0.442073608231067 -0.277801787065658 0.0338557055276746"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rotor6_Link" />
+    <axis
+      xyz="-0.250000000000029 -0.433012701892223 0.866025403784428" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
 </robot>

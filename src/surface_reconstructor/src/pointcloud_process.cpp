@@ -2,8 +2,9 @@
 #include <sensor_msgs/PointCloud2.h>
 #include <pcl_conversions/pcl_conversions.h>
 #include <pcl/point_types.h>
-#include <pcl/filters/passthrough.h>
+#include <pcl/filters/crop_box.h>
 #include <pcl/filters/voxel_grid.h>
+#include <pcl/filters/statistical_outlier_removal.h>
 #include <nurbs_class.h>
 // #include <pcl_ros/point_cloud.h>
 
@@ -40,16 +41,37 @@ private:
         // pass.setFilterLimits(0.0, 1.0);  // 设置 z 轴的值范围
         // pass.filter(*cloud_filtered);  // 执行过滤
 
+        // Crop box filter
+        // pcl::CropBox<pcl::PointXYZ> crop_box_filter;
+        // crop_box_filter.setInputCloud(cloud);
+        // ROS_INFO("Before crop box filter: %d points", cloud->size());
+        // // Set the box dimensions in the camera coordinate frame (adjust these values based on your application)
+        // crop_box_filter.setMin(Eigen::Vector4f(-0.2, -0.2, -1.5, 1.0)); // Example limits for X, Y, Z
+        // crop_box_filter.setMax(Eigen::Vector4f(0.2, 0.2, 1.5, 1.0));
+        // pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_cropped(new pcl::PointCloud<pcl::PointXYZ>());
+        // crop_box_filter.filter(*cloud_cropped);
+        // ROS_INFO("Cropped cloud: %d points", cloud_cropped->size());
+
         // filter out points with low density
         pcl::VoxelGrid<pcl::PointXYZ> sor;
         sor.setInputCloud(cloud);
-        sor.setLeafSize(0.1f, 0.1f, 0.1f);  // set the size of the voxels
+        // sor.setInputCloud(cloud_cropped);
+        double leaf_size = 0.03;  // the size of the voxels in the grid
+        sor.setLeafSize(leaf_size, leaf_size, leaf_size);  // set the size of the voxels
         pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_downsampled(new pcl::PointCloud<pcl::PointXYZ>());
         sor.filter(*cloud_downsampled);  // filter the cloud
 
+        // Apply statistical outlier removal filter
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZ>());
+        pcl::StatisticalOutlierRemoval<pcl::PointXYZ> sor_outlier;
+        sor_outlier.setInputCloud(cloud_downsampled);
+        sor_outlier.setMeanK(20);  // Set the number of nearest neighbors to use for mean distance estimation
+        sor_outlier.setStddevMulThresh(1.0);  // Set the standard deviation multiplier for the distance threshold
+        sor_outlier.filter(*cloud_filtered);  // filter the outliers
+
         // convert PCL point cloud to ROS PointCloud2 message
         sensor_msgs::PointCloud2 output_cloud_msg;
-        pcl::toROSMsg(*cloud_downsampled, output_cloud_msg);
+        pcl::toROSMsg(*cloud_filtered, output_cloud_msg);
         output_cloud_msg.header = input_cloud_msg->header;
 
         // publish filtered point cloud
@@ -57,7 +79,7 @@ private:
 
         // Fit NURBS surface
         ROS_INFO("Fitting NURBS surface...");
-        surface_reconstructor::Nurbs surface(cloud_downsampled);
+        surface_reconstructor::Nurbs surface(cloud_filtered);
         surface.fitSurface();
 
         // Initialize mesh marker

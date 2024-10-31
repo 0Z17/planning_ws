@@ -1,11 +1,9 @@
 In file included from [01m[K/opt/ros/noetic/include/ros/ros.h:40[m[K,
                  from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:1[m[K:
 [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:[m[K In member function ‘[01m[Kvoid PointCloudProcessor::pointCloudCallback(const PointCloud2ConstPtr&)[m[K’:
-[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:52:18:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 8 has type ‘[01m[Kstd::size_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wformat=[m[K]
-   52 |         ROS_INFO([01;35m[K"Cropped cloud: %d points"[m[K, [32m[Kcloud_cropped->size()[m[K);
-      |                  [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K  [32m[K~~~~~~~~~~~~~~~~~~~~~[m[K
-      |                                                                 [32m[K|[m[K
-      |                                                                 [32m[Kstd::size_t {aka long unsigned int}[m[K
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:47:46:[m[K [01;31m[Kerror: [m[K‘[01m[Kcloud_cropped[m[K’ was not declared in this scope
+   47 |         ROS_INFO("Cropped cloud: %d points", [01;31m[Kcloud_cropped[m[K->size());
+      |                                              [01;31m[K^~~~~~~~~~~~~[m[K
 [01m[K/opt/ros/noetic/include/ros/console.h:351:165:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
   351 |     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, [01;36m[K__VA_ARGS__[m[K)
       |                                                                                                                                                                     [01;36m[K^~~~~~~~~~~[m[K
@@ -18,12 +16,9 @@ In file included from [01m[K/opt/ros/noetic/include/ros/ros.h:40[m[K,
 [01m[K/opt/ros/noetic/include/rosconsole/macros_generated.h:110:23:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
   110 | #define ROS_INFO(...) [01;36m[KROS_LOG[m[K(::ros::console::levels::Info, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
       |                       [01;36m[K^~~~~~~[m[K
-[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:52:9:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
-   52 |         [01;36m[KROS_INFO[m[K("Cropped cloud: %d points", cloud_cropped->size());
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:47:9:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
+   47 |         [01;36m[KROS_INFO[m[K("Cropped cloud: %d points", cloud_cropped->size());
       |         [01;36m[K^~~~~~~~[m[K
-[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:52:35:[m[K [01;36m[Knote: [m[Kformat string is defined here
-   52 |         ROS_INFO("Cropped cloud: [01;36m[K%d[m[K points", cloud_cropped->size());
-      |                                  [01;36m[K~^[m[K
-      |                                   [01;36m[K|[m[K
-      |                                   [01;36m[Kint[m[K
-      |                                  [32m[K%ld[m[K
+make[2]: *** [CMakeFiles/pointcloud_process.dir/build.make:63: CMakeFiles/pointcloud_process.dir/src/pointcloud_process.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:181: CMakeFiles/pointcloud_process.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

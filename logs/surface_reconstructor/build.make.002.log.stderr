@@ -1,0 +1,13 @@
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:[m[K In member function ‘[01m[Kvoid PointCloudProcessor::pointCloudCallback(const PointCloud2ConstPtr&)[m[K’:
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:53:14:[m[K [01;31m[Kerror: [m[K‘[01m[KStatisticalOutlierRemoval[m[K’ is not a member of ‘[01m[Kpcl[m[K’
+   53 |         pcl::[01;31m[KStatisticalOutlierRemoval[m[K<pcl::PointXYZ> sor_outlier;
+      |              [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:53:53:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K>[m[K’ token
+   53 |         pcl::StatisticalOutlierRemoval<pcl::PointXYZ[01;31m[K>[m[K sor_outlier;
+      |                                                     [01;31m[K^[m[K
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:53:55:[m[K [01;31m[Kerror: [m[K‘[01m[Ksor_outlier[m[K’ was not declared in this scope
+   53 |         pcl::StatisticalOutlierRemoval<pcl::PointXYZ> [01;31m[Ksor_outlier[m[K;
+      |                                                       [01;31m[K^~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/pointcloud_process.dir/build.make:63: CMakeFiles/pointcloud_process.dir/src/pointcloud_process.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:181: CMakeFiles/pointcloud_process.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

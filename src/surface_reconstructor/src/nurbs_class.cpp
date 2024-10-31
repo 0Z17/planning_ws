@@ -6,6 +6,7 @@ using namespace surface_reconstructor;
 Nurbs::Nurbs(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud) 
 {
     cloud_ = cloud;
+    Nurbs::setFittingParams(0.1, 1.0, 0.1, 0.0); // Default parameters
 }
 
 Nurbs::~Nurbs() {}
