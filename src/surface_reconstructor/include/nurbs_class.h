@@ -6,6 +6,7 @@
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl_conversions/pcl_conversions.h>
 #include "pcl/surface/3rdparty/opennurbs/opennurbs.h"
+#include <Eigen/Dense>
 
 #ifndef NURBS_CLASS_H_
 #define NURBS_CLASS_H_
@@ -15,18 +16,29 @@ namespace surface_reconstructor {
 class Nurbs
 {
 public:
-    Nurbs(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud);
+    explicit Nurbs(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud);
     ~Nurbs();
 
     int getPos(double u, double v, ON_3dPoint& pos);
-   
-    int getNormal(double u, double v, ON_3dVector& normal);
 
-    int get1Deriv(double u, double v, ON_3dVector& du, ON_3dVector& dv);
-    
-    int get2Deriv(double u, double v, ON_3dVector& du, ON_3dVector& dv, ON_3dVector& duu, ON_3dVector& duv, ON_3dVector& dvv);
+    int getPos(double u, double v, Eigen::Vector3d& pos);
+   
+    int getNormal(double u, double v, ON_3dVector& n) const;
+
+    int getNormal(double u, double v, Eigen::Vector3d& normal) const;
+
+    int getDNormal(double u, double v, Eigen::Vector3d& dn_u, Eigen::Vector3d& dn_v);
+
+    int getPosDeriv(double u, double v, ON_3dVector& du, ON_3dVector& dv) const;
+
+    int getPosDeriv(double u, double v, Eigen::Vector3d& du, Eigen::Vector3d& dv) const;
+
+    int getPos2Deriv(double u, double v, ON_3dVector& du, ON_3dVector& dv, ON_3dVector& duu, ON_3dVector& duv, ON_3dVector& dvv);
+
+    int getPos2Deriv(double u, double v, Eigen::Vector3d& du, Eigen::Vector3d& dv, Eigen::Vector3d& duu, Eigen::Vector3d& duv, Eigen::Vector3d& dvv);
 
     int getCurvature(double u, double v, double& curvature);
+
 
     int setFittingParams(
         double interior_smoothness = 0.1,

@@ -17,7 +17,7 @@
         "/home/z017/proj/planning_ws/src/uam_control_interface/src",
         "/home/z017/proj/planning_ws/src/planning_utils/src"
     ],
-    "cmake.sourceDirectory": "/home/z017/proj/planning_ws/build/catkin_tools_prebuild",
+    "cmake.sourceDirectory": "/home/wsl/proj/planning_ws/src",
     "files.associations": {
         "*.m": "matlab",
         "array": "cpp",
@@ -86,6 +86,8 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "bit": "cpp"
+        "bit": "cpp",
+        "forward_list": "cpp",
+        "core": "cpp"
     }
 }

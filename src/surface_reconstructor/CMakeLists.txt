@@ -141,8 +141,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES surface_reconstructor
+ INCLUDE_DIRS include
+ LIBRARIES nurbs_class
  CATKIN_DEPENDS roscpp rospy std_msgs sensor_msgs visualization_msgs 
  DEPENDS PCL
 )

@@ -3,61 +3,102 @@
 
 using namespace surface_reconstructor;
 
-Nurbs::Nurbs(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud) 
+Nurbs::Nurbs(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
 {
     cloud_ = cloud;
     Nurbs::setFittingParams(0.1, 1.0, 0.1, 0.0); // Default parameters
 }
 
-Nurbs::~Nurbs() {}
+Nurbs::~Nurbs() = default;
 
-int Nurbs::getPos(double u, double v, ON_3dPoint& point)
+int Nurbs::getPos(double u, double v, ON_3dPoint& pos)
 {
     if (!is_fitted_)
     {
         std::cout << "NURBS not fitted yet!" << std::endl;
+        return 1;
     }
-    return 1;
-    
-    surface_.EvPoint(u, v, point);
+
+    surface_.EvPoint(u, v, pos);
     return 0;
 }
 
-int Nurbs::getNormal(double u, double v, ON_3dVector& normal)
+int Nurbs::getPos(double u, double v, Eigen::Vector3d& point)
 {
-    if (!is_fitted_)
-    {
-        std::cout << "NURBS not fitted yet!" << std::endl;
-    }
-    return 1;
-    
-    surface_.EvNormal(u, v, normal);
+    ON_3dPoint pos;
+    getPos(u, v, pos);
+    point << pos.x, pos.y, pos.z;
     return 0;
 }
 
-int Nurbs::get1Deriv(double u, double v, ON_3dVector& du, ON_3dVector& dv)
+int Nurbs::getNormal(double u, double v, ON_3dVector& n) const
 {
     if (!is_fitted_)
     {
         std::cout << "NURBS not fitted yet!" << std::endl;
+        return 1;
     }
-    return 1;
     
+    surface_.EvNormal(u, v, n);
+    return 0;
+}
+
+int Nurbs::getNormal(double u, double v, Eigen::Vector3d& normal) const
+{
+    ON_3dVector n;
+    getNormal(u, v, n);
+    normal << n.x, n.y, n.z;
+    return 0;
+}
+
+int Nurbs::getPosDeriv(double u, double v, ON_3dVector& du,
+    ON_3dVector& dv) const
+{
+    if (!is_fitted_)
+    {
+        std::cout << "NURBS not fitted yet!" << std::endl;
+        return 1;
+    }
+
     ON_3dPoint point;
     surface_.Ev1Der(u, v, point, du, dv);
     return 0;
 }
 
-int Nurbs::get2Deriv(double u, double v, ON_3dVector& du, ON_3dVector& dv, ON_3dVector& duu, ON_3dVector& duv, ON_3dVector& dvv)
+int Nurbs::getPosDeriv(double u, double v, Eigen::Vector3d& du,
+    Eigen::Vector3d& dv) const
+{
+    ON_3dVector du_t, dv_t;
+    getPosDeriv(u, v, du_t, dv_t);
+    du << du_t.x, du_t.y, du_t.z;
+    dv << dv_t.x, dv_t.y, dv_t.z;
+    return 0;
+}
+
+int Nurbs::getPos2Deriv(double u, double v, ON_3dVector& du, ON_3dVector& dv,
+    ON_3dVector& duu, ON_3dVector& duv, ON_3dVector& dvv)
 {
     if (!is_fitted_)
     {
         std::cout << "NURBS not fitted yet!" << std::endl;
+        return 1;
     }
-    return 1;
-    
+
     ON_3dPoint point;
     surface_.Ev2Der(u, v, point, du, dv, duu, duv, dvv);
+    return 0;
+}
+
+int Nurbs::getPos2Deriv(double u, double v, Eigen::Vector3d& du, Eigen::Vector3d& dv,
+    Eigen::Vector3d& duu, Eigen::Vector3d& duv, Eigen::Vector3d& dvv)
+{
+    ON_3dVector du_t, dv_t, duu_t, duv_t, dvv_t;
+    getPos2Deriv(u, v, du_t, dv_t, duu_t, duv_t, dvv_t);
+    du << du_t.x, du_t.y, du_t.z;
+    dv << dv_t.x, dv_t.y, dv_t.z;
+    duu << duu_t.x, duu_t.y, duu_t.z;
+    duv << duv_t.x, duv_t.y, duv_t.z;
+    dvv << dvv_t.x, dvv_t.y, dvv_t.z;
     return 0;
 }
 
@@ -66,15 +107,17 @@ int Nurbs::getCurvature(double u, double v, double& curvature)
     if (!is_fitted_)
     {
         std::cout << "NURBS not fitted yet!" << std::endl;
+        return 1;
     }
-    return 1;
 
     ON_3dVector du, dv, duu, duv, dvv, normal, K1, K2;
     double gauss, mean, kappa1, kappa2;
-    get2Deriv(u, v, du, dv, duu, duv, dvv);
+    getPos2Deriv(u, v, du, dv, duu, duv, dvv);
     getNormal(u, v, normal);
     ON_EvPrincipalCurvatures(du, dv, duu, duv, dvv, normal, &gauss, &mean, &kappa1, &kappa2, K1, K2); // mean curvature
     curvature = gauss;
+
+    return 0;
 }
 
 int Nurbs::setFittingParams(double interior_smoothness, double interior_weight, 
@@ -87,6 +130,29 @@ int Nurbs::setFittingParams(double interior_smoothness, double interior_weight,
     return 0;
 }
 
+int Nurbs::getDNormal(double u, double v, Eigen::Vector3d& dn_u, Eigen::Vector3d& dn_v)
+{
+    Eigen::Vector3d n;
+    getNormal(u, v, n);
+    Eigen::Vector3d du, dv, duu, duv, dvv;
+    getPos2Deriv(u, v, du, dv, duu, duv, dvv);
+
+    // Compute the first fundamental form the NURBS
+    double E = du.dot(du);
+    double F = du.dot(dv);
+    double G = dv.dot(dv);
+
+    // Compute the second fundamental form the NURBS
+    double e = duu.dot(n);
+    double f = duv.dot(n);
+    double g = dvv.dot(n);
+
+    dn_u = (f*F-e*G)/(E*G-F*F)*du + (e*F-f*E)/(E*G-F*F)*dv;
+    dn_v = (g*F-f*G)/(E*G-F*F)*du + (f*F-g*E)/(E*G-F*F)*dv;
+
+    return 0;
+}
+
 int Nurbs::fitSurface()
 {   
     // Initialize NURBS surface
@@ -94,7 +160,7 @@ int Nurbs::fitSurface()
     // Convert cloud to data
     for (const auto& point : cloud_->points)
     {
-        data.interior.push_back(Eigen::Vector3d(point.x, point.y, point.z));
+        data.interior.emplace_back(point.x, point.y, point.z);
     }
     surface_ = pcl::on_nurbs::FittingSurface::initNurbsPCABoundingBox(3, &data, Eigen::Vector3d(-1, 0, 0));
     pcl::on_nurbs::FittingSurface fit (&data, surface_);

@@ -51,6 +51,7 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "surface_generator");
     SurfaceGenerator surface_generator;
 
+    ROS_INFO("Debugging surface generator...");
     ros::spin();
     return 0;
 }
