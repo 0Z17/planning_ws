@@ -16,6 +16,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   surface_reconstructor
+  tf2
+  tf2_ros
 )
 
 ## System dependencies are found with CMake's conventions
@@ -110,7 +112,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   INCLUDE_DIRS include
 #  LIBRARIES dynamic_planning
- CATKIN_DEPENDS roscpp rospy surface_reconstructor
+ CATKIN_DEPENDS roscpp rospy surface_reconstructor tf2 tf2_ros
 #  DEPENDS system_lib
 )
 
@@ -150,8 +152,12 @@ add_library(invkin
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
- add_executable(surface_info_test
-   src/surface_info_test.cpp
+add_executable(surface_info_test
+  src/surface_info_test.cpp
+)
+
+add_executable(contact_test
+   src/contact_test.cpp
  )
 
 ## Rename C++ executable without prefix
@@ -171,6 +177,13 @@ add_library(invkin
  )
 
 target_link_libraries(surface_info_test
+  invkin
+  ${catkin_LIBRARIES}
+  ${surface_reconstructor_LIBRARIES}
+  ${PCL_LIBRARIES}
+)
+
+target_link_libraries(contact_test
   invkin
   ${catkin_LIBRARIES}
   ${surface_reconstructor_LIBRARIES}

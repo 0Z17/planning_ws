@@ -1,0 +1,129 @@
+#include <ros/ros.h>
+#include <geometry_msgs/PoseStamped.h>
+#include <mavros_msgs/State.h>
+#include <mavros_msgs/ActuatorControl.h>
+#include <mavros_msgs/CommandBool.h>
+#include <mavros_msgs/SetMode.h>
+ 
+mavros_msgs::State current_state;
+geometry_msgs::PoseStamped local_pos;
+ 
+void state_cb(const mavros_msgs::State::ConstPtr &msg)
+{
+  current_state = *msg;
+}
+ 
+void local_pos_cb(const geometry_msgs::PoseStamped::ConstPtr &local_pos_msg)
+{
+  local_pos = *local_pos_msg;
+}
+ 
+int main(int argc, char **argv)
+{
+  ros::init(argc, argv, "offb_node");
+  ros::NodeHandle nh;
+ 
+  ros::Subscriber state_sub = nh.subscribe<mavros_msgs::State>("mavros/state", 10, state_cb);
+  ros::Subscriber local_pos_sub = nh.subscribe<geometry_msgs::PoseStamped>("mavros/local_position/pose", 10, local_pos_cb);
+ 
+  ros::Publisher local_pos_pub = nh.advertise<geometry_msgs::PoseStamped>("mavros/setpoint_position/local", 10);
+  ros::Publisher actuator_control_pub = nh.advertise<mavros_msgs::ActuatorControl>("mavros/actuator_control", 10);
+ 
+  ros::ServiceClient arming_client = nh.serviceClient<mavros_msgs::CommandBool>("mavros/cmd/arming");
+  ros::ServiceClient set_mode_client = nh.serviceClient<mavros_msgs::SetMode>("mavros/set_mode");
+ 
+  // The setpoint publishing rate MUST be faster than 2Hz
+  ros::Rate rate(250.0);
+ 
+  // Wait for FCU connection
+  while (ros::ok() && current_state.connected == false)
+  {
+    ros::spinOnce();
+    rate.sleep();
+  }
+ 
+  geometry_msgs::PoseStamped pose;
+  pose.pose.position.x = 0;
+  pose.pose.position.y = 0;
+  pose.pose.position.z = 2;
+ 
+  mavros_msgs::ActuatorControl actuator_control;
+  actuator_control.group_mix = 0;
+  actuator_control.controls[0] = 0;       // Roll
+  actuator_control.controls[1] = 0;       // Pitch
+  actuator_control.controls[2] = 0;       // Yaw
+  actuator_control.controls[3] = 0.861;   // Throttle
+  actuator_control.controls[4] = 0;       // Flaps
+  actuator_control.controls[5] = 0;       // Spoilers
+  actuator_control.controls[6] = 0;       // Airbrakes
+  actuator_control.controls[7] = -1;      // Landing Gear
+  actuator_control.controls[8] = 0;       // X Thrust
+  actuator_control.controls[9] = -0.3;       // Y Thrust
+  actuator_control.controls[10] = -0.861; // Z Thrust
+ 
+  mavros_msgs::SetMode offb_set_mode;
+  offb_set_mode.request.custom_mode = "OFFBOARD";
+ 
+  mavros_msgs::CommandBool arm_cmd;
+  arm_cmd.request.value = true;
+ 
+  ros::Time last_request = ros::Time::now();
+ 
+  bool take_off = false;
+  bool reach_height = false;
+ 
+  while (ros::ok())
+  {
+    if (current_state.mode != "OFFBOARD" &&
+        (ros::Time::now() - last_request > ros::Duration(2.0)))
+    {
+      if (set_mode_client.call(offb_set_mode) &&
+          offb_set_mode.response.mode_sent)
+      {
+        ROS_INFO("Offboard enabled");
+        take_off = true;
+      }
+      last_request = ros::Time::now();
+    }
+    else
+    {
+      if (!current_state.armed &&
+          (ros::Time::now() - last_request > ros::Duration(2.0)))
+      {
+        if (arming_client.call(arm_cmd) &&
+            arm_cmd.response.success)
+        {
+          ROS_INFO("Vehicle armed");
+ 
+          last_request = ros::Time::now();
+        }
+      }
+ 
+      if (take_off && !reach_height)
+      {
+        local_pos_pub.publish(pose);
+        if (std::fabs(local_pos.pose.position.z - 2) < 0.3)
+        {
+          ROS_INFO("Reached target altitude.");
+          reach_height = true;
+        }
+      }
+      else if (take_off && reach_height)
+      {
+        if (std::fabs(local_pos.pose.position.z - 100) >0.01)
+        {
+          actuator_control.header.stamp = ros::Time::now();
+          actuator_control_pub.publish(actuator_control);
+        
+        }
+        else {
+           ROS_INFO("finish");
+        }
+      }
+ 
+      ros::spinOnce();
+      rate.sleep();
+    }
+  }
+  return 0;
+}

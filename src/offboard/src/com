@@ -1,0 +1,158 @@
+#include <ros/ros.h>
+#include <geometry_msgs/PoseStamped.h>
+#include <geometry_msgs/TwistStamped.h>
+#include <mavros_msgs/CommandBool.h>
+#include <mavros_msgs/SetMode.h>
+#include <mavros_msgs/State.h>
+#include <sensor_msgs/Imu.h>
+#include <iostream>
+#include <mavros_msgs/CommandTOL.h>
+#include <mavros_msgs/ActuatorControl.h>
+
+mavros_msgs::State current_state;
+void state_cb(const mavros_msgs::State::ConstPtr& msg){
+    current_state = *msg;
+}
+
+geometry_msgs::PoseStamped current_pose;
+void local_position_cb(const geometry_msgs::PoseStamped::ConstPtr& msg){
+    current_pose = *msg;
+}
+
+
+// 全局变量用于存储当前速度
+geometry_msgs::TwistStamped current_velocity;
+
+// 当收到速度信息时的回调函数
+void velocity_cb(const geometry_msgs::TwistStamped::ConstPtr& msg) {
+    current_velocity = *msg;
+}
+
+// 全局变量
+geometry_msgs::Vector3 linear_acceleration;
+geometry_msgs::Vector3 angular_velocity;
+// 线加速度和角速度的回调函数
+void linear_acceleration_cb(const sensor_msgs::Imu::ConstPtr& msg) {
+    linear_acceleration = msg->linear_acceleration;
+   
+}
+
+void angular_velocity_cb(const sensor_msgs::Imu::ConstPtr& msg) {
+     angular_velocity = msg->angular_velocity;
+    
+}
+ double t=0.0;
+int main(int argc, char **argv){
+    ros::init(argc, argv, "pd_controller_node");
+    ros::NodeHandle nh;
+
+    ros::Subscriber state_sub = nh.subscribe<mavros_msgs::State>("mavros/state", 10, state_cb);
+    ros::Subscriber local_pos_sub = nh.subscribe<geometry_msgs::PoseStamped>("mavros/local_position/pose", 10, local_position_cb);
+    ros::Publisher local_vel_pub = nh.advertise<geometry_msgs::TwistStamped>("mavros/setpoint_velocity/cmd_vel", 10);
+    ros::ServiceClient arming_client = nh.serviceClient<mavros_msgs::CommandBool>("mavros/cmd/arming");
+    ros::ServiceClient set_mode_client = nh.serviceClient<mavros_msgs::SetMode>("mavros/set_mode");
+    // 订阅IMU数据话题，并为线加速度和角速度指定不同的回调函数
+     ros::Subscriber linear_sub = nh.subscribe("mavros/imu/data", 1000, linear_acceleration_cb);
+    ros::Subscriber angular_sub = nh.subscribe("mavros/imu/data", 1000, angular_velocity_cb);
+
+    ros::Publisher local_pos_pub = nh.advertise<geometry_msgs::PoseStamped>("mavros/setpoint_position/local", 10);
+    ros::ServiceClient takeoff_cl = nh.serviceClient<mavros_msgs::CommandTOL>("/mavros/cmd/takeoff");
+      ros::Publisher actuator_control_pub = nh.advertise<mavros_msgs::ActuatorControl>("mavros/actuator_control", 10);
+
+    ros::Subscriber velocity_sub = nh.subscribe<geometry_msgs::TwistStamped>("mavros/local_position/velocity_local", 10, velocity_cb);
+ // 假设的目标速度和加速度
+    double target_velocity_x = 0.0; // 仅示例值，根据实际需求调整
+    double target_velocity_y = 0.0;
+    double target_velocity_z = 0.0;
+
+    double target_acceleration_x = 0.0; // 仅示例值，根据实际需求调整
+    double target_acceleration_y = 0.0;
+    double target_acceleration_z = 0.0;
+     
+    // 等待MAVROS连接
+    while(ros::ok() && !current_state.connected){
+        ros::spinOnce();
+        ros::Duration(0.01).sleep();   
+    }
+   
+    mavros_msgs::SetMode offb_set_mode;
+    offb_set_mode.request.custom_mode = "OFFBOARD";
+    mavros_msgs::CommandBool arm_cmd;
+    arm_cmd.request.value = true;
+
+    ros::Time last_request = ros::Time::now();
+    ros::Time last_requesto = ros::Time::now();
+
+    // 设定目标位置
+    double target_x = 0.0, target_y = 0.0, target_z = 12.0;
+     double vel_x=0.0 , vel_y=0.0 ,vel_z=0.0 ;
+    double vel_last_x=0.0,vel_last_y=0.0,vel_last_z=0.0;
+    // PD控制器参数
+    double kp1 = 3; // 系数
+    double kp2 = 2.7; // 系数
+    // PD控制器误差和上一次误差
+    double p_error_x = 0.0, p_error_y = 0.0, p_error_z = 0.0;
+    double pd_error_x = 0.0, pd_error_y = 0.0, pd_error_z = 0.0;
+    double p_last_error_x = 0.0, p_last_eror_y = 0.0, p_last_error_z = 0.0;
+    double a_error_x = 0.0, a_error_y = 0.0, a_error_z = 0.0;
+  
+   // 速率
+    ros::Rate rate(250.0);
+
+     // 等待MAVROS连接
+     while(ros::ok()){
+           if(current_state.mode != "OFFBOARD" && (ros::Time::now() - last_request > ros::Duration(5.0))){
+            if(set_mode_client.call(offb_set_mode) && offb_set_mode.response.mode_sent){
+                ROS_INFO("Offboard enabled");
+            }
+            last_request = ros::Time::now();
+        } else {
+            if(!current_state.armed && (ros::Time::now() - last_request > ros::Duration(5.0))){
+                if(arming_client.call(arm_cmd) && arm_cmd.response.success){
+                    ROS_INFO("Vehicle armed");
+                }
+                last_request = ros::Time::now();
+            }
+        }
+       
+       
+             // 使用全局变量linear_acceleration进行加速度计算
+            // 计算误差
+            p_error_x = target_x - current_pose.pose.position.x;
+            p_error_y = target_y - current_pose.pose.position.y;
+            p_error_z = target_z - current_pose.pose.position.z;
+            pd_error_x =vel_x-linear_acceleration[0];
+            pd_error_y=vel_y-linear_acceleration[1];
+            pd_error_z =  vel_z-linear_acceleration[2];
+            a_error_x = target_acceleration_x ;
+            a_error_y = target_acceleration_y ;
+            a_error_z = target_acceleration_z;
+        
+            double a_x = kp2 * p_error_x + kp1 * pd_error_x + a_error_x;
+            double a_y = kp2 * p_error_y + kp1 * pd_error_y + a_error_y;
+            double a_z = kp2 * p_error_z + kp1 * pd_error_z + a_error_z;
+
+         mavros_msgs::ActuatorControl actuator_control;
+             actuator_control.group_mix = 0;
+             actuator_control.controls[0] = 0;       // Roll
+             actuator_control.controls[1] = 0;       // Pitch
+              actuator_control.controls[2] = 0;       // Yaw
+              actuator_control.controls[3] = a_z;   // Throttle
+            actuator_control.controls[4] = 0;       // Flaps
+            actuator_control.controls[5] = 0;       // Spoilers
+            actuator_control.controls[6] = 0;       // Airbrakes
+             actuator_control.controls[7] = -1;      // Landing Gear
+            actuator_control.controls[8] = 0;       // X Thrust
+            actuator_control.controls[9] = 0;       // Y Thrust
+            actuator_control.controls[10] = -a_z; // Z Thrust
+
+            ros::spinOnce();
+            rate.sleep();
+            }
+            
+            
+    }
+    
+
+    return 0;
+}

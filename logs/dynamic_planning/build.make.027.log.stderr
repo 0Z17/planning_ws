@@ -1,0 +1,16 @@
+[01m[K/home/wsl/proj/planning_ws/src/dynamic_planning/src/contact_test.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/wsl/proj/planning_ws/src/dynamic_planning/src/contact_test.cpp:88:40:[m[K [01;31m[Kerror: [m[K‘[01m[Knh[m[K’ was not declared in this scope
+   88 |     const ros::Publisher pub_surface = [01;31m[Knh[m[K.advertise<visualization_msgs::Marker>("surface_marker", 1);
+      |                                        [01;31m[K^~[m[K
+[01m[K/home/wsl/proj/planning_ws/src/dynamic_planning/src/contact_test.cpp:88:79:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K>[m[K’ token
+   88 |     const ros::Publisher pub_surface = nh.advertise<visualization_msgs::Marker[01;31m[K>[m[K("surface_marker", 1);
+      |                                                                               [01;31m[K^[m[K
+[01m[K/home/wsl/proj/planning_ws/src/dynamic_planning/src/contact_test.cpp:89:77:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K>[m[K’ token
+   89 |     const ros::Publisher pub_point = nh.advertise<visualization_msgs::Marker[01;31m[K>[m[K("point_marker", 1);
+      |                                                                             [01;31m[K^[m[K
+[01m[K/home/wsl/proj/planning_ws/src/dynamic_planning/src/contact_test.cpp:90:78:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K>[m[K’ token
+   90 |     const ros::Publisher pub_normal = nh.advertise<visualization_msgs::Marker[01;31m[K>[m[K("normal_marker", 1);
+      |                                                                              [01;31m[K^[m[K
+make[2]: *** [CMakeFiles/contact_test.dir/build.make:63: CMakeFiles/contact_test.dir/src/contact_test.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:903: CMakeFiles/contact_test.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

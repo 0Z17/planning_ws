@@ -1,0 +1,12 @@
+[01m[K/home/wsl/proj/planning_ws/src/uam_control_interface/src/uam_pose_control.cpp:114:5:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kwhile[m[K’
+  114 |     [01;31m[Kwhile[m[K (ros::ok()) {
+      |     [01;31m[K^~~~~[m[K
+[01m[K/home/wsl/proj/planning_ws/src/uam_control_interface/src/uam_pose_control.cpp:122:5:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kreturn[m[K’
+  122 |     [01;31m[Kreturn[m[K 0;
+      |     [01;31m[K^~~~~~[m[K
+[01m[K/home/wsl/proj/planning_ws/src/uam_control_interface/src/uam_pose_control.cpp:123:1:[m[K [01;31m[Kerror: [m[Kexpected declaration before ‘[01m[K}[m[K’ token
+  123 | [01;31m[K}[m[K
+      | [01;31m[K^[m[K
+make[2]: *** [CMakeFiles/uam_pose_control.dir/build.make:63: CMakeFiles/uam_pose_control.dir/src/uam_pose_control.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:1113: CMakeFiles/uam_pose_control.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

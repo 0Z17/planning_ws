@@ -1,0 +1,26 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/ubuntu/catkin_ws_mavros/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/ubuntu/catkin_ws_mavros/src/mavros/libmavconn/include/**",
+        "/home/ubuntu/catkin_ws_mavros/src/mavros/mavros/include/**",
+        "/home/ubuntu/catkin_ws_mavros/src/mavros/mavros_msgs/include/**",
+        "/home/ubuntu/uav_test_ws/src/offboard/include/**",
+        "/home/ubuntu/catkin_ws_mavros/src/mavros/test_mavros/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

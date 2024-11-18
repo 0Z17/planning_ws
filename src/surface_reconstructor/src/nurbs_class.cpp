@@ -1,33 +1,37 @@
 #include "nurbs_class.h"
 #include <iostream>
+#include <utility>
 
 using namespace surface_reconstructor;
 
-Nurbs::Nurbs(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
+Nurbs::Nurbs(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
 {
-    cloud_ = cloud;
+    cloud_ = std::move(cloud);
     Nurbs::setFittingParams(0.1, 1.0, 0.1, 0.0); // Default parameters
 }
 
 Nurbs::~Nurbs() = default;
 
-int Nurbs::getPos(double u, double v, ON_3dPoint& pos)
+void Nurbs::updatePointCloud(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
 {
+    cloud_ = std::move(cloud);
+}
+
+int Nurbs::getPos(double u, double v, ON_3dPoint& pos) const {
     if (!is_fitted_)
     {
         std::cout << "NURBS not fitted yet!" << std::endl;
-        return 1;
+        return -1;
     }
 
     surface_.EvPoint(u, v, pos);
     return 0;
 }
 
-int Nurbs::getPos(double u, double v, Eigen::Vector3d& point)
-{
-    ON_3dPoint pos;
-    getPos(u, v, pos);
-    point << pos.x, pos.y, pos.z;
+int Nurbs::getPos(double u, double v, Eigen::Vector3d& pos) const {
+    ON_3dPoint pos_t;
+    getPos(u, v, pos_t);
+    pos << pos_t.x, pos_t.y, pos_t.z;
     return 0;
 }
 
@@ -36,78 +40,76 @@ int Nurbs::getNormal(double u, double v, ON_3dVector& n) const
     if (!is_fitted_)
     {
         std::cout << "NURBS not fitted yet!" << std::endl;
-        return 1;
+        return -1;
     }
     
     surface_.EvNormal(u, v, n);
     return 0;
 }
 
-int Nurbs::getNormal(double u, double v, Eigen::Vector3d& normal) const
+int Nurbs::getNormal(double u, double v, Eigen::Vector3d& n) const
 {
-    ON_3dVector n;
-    getNormal(u, v, n);
-    normal << n.x, n.y, n.z;
+    ON_3dVector n_t;
+    getNormal(u, v, n_t);
+    n << n_t.x, n_t.y, n_t.z;
     return 0;
 }
 
-int Nurbs::getPosDeriv(double u, double v, ON_3dVector& du,
-    ON_3dVector& dv) const
+int Nurbs::getPosDeriv(double u, double v, ON_3dVector& dp_u,
+    ON_3dVector& dp_v) const
 {
     if (!is_fitted_)
     {
         std::cout << "NURBS not fitted yet!" << std::endl;
-        return 1;
+        return -1;
     }
 
     ON_3dPoint point;
-    surface_.Ev1Der(u, v, point, du, dv);
+    surface_.Ev1Der(u, v, point, dp_u, dp_v);
     return 0;
 }
 
-int Nurbs::getPosDeriv(double u, double v, Eigen::Vector3d& du,
-    Eigen::Vector3d& dv) const
+int Nurbs::getPosDeriv(double u, double v, Eigen::Vector3d& dp_u,
+    Eigen::Vector3d& dp_v) const
 {
     ON_3dVector du_t, dv_t;
     getPosDeriv(u, v, du_t, dv_t);
-    du << du_t.x, du_t.y, du_t.z;
-    dv << dv_t.x, dv_t.y, dv_t.z;
+    dp_u << du_t.x, du_t.y, du_t.z;
+    dp_v << dv_t.x, dv_t.y, dv_t.z;
     return 0;
 }
 
-int Nurbs::getPos2Deriv(double u, double v, ON_3dVector& du, ON_3dVector& dv,
-    ON_3dVector& duu, ON_3dVector& duv, ON_3dVector& dvv)
-{
+int Nurbs::getPos2Deriv(double u, double v, ON_3dVector& dp_u, ON_3dVector& dp_v,
+    ON_3dVector& dp_uu, ON_3dVector& dp_uv, ON_3dVector& dp_vv) const {
     if (!is_fitted_)
     {
         std::cout << "NURBS not fitted yet!" << std::endl;
-        return 1;
+        return -1;
     }
 
     ON_3dPoint point;
-    surface_.Ev2Der(u, v, point, du, dv, duu, duv, dvv);
+    surface_.Ev2Der(u, v, point, dp_u, dp_v, dp_uu, dp_uv, dp_vv);
     return 0;
 }
 
-int Nurbs::getPos2Deriv(double u, double v, Eigen::Vector3d& du, Eigen::Vector3d& dv,
-    Eigen::Vector3d& duu, Eigen::Vector3d& duv, Eigen::Vector3d& dvv)
+int Nurbs::getPos2Deriv(double u, double v, Eigen::Vector3d& dp_u, Eigen::Vector3d& dp_v,
+    Eigen::Vector3d& dp_uu, Eigen::Vector3d& dp_uv, Eigen::Vector3d& dp_vv) const
 {
     ON_3dVector du_t, dv_t, duu_t, duv_t, dvv_t;
     getPos2Deriv(u, v, du_t, dv_t, duu_t, duv_t, dvv_t);
-    du << du_t.x, du_t.y, du_t.z;
-    dv << dv_t.x, dv_t.y, dv_t.z;
-    duu << duu_t.x, duu_t.y, duu_t.z;
-    duv << duv_t.x, duv_t.y, duv_t.z;
-    dvv << dvv_t.x, dvv_t.y, dvv_t.z;
+    dp_u << du_t.x, du_t.y, du_t.z;
+    dp_v << dv_t.x, dv_t.y, dv_t.z;
+    dp_uu << duu_t.x, duu_t.y, duu_t.z;
+    dp_uv << duv_t.x, duv_t.y, duv_t.z;
+    dp_vv << dvv_t.x, dvv_t.y, dvv_t.z;
     return 0;
 }
 
-int Nurbs::getCurvature(double u, double v, double& curvature)
-{
+int Nurbs::getCurvature(const double u, const double v, double& curvature) const {
     if (!is_fitted_)
     {
         std::cout << "NURBS not fitted yet!" << std::endl;
-        return 1;
+        return -1;
     }
 
     ON_3dVector du, dv, duu, duv, dvv, normal, K1, K2;
@@ -130,8 +132,7 @@ int Nurbs::setFittingParams(double interior_smoothness, double interior_weight,
     return 0;
 }
 
-int Nurbs::getDNormal(double u, double v, Eigen::Vector3d& dn_u, Eigen::Vector3d& dn_v)
-{
+int Nurbs::getDNormal(double u, double v, Eigen::Vector3d& dn_u, Eigen::Vector3d& dn_v) const {
     Eigen::Vector3d n;
     getNormal(u, v, n);
     Eigen::Vector3d du, dv, duu, duv, dvv;
@@ -162,7 +163,7 @@ int Nurbs::fitSurface()
     {
         data.interior.emplace_back(point.x, point.y, point.z);
     }
-    surface_ = pcl::on_nurbs::FittingSurface::initNurbsPCABoundingBox(3, &data, Eigen::Vector3d(-1, 0, 0));
+    surface_ = pcl::on_nurbs::FittingSurface::initNurbsPCABoundingBox(3, &data, Eigen::Vector3d(0, 0, -1));
     pcl::on_nurbs::FittingSurface fit (&data, surface_);
 
     // NURBS refinement
@@ -185,8 +186,7 @@ int Nurbs::fitSurface()
     return 0;
 }
 
-int Nurbs::convertToMarker(visualization_msgs::Marker& marker)
-{
+int Nurbs::convertToMarker(visualization_msgs::Marker& marker) const {
     // Reset the marker's properties
     marker.type = visualization_msgs::Marker::TRIANGLE_LIST;
     marker.action = visualization_msgs::Marker::ADD;
@@ -196,7 +196,7 @@ int Nurbs::convertToMarker(visualization_msgs::Marker& marker)
     pcl::on_nurbs::Triangulation::convertSurface2PolygonMesh(surface_, mesh, 128);
 
     // Convert PCLPolygonMesh's cloud to pcl::PointCloud<Point>
-    pcl::PointCloud<pcl::PointXYZ>::Ptr mesh_cloud(new pcl::PointCloud<pcl::PointXYZ>);
+    const pcl::PointCloud<pcl::PointXYZ>::Ptr mesh_cloud(new pcl::PointCloud<pcl::PointXYZ>);
     pcl::fromPCLPointCloud2(mesh.cloud, *mesh_cloud);
 
     // Add the points to the marker
@@ -224,6 +224,20 @@ int Nurbs::convertToMarker(visualization_msgs::Marker& marker)
     
     return 0;
 }
+
+int Nurbs::getClosestPoint(const Eigen::Vector3d& p, double& u, double& v) const {
+    if (!is_fitted_)
+    {
+        std::cout << "NURBS not fitted yet!" << std::endl;
+        return -1;
+    }
+
+    Eigen::Vector2d uv = pcl::on_nurbs::FittingSurface::findClosestElementMidPoint(surface_, p);
+    u = uv[0];
+    v = uv[1];
+    return 0;
+}
+
 
 
 

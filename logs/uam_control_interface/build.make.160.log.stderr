@@ -1,0 +1,6 @@
+[01m[K/home/wsl/proj/planning_ws/src/uam_control_interface/src/uam_manager_test.cpp:10:26:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K;[m[K’ token
+   10 | double target_theta = 0.-[01;31m[K;[m[K
+      |                          [01;31m[K^[m[K
+make[2]: *** [CMakeFiles/uam_manager_test.dir/build.make:63: CMakeFiles/uam_manager_test.dir/src/uam_manager_test.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:872: CMakeFiles/uam_manager_test.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

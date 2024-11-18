@@ -46,10 +46,8 @@ int main() {
     std::cout << "qe: " << qe << std::endl;
 
     // get the change of position of the end effector
-    Eigen::Vector3d dps_u, dps_v;
-    invkin.getDpos(0.2, 0.3, dps_u, dps_v);
-    std::cout << "dps_u: " << dps_u << std::endl;
-    std::cout << "dps_v: " << dps_v << std::endl;
+    Eigen::Vector3d dps = invkin.getDpos(0.2, 0.3, 0.1, 0.1);
+    std::cout << "dps_u: " << dps << std::endl;
 
     // get the change of psi
     const double dpsi = dp::InvKin::getDpsi(normal, dn_u, dn_v, 0.1, 0.1);
@@ -63,4 +61,5 @@ int main() {
     const dp::Vector5d dqe = invkin.dxToDqe(0.2, 0.3, 0.1, 0.1);
     std::cout << "dqe: " << dqe << std::endl;
 
+    return 0;
 }

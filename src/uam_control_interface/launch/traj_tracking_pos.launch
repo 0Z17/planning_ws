@@ -2,7 +2,8 @@
   <param  name="robot_description"  textfile="$(find uam_control_interface)/urdf/skyvortex.urdf" />
 
   <!-- Takeoff the drone -->
-  <node pkg="uam_control_interface" type="takeoff.py" name="takeoff" output="screen" />
+  <!--   <node pkg="uam_control_interface" type="takeoff.py" name="takeoff" output="screen" /> -->
+  <!--   <node pkg="uam_control_interface" type="uam_pose_control" name="uam_pose_control" output="screen"/> -->
 
   <!-- Visualize the trajectory -->
   <!-- <node pkg="uam_control_interface" type="visualize_traj.py" name="visualize_traj" output="screen" /> -->
@@ -15,7 +16,10 @@
 
   <!-- convert the joint msg  -->
   <node pkg="uam_control_interface" type="joint_msg_convert.py" name="joint_msg_convert" output="screen" />
-  
+
+  <!-- point cloud data processing -->
+  <node pkg="surface_reconstructor" type="pointcloud_process" name="pointcloud_process" output="screen"/>
+
   <!-- Trajectory tracking -->
   <!-- <node pkg="uam_control_interface" type="traj_tracking.py" name="traj_tracking" output="screen">
     <param name="record_traj" type="bool" value="false" />

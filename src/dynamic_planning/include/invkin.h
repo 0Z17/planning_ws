@@ -17,27 +17,26 @@ public:
     ~InvKin();
 
     /**
-     * @brief set the link length of the manipulator
-     * @param link_length the length of the manipulator's links
+     * @brief Set the link length of the manipulator
+     * @param link_length The length of the manipulator's links
      */
     void setLinkLength(double link_length);
 
     /**
-     * @brief Updates the NURBS (Non-Uniform Rational B-Splines) object.
+     * @brief Updates the surface.
      * 
-     * This function takes a reference to a NurbsClass object and updates its state.
+     * This function takes a NurbsClass object and updates the member variable.
      * 
-     * @param nurbs Reference to a NurbsClass object that will be updated.
+     * @param surface The NurbsClass object that will be updated.
      */
-    void updateNurbs(sr::Nurbs* nurbs);
-
+    void updateSurface(sr::Nurbs* surface);
     
     /**
      * @brief Converts the surface params [x = (u,v)] to surface config [q_s = (p_s,n)].
      * @param u The first parameter for the surface.
      * @param v The second parameter of the surface.
      * @return The corresponding point on the surface [q_s], consisting of the contact 
-     * point and the normal vector.
+     * point [p_s] and the normal vector [n].
      */
     Vector6d xToQs(double u, double v) const;
 
@@ -47,10 +46,17 @@ public:
      * @return The config of the end effector [q_e], consisting of the position[p_e = (x_e,y_e,z_e)],
      *         yaw[psi_e] and pitch[theta_e].
      */
-    static Vector5d qsToQe(const Vector6d& qs) ;
+    static Vector5d qsToQe(const Vector6d& qs);
 
     /**
-     * @brief get the change of position of the end effector [dp_e] respect to the 
+     * @brief Converts the surface config [q_s = (p_s,n)] to the UAM config [q].
+     * @param qs The surface config [q_s], consisting of the contact point and the normal vector.
+     * @return The config of the UAM [q], consisting of the position[p = (x,y,z)], yaw[psi] and joint angles[theta].
+     */
+    Vector5d qsToQ(const Vector6d& qs) const;
+
+    /**
+     * @brief get the change of position of the end effector [dp_e] respect to the
      *        surface params [(u,v)] with the change of surface params [(du,dv)].
      * @param u The first parameter for the surface.
      * @param v The second parameter of the surface.
@@ -58,13 +64,14 @@ public:
      * @param dv The change of v.
      * @return The change of the position of the end effector [dp_e].
      */
-    void getDpos(double u, double v, Eigen::Vector3d& dps_u, Eigen::Vector3d& dps_v) const;
+    Eigen::Vector3d getDpos(double u, double v, double du, double dv) const;
 
     /**
-     * @brief get the change of the yaw of the end effector [dpsi_e] respect to 
+     * @brief Get the change of the yaw of the end effector [dpsi_e] respect to
      *        the surface params [(u,v)] with the change of surface params [(du,dv)].
-     * @param u The first parameter for the surface.
-     * @param v The second parameter of the surface.
+     * @param n The normal vector of the surface at [(u,v)].
+     * @param dn_u The partial derivative of the normal vector with respect to u.
+     * @param dn_v The partial derivative of the normal vector with respect to v.
      * @param du The change of u.
      * @param dv The change of v.
      * @return The change of the yaw of the end effector [dpsi_e].
@@ -73,13 +80,14 @@ public:
                           double du, double dv);
 
     /**
-     * @brief get the change of the joint angle of the manipulator [dtheta_e]
+     * @brief Get the change of the pitch of the end effector [dtheta_e]
      *         respect to the surface params [(u,v)] with the change of surface params [(du,dv)].
-     * @param u The first parameter for the surface.
-     * @param v The second parameter of the surface.
+     * @param n The normal vector of the surface at [(u,v)].
+     * @param dn_u The partial derivative of the normal vector with respect to u.
+     * @param dn_v The partial derivative of the normal vector with respect to v.
      * @param du The change of u.
      * @param dv The change of v.
-     * @return The change of the joint angle of the manipulator [dtheta_e].
+     * @return The change of the pitch of the end effector [dtheta_e].
      */
     static double getDtheta(Eigen::Vector3d& n, const Eigen::Vector3d& dn_u, const Eigen::Vector3d& dn_v,
                      double du, double dv) ;
@@ -93,6 +101,8 @@ public:
      * @return The change of the end effector config [dq_e].
      */
     Vector5d dxToDqe(double u, double v, double du, double dv) const;
+
+
 
 private:
     sr::Nurbs* nurbs_;

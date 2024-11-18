@@ -142,7 +142,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
  INCLUDE_DIRS include
- LIBRARIES nurbs_class
+ LIBRARIES nurbs_class viz_tool
  CATKIN_DEPENDS roscpp rospy std_msgs sensor_msgs visualization_msgs 
  DEPENDS PCL
 )
@@ -165,6 +165,10 @@ add_library(
   nurbs_class src/nurbs_class.cpp
 )
 
+add_library(
+    viz_tool src/VizTool.cpp
+)
+
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
@@ -173,7 +177,8 @@ add_library(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(${PROJECT_NAME}_node src/visualize_surface.cpp)
+add_executable(${PROJECT_NAME}_node src/visualize_surface.cpp
+        include/VizTool.h)
 add_executable(${PROJECT_NAME}_node_test src/test_demo.cpp)
 add_executable(pointcloud_process src/pointcloud_process.cpp)
 
@@ -217,6 +222,11 @@ target_link_libraries(${PROJECT_NAME}_node_test
   ${PCL_COMMON_LIBRARIES}
   ${PCL_SURFACE_LIBRARIES}
   ${VTK_LIBRARIES}
+  nurbs_class
+)
+
+target_link_libraries(viz_tool
+  ${catkin_LIBRARIES}
   nurbs_class
 )
 

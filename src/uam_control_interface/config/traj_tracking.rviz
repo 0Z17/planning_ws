@@ -14,6 +14,9 @@ Panels:
         - /Image1
         - /Axes1
         - /Marker1
+        - /Marker2
+        - /Marker3
+        - /Marker4
       Splitter Ratio: 0.550000011920929
     Tree Height: 503
   - Class: rviz/Selection
@@ -191,11 +194,26 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        connect_Link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         depth_optical_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
         end_Link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        end_effector_base_Link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        move_base_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -231,6 +249,21 @@ Visualization Manager:
           Show Trail: false
           Value: true
         rotor6_Link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel1_Link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel2_Link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel3_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -292,10 +325,34 @@ Visualization Manager:
       Value: false
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: /surface_mesh
+      Marker Topic: /surface_marker
       Name: Marker
       Namespaces:
-        surface_mesh: true
+        "": true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /base_point
+      Name: Marker
+      Namespaces:
+        "": true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /point_marker
+      Name: Marker
+      Namespaces:
+        "": true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /normal_marker
+      Name: Marker
+      Namespaces:
+        "": true
       Queue Size: 100
       Value: true
   Enabled: true
@@ -326,7 +383,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 8.194844245910645
+      Distance: 4.6153364181518555
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -334,17 +391,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 1.4185612201690674
-        Y: 2.7400641441345215
-        Z: 2.913389205932617
+        X: 2.1396484375
+        Y: 2.6000730991363525
+        Z: 3.099809408187866
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.17039825022220612
+      Pitch: 0.2903982400894165
       Target Frame: <Fixed Frame>
-      Yaw: 1.804958701133728
+      Yaw: 1.4549587965011597
     Saved: ~
 Window Geometry:
   Displays:
@@ -364,5 +421,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1908
-  X: -32
-  Y: -32
+  X: 0
+  Y: 0

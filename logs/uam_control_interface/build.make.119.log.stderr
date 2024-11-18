@@ -1,0 +1,8 @@
+[01m[K/home/wsl/proj/planning_ws/src/uam_control_interface/src/uam_manager.cpp:[m[K In constructor ‘[01m[Kuam_control::UamManager::UamManager()[m[K’:
+[01m[K/home/wsl/proj/planning_ws/src/uam_control_interface/src/uam_manager.cpp:25:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpose_test_pub[m[K’ was not declared in this scope; did you mean ‘[01m[Kpose_test_pub_[m[K’?
+   25 |     [01;31m[Kpose_test_pub[m[K = nh_.advertise<geometry_msgs::PoseStamped>("mavros/setpoint_position/local", 10);
+      |     [01;31m[K^~~~~~~~~~~~~[m[K
+      |     [32m[Kpose_test_pub_[m[K
+make[2]: *** [CMakeFiles/uam_manager.dir/build.make:63: CMakeFiles/uam_manager.dir/src/uam_manager.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:1770: CMakeFiles/uam_manager.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

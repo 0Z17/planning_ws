@@ -1,0 +1,15 @@
+/usr/bin/ld: CMakeFiles/contact_test.dir/src/contact_test.cpp.o: in function `main':
+contact_test.cpp:(.text+0x493): undefined reference to `tf2_ros::Buffer::Buffer(ros::Duration, bool)'
+/usr/bin/ld: contact_test.cpp:(.text+0x52e): undefined reference to `tf2_ros::TransformListener::TransformListener(tf2::BufferCore&, bool, ros::TransportHints)'
+/usr/bin/ld: contact_test.cpp:(.text+0x5f8): undefined reference to `tf2::BufferCore::lookupTransform(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, ros::Time const&) const'
+/usr/bin/ld: contact_test.cpp:(.text+0x6f9): undefined reference to `tf2::BufferCore::lookupTransform(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, ros::Time const&) const'
+/usr/bin/ld: contact_test.cpp:(.text+0xf39): undefined reference to `tf2_ros::TransformListener::~TransformListener()'
+/usr/bin/ld: contact_test.cpp:(.text+0x1285): undefined reference to `tf2_ros::TransformListener::~TransformListener()'
+/usr/bin/ld: CMakeFiles/contact_test.dir/src/contact_test.cpp.o: in function `tf2_ros::Buffer::~Buffer()':
+contact_test.cpp:(.text._ZN7tf2_ros6BufferD2Ev[_ZN7tf2_ros6BufferD5Ev]+0x13): undefined reference to `vtable for tf2_ros::Buffer'
+/usr/bin/ld: contact_test.cpp:(.text._ZN7tf2_ros6BufferD2Ev[_ZN7tf2_ros6BufferD5Ev]+0x25): undefined reference to `vtable for tf2_ros::Buffer'
+/usr/bin/ld: contact_test.cpp:(.text._ZN7tf2_ros6BufferD2Ev[_ZN7tf2_ros6BufferD5Ev]+0x53): undefined reference to `tf2::BufferCore::~BufferCore()'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/contact_test.dir/build.make:343: /home/wsl/proj/planning_ws/devel/.private/dynamic_planning/lib/dynamic_planning/contact_test] Error 1
+make[1]: *** [CMakeFiles/Makefile2:903: CMakeFiles/contact_test.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

@@ -13,9 +13,9 @@ void InvKin::setLinkLength(const double link_length)
     link_length_ = link_length;
 }
 
-void InvKin::updateNurbs(sr::Nurbs* nurbs)
+void InvKin::updateSurface(sr::Nurbs* surface)
 {
-    nurbs_ = nurbs;
+    nurbs_ = surface;
 }
 
 Vector6d InvKin::xToQs(const double u, const double v) const
@@ -35,7 +35,7 @@ Vector5d InvKin::qsToQe(const Vector6d& qs)
     // calculate the yaw and the joint angle of the UAM
     const Eigen::Vector3d ps = qs.head<3>();
     Eigen::Vector3d n = qs.tail<3>();
-    const double psi_e = std::sqrt(22.0);
+    const double psi_e = std::atan2(-n(1), -n(0));
     const double theta_e = std::atan2(-n(2), n.head<2>().norm());
 
     // calculate the joint angle of the UAM
@@ -45,9 +45,21 @@ Vector5d InvKin::qsToQe(const Vector6d& qs)
     return state;
 }
 
-void InvKin::getDpos(double u, double v, Eigen::Vector3d& dps_u, Eigen::Vector3d& dps_v) const
+Vector5d InvKin::qsToQ(const Vector6d& qs) const {
+    // calculate the joint angle of the UAM
+    Vector5d q = qsToQe(qs);
+    q(0) = q(0) + qs(3) * link_length_;
+    q(1) = q(1) + qs(4) * link_length_;
+    q(2) = q(2) + qs(5) * link_length_;
+    return q;
+}
+
+Eigen::Vector3d InvKin::getDpos(double u, double v, double du, double dv) const
 {
+    Eigen::Vector3d dps_u, dps_v;
     nurbs_->getPosDeriv(u, v, dps_u, dps_v);
+    Eigen::Vector3d dps = dps_u * du + dps_v * dv;
+    return dps;
 }
 
 double InvKin::getDpsi(Eigen::Vector3d& n, Eigen::Vector3d& dn_u, Eigen::Vector3d& dn_v,
@@ -79,10 +91,7 @@ Vector5d InvKin::dxToDqe(double u, double v, double du, double dv) const
     Eigen::Vector3d dn_u, dn_v;
     nurbs_->getDNormal(u, v, dn_u, dn_v);
 
-    Eigen::Vector3d dpe_u, dpe_v;
-    getDpos(u, v, dpe_u, dpe_v);
-
-    const Eigen::Vector3d dpe = dpe_u * du + dpe_v * dv;
+    const Eigen::Vector3d dpe = getDpos(u, v, du, dv);
     const double dpsi = getDpsi(n, dn_u, dn_v, du, dv);
     const double dtheta = getDtheta(n, dn_u, dn_v, du, dv);
 

@@ -27,8 +27,7 @@ private:
     ros::Publisher mesh_pub_;
 
     // get point cloud data and process it
-    void pointCloudCallback(const sensor_msgs::PointCloud2ConstPtr& input_cloud_msg)
-    {
+    void pointCloudCallback(const sensor_msgs::PointCloud2ConstPtr& input_cloud_msg) const {
         // convert ROS PointCloud2 message to PCL point cloud
         pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>());
         pcl::fromROSMsg(*input_cloud_msg, *cloud);
@@ -78,7 +77,7 @@ private:
         point_cloud_pub_.publish(output_cloud_msg);
 
         // Fit NURBS surface
-        ROS_INFO("Fitting NURBS surface...");
+        // ROS_INFO("Fitting NURBS surface...");
         surface_reconstructor::Nurbs surface(cloud_filtered);
         surface.fitSurface();
 
