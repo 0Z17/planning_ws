@@ -18,7 +18,7 @@
   <node pkg="uam_control_interface" type="joint_msg_convert.py" name="joint_msg_convert" output="screen" />
 
   <!-- point cloud data processing -->
-  <node pkg="surface_reconstructor" type="pointcloud_process" name="pointcloud_process" output="screen"/>
+  <!-- <node pkg="surface_reconstructor" type="pointcloud_process" name="pointcloud_process" output="screen"/> -->
 
   <!-- Trajectory tracking -->
   <!-- <node pkg="uam_control_interface" type="traj_tracking.py" name="traj_tracking" output="screen">

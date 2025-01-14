@@ -110,7 +110,7 @@ int main(int argc, char **argv)
 
 
     // nh.getParam("rate", rate);
-    ros::Rate loop_rate(0.1);
+    ros::Rate loop_rate(1);
 
     const ros::Publisher pub_surface = nh.advertise<visualization_msgs::Marker>("surface_marker", 1);
     const ros::Publisher pub_point = nh.advertise<visualization_msgs::Marker>("point_marker", 1);
@@ -128,43 +128,43 @@ int main(int argc, char **argv)
     while (ros::ok()) {
         ros::spinOnce();
 
-        end_to_optical = tf_buffer.lookupTransform( "depth_optical_frame", "end_Link", ros::Time(0));
-        optical_to_map = tf_buffer.lookupTransform("map", "depth_optical_frame", ros::Time(0));
+        // end_to_optical = tf_buffer.lookupTransform( "depth_optical_frame", "end_Link", ros::Time(0));
+        // optical_to_map = tf_buffer.lookupTransform("map", "depth_optical_frame", ros::Time(0));
 
-        // get the end point in the optical frame
-        Eigen::Vector3d n_ori_in_optical, n_end_in_optical;
-        Eigen::Vector3d n_ori_in_map, n_end_in_map;
-        Eigen::Vector3d end_in_optical;
-        Eigen::Vector3d end_in_end_frame(0, 0, 0);
+        // // get the end point in the optical frame
+        // Eigen::Vector3d n_ori_in_optical, n_end_in_optical;
+        // Eigen::Vector3d n_ori_in_map, n_end_in_map;
+        // Eigen::Vector3d end_in_optical;
+        // Eigen::Vector3d end_in_end_frame(0, 0, 0);
 
-        ContactManager::frameTransform(end_in_end_frame, end_in_optical, end_to_optical);
-        double u_closest, v_closest;
-        cm.getSurface()->getClosestPoint(end_in_optical, u_closest, v_closest);
-        dp::Vector6d qs = cm.getInvKin()->xToQs(u_closest, v_closest);
-        n_ori_in_optical(0) = qs(0);
-        n_ori_in_optical(1) = qs(1);
-        n_ori_in_optical(2) = qs(2);
+        // ContactManager::frameTransform(end_in_end_frame, end_in_optical, end_to_optical);
+        // double u_closest, v_closest;
+        // cm.getSurface()->getClosestPoint(end_in_optical, u_closest, v_closest);
+        // dp::Vector6d qs = cm.getInvKin()->xToQs(u_closest, v_closest);
+        // n_ori_in_optical(0) = qs(0);
+        // n_ori_in_optical(1) = qs(1);
+        // n_ori_in_optical(2) = qs(2);
 
-        n_end_in_optical(0) = qs(0) + qs(3);
-        n_end_in_optical(1) = qs(1) + qs(4);
-        n_end_in_optical(2) = qs(2) + qs(5);
+        // n_end_in_optical(0) = qs(0) + qs(3);
+        // n_end_in_optical(1) = qs(1) + qs(4);
+        // n_end_in_optical(2) = qs(2) + qs(5);
 
-        ContactManager::frameTransform(n_ori_in_optical, n_ori_in_map, optical_to_map);
-        ContactManager::frameTransform(n_end_in_optical, n_end_in_map, optical_to_map);
+        // ContactManager::frameTransform(n_ori_in_optical, n_ori_in_map, optical_to_map);
+        // ContactManager::frameTransform(n_end_in_optical, n_end_in_map, optical_to_map);
 
-        dp::Vector6d qs_in_map;
-        qs_in_map(0) = n_ori_in_map(0);
-        qs_in_map(1) = n_ori_in_map(1);
-        qs_in_map(2) = n_ori_in_map(2);
-        qs_in_map(3) = n_end_in_map(0) - n_ori_in_map(0);
-        qs_in_map(4) = n_end_in_map(1) - n_ori_in_map(1);
-        qs_in_map(5) = n_end_in_map(2) - n_ori_in_map(2);
+        // dp::Vector6d qs_in_map;
+        // qs_in_map(0) = n_ori_in_map(0);
+        // qs_in_map(1) = n_ori_in_map(1);
+        // qs_in_map(2) = n_ori_in_map(2);
+        // qs_in_map(3) = n_end_in_map(0) - n_ori_in_map(0);
+        // qs_in_map(4) = n_end_in_map(1) - n_ori_in_map(1);
+        // qs_in_map(5) = n_end_in_map(2) - n_ori_in_map(2);
 
-        cm.getInvKin()->setLinkLength(0.3);
-        dp::Vector5d q = cm.getInvKin()->qsToQ(qs_in_map);
+        // cm.getInvKin()->setLinkLength(0.3);
+        // dp::Vector5d q = cm.getInvKin()->qsToQ(qs_in_map);
 
-        ROS_INFO("u: %f, v: %f, q: %f, %f, %f, %f, %f", u_closest, v_closest,
-            q(0), q(1), q(2), q(3), q(4));
+        // ROS_INFO("u: %f, v: %f, q: %f, %f, %f, %f, %f", u_closest, v_closest,
+        //     q(0), q(1), q(2), q(3), q(4));
 
         // // get the end point in the end_Link frame
         // // the end point in the end_Link frame
@@ -212,50 +212,60 @@ int main(int argc, char **argv)
         // get the corresponding point in the map frame
         visualization_msgs::Marker surface_marker, point_marker, normal_marker;
         surface_marker.header.stamp = ros::Time::now();
-        surface_marker.header.frame_id = "depth_optical_frame";
+        // surface_marker.header.frame_id = "camera_depth_optical_frame";
+        surface_marker.header.frame_id = "map";
 
         point_marker.header.stamp = ros::Time::now();
-        point_marker.header.frame_id = "depth_optical_frame";
+        // point_marker.header.frame_id = "camera_depth_optical_frame";
+        point_marker.header.frame_id = "map";
+
 
         normal_marker.header.stamp = ros::Time::now();
-        normal_marker.header.frame_id = "depth_optical_frame";
+        // normal_marker.header.frame_id = "camera_depth_optical_frame";
+        normal_marker.header.frame_id = "map";
 
         // viz.vizPoint(cm.getPoint()[0], cm.getPoint()[1], point_marker);
         // viz.vizNormal(cm.getPoint()[0], cm.getPoint()[1], normal_marker);
-        viz.vizPoint(u_closest, v_closest, point_marker);
-        viz.vizNormal(u_closest, v_closest, normal_marker);
+        auto point = cm.getPoint();
+        viz.vizPoint(point(0), point(1), point_marker);
+        viz.vizNormal(point(0), point(1), normal_marker);
         viz.vizSurface(surface_marker);
 
         pub_surface.publish(surface_marker);
         pub_point.publish(point_marker);
         pub_normal.publish(normal_marker);
 
-        visualization_msgs::Marker base_marker;
-        base_marker.header.stamp = ros::Time::now();
-        base_marker.header.frame_id = "map";
-        base_marker.type = visualization_msgs::Marker::SPHERE;
-        base_marker.action = visualization_msgs::Marker::ADD;
-        base_marker.pose.position.x = q(0);
-        base_marker.pose.position.y = q(1);
-        base_marker.pose.position.z = q(2);
-        base_marker.pose.orientation.x = 0;
-        base_marker.pose.orientation.y = 0;
-        base_marker.pose.orientation.z = 0;
-        base_marker.pose.orientation.w = 1;
-        base_marker.scale.x = 0.1;
-        base_marker.scale.y = 0.1;
-        base_marker.scale.z = 0.1;
+        auto qs = cm.getInvKin()->xToQs(point(0), point(1));
+        ROS_INFO("qs: %f, %f, %f, %f, %f, %f", qs(0), qs(1), qs(2), qs(3), qs(4), qs(5));
 
-        base_marker.color.r = 1.0;
-        base_marker.color.g = 0.0;
-        base_marker.color.b = 0.0;
-        base_marker.color.a = 1.0;
+        ROS_INFO("publishing markers");
 
-        pub_base_point.publish(base_marker);
+        // visualization_msgs::Marker base_marker;
+        // base_marker.header.stamp = ros::Time::now();
+        // base_marker.header.frame_id = "map";
+        // base_marker.type = visualization_msgs::Marker::SPHERE;
+        // base_marker.action = visualization_msgs::Marker::ADD;
+        // base_marker.pose.position.x = q(0);
+        // base_marker.pose.position.y = q(1);
+        // base_marker.pose.position.z = q(2);
+        // base_marker.pose.orientation.x = 0;
+        // base_marker.pose.orientation.y = 0;
+        // base_marker.pose.orientation.z = 0;
+        // base_marker.pose.orientation.w = 1;
+        // base_marker.scale.x = 0.1;
+        // base_marker.scale.y = 0.1;
+        // base_marker.scale.z = 0.1;
 
-        std_msgs::Float32MultiArray target_msg;
-        target_msg.data = {q(0), q(1), q(2), q(3), q(4)};
-        target_pub.publish(target_msg);
+        // base_marker.color.r = 1.0;
+        // base_marker.color.g = 0.0;
+        // base_marker.color.b = 0.0;
+        // base_marker.color.a = 1.0;
+
+        // pub_base_point.publish(base_marker);
+
+        // std_msgs::Float32MultiArray target_msg;
+        // target_msg.data = {q(0), q(1), q(2), q(3), q(4)};
+        // target_pub.publish(target_msg);
 
         loop_rate.sleep();
     }

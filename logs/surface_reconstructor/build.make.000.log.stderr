@@ -1,0 +1,1067 @@
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/point_struct_traits.h:68:29:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::decomposeArray<T>[m[K’
+   68 | template<typename T> struct [01;31m[KdecomposeArray[m[K
+      |                             [01;31m[K^~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:99:33:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::decomposeArray<T>[m[K’
+   99 |     template<typename T> struct [01;36m[KdecomposeArray[m[K
+      |                                 [01;36m[K^~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/point_struct_traits.h:76:8:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::POD<PointT>[m[K’
+   76 | struct [01;31m[KPOD[m[K
+      |        [01;31m[K^~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:107:12:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::POD<PointT>[m[K’
+  107 |     struct [01;36m[KPOD[m[K
+      |            [01;36m[K^~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/point_struct_traits.h:108:8:[m[K [01;31m[Kerror: [m[Kredefinition of default argument for ‘[01m[Kint dummy[m[K’
+  108 | struct [01;31m[Kname[m[K /** \cond NO_WARN_RECURSIVE */ : name<typename POD<PointT>::type, Tag, dummy> /** \endcond */
+      |        [01;31m[K^~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:140:54:[m[K [01;36m[Knote: [m[Koriginal definition appeared here
+  140 |     template<class PointT, typename Tag, int dummy = [01;36m[K0[m[K>
+      |                                                      [01;36m[K^[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/point_struct_traits.h:140:8:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::offset<PointT, Tag>[m[K’
+  140 | struct [01;31m[Koffset[m[K /** \cond NO_WARN_RECURSIVE */ : offset<typename POD<PointT>::type, Tag> /** \endcond */
+      |        [01;31m[K^~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:153:12:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::offset<PointT, Tag>[m[K’
+  153 |     struct [01;36m[Koffset[m[K : offset<typename POD<PointT>::type, Tag>
+      |            [01;36m[K^~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/point_struct_traits.h:165:9:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::datatype<PointT, Tag>[m[K’
+  165 |  struct [01;31m[Kdatatype[m[K /** \cond NO_WARN_RECURSIVE */ : datatype<typename POD<PointT>::type, Tag> /** \endcond */
+      |         [01;31m[K^~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:165:12:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::datatype<PointT, Tag>[m[K’
+  165 |     struct [01;36m[Kdatatype[m[K : datatype<typename POD<PointT>::type, Tag>
+      |            [01;36m[K^~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/point_struct_traits.h:195:8:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::fieldList<PointT>[m[K’
+  195 | struct [01;31m[KfieldList[m[K /** \cond NO_WARN_RECURSIVE */ : fieldList<typename POD<PointT>::type> /** \endcond */
+      |        [01;31m[K^~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:179:12:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::fieldList<PointT>[m[K’
+  179 |     struct [01;36m[KfieldList[m[K : fieldList<typename POD<PointT>::type>
+      |            [01;36m[K^~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:56:12:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::deprecated::T[m[K’
+   56 |     struct [01;31m[KT[m[K {};
+      |            [01;31m[K^[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:65:12:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::deprecated::T[m[K’
+   65 |     struct [01;36m[KT[m[K {};
+      |            [01;36m[K^[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:83:33:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<T>[m[K’
+   83 |     template<typename T> struct [01;31m[KasEnum[m[K {};
+      |                                 [01;31m[K^~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:76:33:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<T>[m[K’
+   76 |     template<typename T> struct [01;36m[KasEnum[m[K {};
+      |                                 [01;36m[K^~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:85:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<signed char>[m[K’
+   85 |     template<> struct [01;31m[KasEnum<std::int8_t>[m[K   { static const std::uint8_t value = detail::PointFieldTypes::INT8;    };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:77:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<signed char>[m[K’
+   77 |     template<> struct [01;36m[KasEnum<std::int8_t>[m[K   { static const std::uint8_t value = pcl::PCLPointField::INT8;    };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:86:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<unsigned char>[m[K’
+   86 |     template<> struct [01;31m[KasEnum<std::uint8_t>[m[K  { static const std::uint8_t value = detail::PointFieldTypes::UINT8;   };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:78:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<unsigned char>[m[K’
+   78 |     template<> struct [01;36m[KasEnum<std::uint8_t>[m[K  { static const std::uint8_t value = pcl::PCLPointField::UINT8;   };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:87:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<short int>[m[K’
+   87 |     template<> struct [01;31m[KasEnum<std::int16_t>[m[K  { static const std::uint8_t value = detail::PointFieldTypes::INT16;   };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:79:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<short int>[m[K’
+   79 |     template<> struct [01;36m[KasEnum<std::int16_t>[m[K  { static const std::uint8_t value = pcl::PCLPointField::INT16;   };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:88:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<short unsigned int>[m[K’
+   88 |     template<> struct [01;31m[KasEnum<std::uint16_t>[m[K { static const std::uint8_t value = detail::PointFieldTypes::UINT16;  };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:80:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<short unsigned int>[m[K’
+   80 |     template<> struct [01;36m[KasEnum<std::uint16_t>[m[K { static const std::uint8_t value = pcl::PCLPointField::UINT16;  };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:89:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<int>[m[K’
+   89 |     template<> struct [01;31m[KasEnum<std::int32_t>[m[K  { static const std::uint8_t value = detail::PointFieldTypes::INT32;   };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:81:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<int>[m[K’
+   81 |     template<> struct [01;36m[KasEnum<std::int32_t>[m[K  { static const std::uint8_t value = pcl::PCLPointField::INT32;   };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:90:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<unsigned int>[m[K’
+   90 |     template<> struct [01;31m[KasEnum<std::uint32_t>[m[K { static const std::uint8_t value = detail::PointFieldTypes::UINT32;  };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:82:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<unsigned int>[m[K’
+   82 |     template<> struct [01;36m[KasEnum<std::uint32_t>[m[K { static const std::uint8_t value = pcl::PCLPointField::UINT32;  };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:93:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<float>[m[K’
+   93 |     template<> struct [01;31m[KasEnum<float>[m[K         { static const std::uint8_t value = detail::PointFieldTypes::FLOAT32; };
+      |                       [01;31m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:83:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<float>[m[K’
+   83 |     template<> struct [01;36m[KasEnum<float>[m[K    { static const std::uint8_t value = pcl::PCLPointField::FLOAT32; };
+      |                       [01;36m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:94:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<double>[m[K’
+   94 |     template<> struct [01;31m[KasEnum<double>[m[K        { static const std::uint8_t value = detail::PointFieldTypes::FLOAT64; };
+      |                       [01;31m[K^~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:84:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<double>[m[K’
+   84 |     template<> struct [01;36m[KasEnum<double>[m[K   { static const std::uint8_t value = pcl::PCLPointField::FLOAT64; };
+      |                       [01;36m[K^~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:100:26:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<<anonymous> >[m[K’
+  100 |     template<int> struct [01;31m[KasType[m[K {};
+      |                          [01;31m[K^~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:87:26:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<<anonymous> >[m[K’
+   87 |     template<int> struct [01;36m[KasType[m[K {};
+      |                          [01;36m[K^~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:102:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<1>[m[K’
+  102 |     template<> struct [01;31m[KasType<detail::PointFieldTypes::INT8>[m[K    { using type = std::int8_t; };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:88:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<1>[m[K’
+   88 |     template<> struct [01;36m[KasType<pcl::PCLPointField::INT8>[m[K    { using type = std::int8_t; };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:103:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<2>[m[K’
+  103 |     template<> struct [01;31m[KasType<detail::PointFieldTypes::UINT8>[m[K   { using type = std::uint8_t; };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:89:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<2>[m[K’
+   89 |     template<> struct [01;36m[KasType<pcl::PCLPointField::UINT8>[m[K   { using type = std::uint8_t; };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:104:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<3>[m[K’
+  104 |     template<> struct [01;31m[KasType<detail::PointFieldTypes::INT16>[m[K   { using type = std::int16_t; };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:90:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<3>[m[K’
+   90 |     template<> struct [01;36m[KasType<pcl::PCLPointField::INT16>[m[K   { using type = std::int16_t; };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:105:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<4>[m[K’
+  105 |     template<> struct [01;31m[KasType<detail::PointFieldTypes::UINT16>[m[K  { using type = std::uint16_t; };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:91:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<4>[m[K’
+   91 |     template<> struct [01;36m[KasType<pcl::PCLPointField::UINT16>[m[K  { using type = std::uint16_t; };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:106:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<5>[m[K’
+  106 |     template<> struct [01;31m[KasType<detail::PointFieldTypes::INT32>[m[K   { using type = std::int32_t; };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:92:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<5>[m[K’
+   92 |     template<> struct [01;36m[KasType<pcl::PCLPointField::INT32>[m[K   { using type = std::int32_t; };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:107:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<6>[m[K’
+  107 |     template<> struct [01;31m[KasType<detail::PointFieldTypes::UINT32>[m[K  { using type = std::uint32_t; };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:93:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<6>[m[K’
+   93 |     template<> struct [01;36m[KasType<pcl::PCLPointField::UINT32>[m[K  { using type = std::uint32_t; };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:110:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<7>[m[K’
+  110 |     template<> struct [01;31m[KasType<detail::PointFieldTypes::FLOAT32>[m[K { using type = float; };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:94:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<7>[m[K’
+   94 |     template<> struct [01;36m[KasType<pcl::PCLPointField::FLOAT32>[m[K { using type = float; };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:111:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<8>[m[K’
+  111 |     template<> struct [01;31m[KasType<detail::PointFieldTypes::FLOAT64>[m[K { using type = double; };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:95:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<8>[m[K’
+   95 |     template<> struct [01;36m[KasType<pcl::PCLPointField::FLOAT64>[m[K { using type = double; };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:132:10:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::CopyIfFieldExists<PointInT, OutT>[m[K’
+  132 |   struct [01;31m[KCopyIfFieldExists[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:218:10:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::CopyIfFieldExists<PointInT, OutT>[m[K’
+  218 |   struct [01;36m[KCopyIfFieldExists[m[K
+      |          [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:197:10:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::SetIfFieldExists<PointOutT, InT>[m[K’
+  197 |   struct [01;31m[KSetIfFieldExists[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:283:10:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::SetIfFieldExists<PointOutT, InT>[m[K’
+  283 |   struct [01;36m[KSetIfFieldExists[m[K
+      |          [01;36m[K^~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:237:3:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Ktemplate<class PointT, class ValT> void pcl::setFieldValue(PointT&, std::size_t, const ValT&)[m[K’
+  237 |   [01;31m[KsetFieldValue[m[K (PointT &pt, std::size_t field_offset, const ValT &value)
+      |   [01;31m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:323:3:[m[K [01;36m[Knote: [m[K‘[01m[Ktemplate<class PointT, class ValT> void pcl::setFieldValue(PointT&, std::size_t, const ValT&)[m[K’ previously declared here
+  323 |   [01;36m[KsetFieldValue[m[K (PointT &pt, std::size_t field_offset, const ValT &value)
+      |   [01;36m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:249:3:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Ktemplate<class PointT, class ValT> void pcl::getFieldValue(const PointT&, std::size_t, ValT&)[m[K’
+  249 |   [01;31m[KgetFieldValue[m[K (const PointT &pt, std::size_t field_offset, ValT &value)
+      |   [01;31m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:335:3:[m[K [01;36m[Knote: [m[K‘[01m[Ktemplate<class PointT, class ValT> void pcl::getFieldValue(const PointT&, std::size_t, ValT&)[m[K’ previously declared here
+  335 |   [01;36m[KgetFieldValue[m[K (const PointT &pt, std::size_t field_offset, ValT &value)
+      |   [01;36m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:269:51:[m[K [01;31m[Kerror: [m[Kredefinition of default argument for ‘[01m[Kclass<template-parameter-1-2>[m[K’
+  269 |   template <typename, typename = void_t<>> struct [01;31m[Khas_custom_allocator[m[K : std::false_type {};
+      |                                                   [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:355:23:[m[K [01;36m[Knote: [m[Koriginal definition appeared here
+  355 |   template <typename, [01;36m[Ktypename[m[K = void_t<>> struct has_custom_allocator : std::false_type {};
+      |                       [01;36m[K^~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:270:32:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::has_custom_allocator<T, pcl::void_t<typename T::_custom_allocator_type_trait> >[m[K’
+  270 |   template <typename T> struct [01;31m[Khas_custom_allocator<T, void_t<typename T::_custom_allocator_type_trait>>[m[K : std::true_type {};
+      |                                [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:356:32:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::has_custom_allocator<T, pcl::void_t<typename T::_custom_allocator_type_trait> >[m[K’
+  356 |   template <typename T> struct [01;36m[Khas_custom_allocator<T, void_t<typename T::_custom_allocator_type_trait>>[m[K : std::true_type {};
+      |                                [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/memory.h:77:12:[m[K [01;31m[Kerror: [m[K‘[01m[Ktemplate<class _Tp> class std::shared_ptr[m[K’ conflicts with a previous declaration
+   77 | using std::[01;31m[Kshared_ptr[m[K;
+      |            [01;31m[K^~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/PCLHeader.h:10[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:47[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/pcl_macros.h:90:9:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Ktemplate<class T> using shared_ptr = boost::shared_ptr<X>[m[K’
+   90 |   using [01;36m[Kshared_ptr[m[K = boost::shared_ptr<T>;
+      |         [01;36m[K^~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/memory.h:116:65:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Ktemplate<class T, class ... Args> std::enable_if_t<pcl::has_custom_allocator<T>::value, boost::shared_ptr<X> > pcl::make_shared(Args&& ...)[m[K’
+  116 | std::enable_if_t<has_custom_allocator<T>::value, shared_ptr<T>> [01;31m[Kmake_shared[m[K(Args&&... args)
+      |                                                                 [01;31m[K^~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:52[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/make_shared.h:73:65:[m[K [01;36m[Knote: [m[K‘[01m[Ktemplate<class T, class ... Args> std::enable_if_t<pcl::has_custom_allocator<T>::value, boost::shared_ptr<X> > pcl::make_shared(Args&& ...)[m[K’ previously declared here
+   73 | std::enable_if_t<has_custom_allocator<T>::value, shared_ptr<T>> [01;36m[Kmake_shared[m[K(Args&&... args)
+      |                                                                 [01;36m[K^~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:5[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/memory.h:122:66:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Ktemplate<class T, class ... Args> std::enable_if_t<(! pcl::has_custom_allocator<T>::value), boost::shared_ptr<X> > pcl::make_shared(Args&& ...)[m[K’
+  122 | std::enable_if_t<!has_custom_allocator<T>::value, shared_ptr<T>> [01;31m[Kmake_shared[m[K(Args&&... args)
+      |                                                                  [01;31m[K^~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:52[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:4[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/nurbs_class.cpp:1[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/make_shared.h:79:66:[m[K [01;36m[Knote: [m[K‘[01m[Ktemplate<class T, class ... Args> std::enable_if_t<(! pcl::has_custom_allocator<T>::value), boost::shared_ptr<X> > pcl::make_shared(Args&& ...)[m[K’ previously declared here
+   79 | std::enable_if_t<!has_custom_allocator<T>::value, shared_ptr<T>> [01;36m[Kmake_shared[m[K(Args&&... args)
+      |                                                                  [01;36m[K^~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/point_struct_traits.h:68:29:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::decomposeArray<T>[m[K’
+   68 | template<typename T> struct [01;31m[KdecomposeArray[m[K
+      |                             [01;31m[K^~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:99:33:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::decomposeArray<T>[m[K’
+   99 |     template<typename T> struct [01;36m[KdecomposeArray[m[K
+      |                                 [01;36m[K^~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/point_struct_traits.h:76:8:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::POD<PointT>[m[K’
+   76 | struct [01;31m[KPOD[m[K
+      |        [01;31m[K^~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:107:12:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::POD<PointT>[m[K’
+  107 |     struct [01;36m[KPOD[m[K
+      |            [01;36m[K^~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/point_struct_traits.h:108:8:[m[K [01;31m[Kerror: [m[Kredefinition of default argument for ‘[01m[Kint dummy[m[K’
+  108 | struct [01;31m[Kname[m[K /** \cond NO_WARN_RECURSIVE */ : name<typename POD<PointT>::type, Tag, dummy> /** \endcond */
+      |        [01;31m[K^~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:140:54:[m[K [01;36m[Knote: [m[Koriginal definition appeared here
+  140 |     template<class PointT, typename Tag, int dummy = [01;36m[K0[m[K>
+      |                                                      [01;36m[K^[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/point_struct_traits.h:140:8:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::offset<PointT, Tag>[m[K’
+  140 | struct [01;31m[Koffset[m[K /** \cond NO_WARN_RECURSIVE */ : offset<typename POD<PointT>::type, Tag> /** \endcond */
+      |        [01;31m[K^~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:153:12:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::offset<PointT, Tag>[m[K’
+  153 |     struct [01;36m[Koffset[m[K : offset<typename POD<PointT>::type, Tag>
+      |            [01;36m[K^~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/point_struct_traits.h:165:9:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::datatype<PointT, Tag>[m[K’
+  165 |  struct [01;31m[Kdatatype[m[K /** \cond NO_WARN_RECURSIVE */ : datatype<typename POD<PointT>::type, Tag> /** \endcond */
+      |         [01;31m[K^~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:165:12:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::datatype<PointT, Tag>[m[K’
+  165 |     struct [01;36m[Kdatatype[m[K : datatype<typename POD<PointT>::type, Tag>
+      |            [01;36m[K^~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/point_struct_traits.h:195:8:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::fieldList<PointT>[m[K’
+  195 | struct [01;31m[KfieldList[m[K /** \cond NO_WARN_RECURSIVE */ : fieldList<typename POD<PointT>::type> /** \endcond */
+      |        [01;31m[K^~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:179:12:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::fieldList<PointT>[m[K’
+  179 |     struct [01;36m[KfieldList[m[K : fieldList<typename POD<PointT>::type>
+      |            [01;36m[K^~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:56:12:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::deprecated::T[m[K’
+   56 |     struct [01;31m[KT[m[K {};
+      |            [01;31m[K^[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:65:12:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::deprecated::T[m[K’
+   65 |     struct [01;36m[KT[m[K {};
+      |            [01;36m[K^[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:83:33:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<T>[m[K’
+   83 |     template<typename T> struct [01;31m[KasEnum[m[K {};
+      |                                 [01;31m[K^~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:76:33:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<T>[m[K’
+   76 |     template<typename T> struct [01;36m[KasEnum[m[K {};
+      |                                 [01;36m[K^~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:85:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<signed char>[m[K’
+   85 |     template<> struct [01;31m[KasEnum<std::int8_t>[m[K   { static const std::uint8_t value = detail::PointFieldTypes::INT8;    };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:77:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<signed char>[m[K’
+   77 |     template<> struct [01;36m[KasEnum<std::int8_t>[m[K   { static const std::uint8_t value = pcl::PCLPointField::INT8;    };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:86:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<unsigned char>[m[K’
+   86 |     template<> struct [01;31m[KasEnum<std::uint8_t>[m[K  { static const std::uint8_t value = detail::PointFieldTypes::UINT8;   };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:78:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<unsigned char>[m[K’
+   78 |     template<> struct [01;36m[KasEnum<std::uint8_t>[m[K  { static const std::uint8_t value = pcl::PCLPointField::UINT8;   };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:87:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<short int>[m[K’
+   87 |     template<> struct [01;31m[KasEnum<std::int16_t>[m[K  { static const std::uint8_t value = detail::PointFieldTypes::INT16;   };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:79:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<short int>[m[K’
+   79 |     template<> struct [01;36m[KasEnum<std::int16_t>[m[K  { static const std::uint8_t value = pcl::PCLPointField::INT16;   };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:88:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<short unsigned int>[m[K’
+   88 |     template<> struct [01;31m[KasEnum<std::uint16_t>[m[K { static const std::uint8_t value = detail::PointFieldTypes::UINT16;  };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:80:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<short unsigned int>[m[K’
+   80 |     template<> struct [01;36m[KasEnum<std::uint16_t>[m[K { static const std::uint8_t value = pcl::PCLPointField::UINT16;  };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:89:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<int>[m[K’
+   89 |     template<> struct [01;31m[KasEnum<std::int32_t>[m[K  { static const std::uint8_t value = detail::PointFieldTypes::INT32;   };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:81:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<int>[m[K’
+   81 |     template<> struct [01;36m[KasEnum<std::int32_t>[m[K  { static const std::uint8_t value = pcl::PCLPointField::INT32;   };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:90:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<unsigned int>[m[K’
+   90 |     template<> struct [01;31m[KasEnum<std::uint32_t>[m[K { static const std::uint8_t value = detail::PointFieldTypes::UINT32;  };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:82:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<unsigned int>[m[K’
+   82 |     template<> struct [01;36m[KasEnum<std::uint32_t>[m[K { static const std::uint8_t value = pcl::PCLPointField::UINT32;  };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:93:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<float>[m[K’
+   93 |     template<> struct [01;31m[KasEnum<float>[m[K         { static const std::uint8_t value = detail::PointFieldTypes::FLOAT32; };
+      |                       [01;31m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:83:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<float>[m[K’
+   83 |     template<> struct [01;36m[KasEnum<float>[m[K    { static const std::uint8_t value = pcl::PCLPointField::FLOAT32; };
+      |                       [01;36m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:94:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asEnum<double>[m[K’
+   94 |     template<> struct [01;31m[KasEnum<double>[m[K        { static const std::uint8_t value = detail::PointFieldTypes::FLOAT64; };
+      |                       [01;31m[K^~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:84:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asEnum<double>[m[K’
+   84 |     template<> struct [01;36m[KasEnum<double>[m[K   { static const std::uint8_t value = pcl::PCLPointField::FLOAT64; };
+      |                       [01;36m[K^~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:100:26:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<<anonymous> >[m[K’
+  100 |     template<int> struct [01;31m[KasType[m[K {};
+      |                          [01;31m[K^~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:87:26:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<<anonymous> >[m[K’
+   87 |     template<int> struct [01;36m[KasType[m[K {};
+      |                          [01;36m[K^~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:102:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<1>[m[K’
+  102 |     template<> struct [01;31m[KasType<detail::PointFieldTypes::INT8>[m[K    { using type = std::int8_t; };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:88:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<1>[m[K’
+   88 |     template<> struct [01;36m[KasType<pcl::PCLPointField::INT8>[m[K    { using type = std::int8_t; };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:103:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<2>[m[K’
+  103 |     template<> struct [01;31m[KasType<detail::PointFieldTypes::UINT8>[m[K   { using type = std::uint8_t; };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:89:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<2>[m[K’
+   89 |     template<> struct [01;36m[KasType<pcl::PCLPointField::UINT8>[m[K   { using type = std::uint8_t; };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:104:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<3>[m[K’
+  104 |     template<> struct [01;31m[KasType<detail::PointFieldTypes::INT16>[m[K   { using type = std::int16_t; };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:90:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<3>[m[K’
+   90 |     template<> struct [01;36m[KasType<pcl::PCLPointField::INT16>[m[K   { using type = std::int16_t; };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:105:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<4>[m[K’
+  105 |     template<> struct [01;31m[KasType<detail::PointFieldTypes::UINT16>[m[K  { using type = std::uint16_t; };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:91:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<4>[m[K’
+   91 |     template<> struct [01;36m[KasType<pcl::PCLPointField::UINT16>[m[K  { using type = std::uint16_t; };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:106:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<5>[m[K’
+  106 |     template<> struct [01;31m[KasType<detail::PointFieldTypes::INT32>[m[K   { using type = std::int32_t; };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:92:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<5>[m[K’
+   92 |     template<> struct [01;36m[KasType<pcl::PCLPointField::INT32>[m[K   { using type = std::int32_t; };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:107:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<6>[m[K’
+  107 |     template<> struct [01;31m[KasType<detail::PointFieldTypes::UINT32>[m[K  { using type = std::uint32_t; };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:93:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<6>[m[K’
+   93 |     template<> struct [01;36m[KasType<pcl::PCLPointField::UINT32>[m[K  { using type = std::uint32_t; };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:110:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<7>[m[K’
+  110 |     template<> struct [01;31m[KasType<detail::PointFieldTypes::FLOAT32>[m[K { using type = float; };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:94:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<7>[m[K’
+   94 |     template<> struct [01;36m[KasType<pcl::PCLPointField::FLOAT32>[m[K { using type = float; };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:111:23:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::traits::asType<8>[m[K’
+  111 |     template<> struct [01;31m[KasType<detail::PointFieldTypes::FLOAT64>[m[K { using type = double; };
+      |                       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:95:23:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::traits::asType<8>[m[K’
+   95 |     template<> struct [01;36m[KasType<pcl::PCLPointField::FLOAT64>[m[K { using type = double; };
+      |                       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:132:10:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::CopyIfFieldExists<PointInT, OutT>[m[K’
+  132 |   struct [01;31m[KCopyIfFieldExists[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:218:10:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::CopyIfFieldExists<PointInT, OutT>[m[K’
+  218 |   struct [01;36m[KCopyIfFieldExists[m[K
+      |          [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:197:10:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::SetIfFieldExists<PointOutT, InT>[m[K’
+  197 |   struct [01;31m[KSetIfFieldExists[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:283:10:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::SetIfFieldExists<PointOutT, InT>[m[K’
+  283 |   struct [01;36m[KSetIfFieldExists[m[K
+      |          [01;36m[K^~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:237:3:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Ktemplate<class PointT, class ValT> void pcl::setFieldValue(PointT&, std::size_t, const ValT&)[m[K’
+  237 |   [01;31m[KsetFieldValue[m[K (PointT &pt, std::size_t field_offset, const ValT &value)
+      |   [01;31m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:323:3:[m[K [01;36m[Knote: [m[K‘[01m[Ktemplate<class PointT, class ValT> void pcl::setFieldValue(PointT&, std::size_t, const ValT&)[m[K’ previously declared here
+  323 |   [01;36m[KsetFieldValue[m[K (PointT &pt, std::size_t field_offset, const ValT &value)
+      |   [01;36m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:249:3:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Ktemplate<class PointT, class ValT> void pcl::getFieldValue(const PointT&, std::size_t, ValT&)[m[K’
+  249 |   [01;31m[KgetFieldValue[m[K (const PointT &pt, std::size_t field_offset, ValT &value)
+      |   [01;31m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:335:3:[m[K [01;36m[Knote: [m[K‘[01m[Ktemplate<class PointT, class ValT> void pcl::getFieldValue(const PointT&, std::size_t, ValT&)[m[K’ previously declared here
+  335 |   [01;36m[KgetFieldValue[m[K (const PointT &pt, std::size_t field_offset, ValT &value)
+      |   [01;36m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:269:51:[m[K [01;31m[Kerror: [m[Kredefinition of default argument for ‘[01m[Kclass<template-parameter-1-2>[m[K’
+  269 |   template <typename, typename = void_t<>> struct [01;31m[Khas_custom_allocator[m[K : std::false_type {};
+      |                                                   [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:355:23:[m[K [01;36m[Knote: [m[Koriginal definition appeared here
+  355 |   template <typename, [01;36m[Ktypename[m[K = void_t<>> struct has_custom_allocator : std::false_type {};
+      |                       [01;36m[K^~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/memory.h:46[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/type_traits.h:270:32:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstruct pcl::has_custom_allocator<T, pcl::void_t<typename T::_custom_allocator_type_trait> >[m[K’
+  270 |   template <typename T> struct [01;31m[Khas_custom_allocator<T, void_t<typename T::_custom_allocator_type_trait>>[m[K : std::true_type {};
+      |                                [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:50[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/point_traits.h:356:32:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kstruct pcl::has_custom_allocator<T, pcl::void_t<typename T::_custom_allocator_type_trait> >[m[K’
+  356 |   template <typename T> struct [01;36m[Khas_custom_allocator<T, void_t<typename T::_custom_allocator_type_trait>>[m[K : std::true_type {};
+      |                                [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/memory.h:77:12:[m[K [01;31m[Kerror: [m[K‘[01m[Ktemplate<class _Tp> class std::shared_ptr[m[K’ conflicts with a previous declaration
+   77 | using std::[01;31m[Kshared_ptr[m[K;
+      |            [01;31m[K^~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/PCLPointField.h:10[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:46[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/pcl_macros.h:90:9:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Ktemplate<class T> using shared_ptr = boost::shared_ptr<X>[m[K’
+   90 |   using [01;36m[Kshared_ptr[m[K = boost::shared_ptr<T>;
+      |         [01;36m[K^~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/memory.h:116:65:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Ktemplate<class T, class ... Args> std::enable_if_t<pcl::has_custom_allocator<T>::value, boost::shared_ptr<X> > pcl::make_shared(Args&& ...)[m[K’
+  116 | std::enable_if_t<has_custom_allocator<T>::value, shared_ptr<T>> [01;31m[Kmake_shared[m[K(Args&&... args)
+      |                                                                 [01;31m[K^~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:52[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/make_shared.h:73:65:[m[K [01;36m[Knote: [m[K‘[01m[Ktemplate<class T, class ... Args> std::enable_if_t<pcl::has_custom_allocator<T>::value, boost::shared_ptr<X> > pcl::make_shared(Args&& ...)[m[K’ previously declared here
+   73 | std::enable_if_t<has_custom_allocator<T>::value, shared_ptr<T>> [01;36m[Kmake_shared[m[K(Args&&... args)
+      |                                                                 [01;36m[K^~~~~~~~~~~[m[K
+In file included from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_data.h:45[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/nurbs_tools.h:40[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_pdm.h:41[m[K,
+                 from [01m[K/usr/local/include/pcl-1.14/pcl/surface/on_nurbs/fitting_surface_tdm.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:5[m[K:
+[01m[K/usr/local/include/pcl-1.14/pcl/memory.h:122:66:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Ktemplate<class T, class ... Args> std::enable_if_t<(! pcl::has_custom_allocator<T>::value), boost::shared_ptr<X> > pcl::make_shared(Args&& ...)[m[K’
+  122 | std::enable_if_t<!has_custom_allocator<T>::value, shared_ptr<T>> [01;31m[Kmake_shared[m[K(Args&&... args)
+      |                                                                  [01;31m[K^~~~~~~~~~~[m[K
+In file included from [01m[K/usr/include/pcl-1.10/pcl/point_cloud.h:52[m[K,
+                 from [01m[K/usr/include/pcl-1.10/pcl/conversions.h:49[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/visualize_surface.cpp:3[m[K:
+[01m[K/usr/include/pcl-1.10/pcl/make_shared.h:79:66:[m[K [01;36m[Knote: [m[K‘[01m[Ktemplate<class T, class ... Args> std::enable_if_t<(! pcl::has_custom_allocator<T>::value), boost::shared_ptr<X> > pcl::make_shared(Args&& ...)[m[K’ previously declared here
+   79 | std::enable_if_t<!has_custom_allocator<T>::value, shared_ptr<T>> [01;36m[Kmake_shared[m[K(Args&&... args)
+      |                                                                  [01;36m[K^~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/nurbs_class.dir/build.make:63: CMakeFiles/nurbs_class.dir/src/nurbs_class.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:264: CMakeFiles/nurbs_class.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+make[2]: *** [CMakeFiles/surface_reconstructor_node.dir/build.make:63: CMakeFiles/surface_reconstructor_node.dir/src/visualize_surface.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:696: CMakeFiles/surface_reconstructor_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

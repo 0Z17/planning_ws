@@ -5,7 +5,8 @@ import numpy as np
 class UAM:
     def __init__(self,name='/skyvortex',joint_name='/operator_1_joint'):
 
-        client = RemoteAPIClient("172.30.144.1")
+        # client = RemoteAPIClient("172.30.144.1")
+        client = RemoteAPIClient("172.31.16.1")
         self.sim = client.require('sim')
 
         self.handle = self.sim.getObject(name)
@@ -58,3 +59,7 @@ class UAM:
         self.set_position(state[:3])
         self.set_yaw(state[3])
         self.set_joint_position(state[4])
+
+if __name__ == '__main__':
+    uam = UAM()
+    print(uam.get_position())

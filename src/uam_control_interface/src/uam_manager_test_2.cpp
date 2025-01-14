@@ -32,39 +32,35 @@ int main(int argc, char **argv){
 
     ros::Time last_time = ros::Time::now();
 
-    double waypoint_1_x = 0.5;
-    double waypoint_1_y = 0.0;
-    double waypoint_1_z = 1.5;
-
-    double dist_1 = sqrt(pow(waypoint_1_x - target_x, 2) + pow(waypoint_1_y - target_y, 2) + pow(waypoint_1_z - target_z, 2));
-
-    while(ros::ok() /** && abs(dist_1) > 0.1 */) {
-        ROS_INFO("Distance to waypoint 1: %f", dist_1);
-        uam_manager.setTargetConfig(waypoint_1_x, waypoint_1_y, waypoint_1_z, 0.0, 0.0);
-        Eigen::Vector3d pos_current = uam_manager.getConfig().head(3);
-        dist_1 = sqrt(pow(waypoint_1_x - pos_current[0], 2) + pow(waypoint_1_y - pos_current[1], 2) + pow(waypoint_1_z - pos_current[2], 2));
-        ros::spinOnce();
-        rate.sleep();
-    }
-
-    ROS_INFO("///////////////////////////////////");
-    ROS_INFO("Reached waypoint 1");
-    ROS_INFO("///////////////////////////////////");
-
-    double waypoint_2_x = 1.2;
-    double waypoint_2_y = 0.0;
-    double waypoint_2_z = 1.5;
-
-    double dist_2 = sqrt(pow(waypoint_1_x - target_x, 2) + pow(waypoint_1_y - target_y, 2) + pow(waypoint_1_z - target_z, 2));
-
-    while(ros::ok() &&  abs(dist_2) > 0.02  ) {
-        ROS_INFO("Distance to waypoint 2: %f", dist_2);
-        uam_manager.setTargetConfig(waypoint_2_x, waypoint_2_y, waypoint_2_z, 0.0, 0.0);
-        Eigen::Vector3d pos_current = uam_manager.getConfig().head(3);
-        dist_2 = sqrt(pow(waypoint_2_x - pos_current[0], 2) + pow(waypoint_2_y - pos_current[1], 2) + pow(waypoint_2_z - pos_current[2], 2));
-        ros::spinOnce();
-        rate.sleep();
-    }
+//    double waypoint_1_x = 0.0;
+//    double waypoint_1_y = -50.0;
+//    double waypoint_1_z = 4.0;
+//
+//    double dist_1 = sqrt(pow(waypoint_1_x - target_x, 2) + pow(waypoint_1_y - target_y, 2) + pow(waypoint_1_z - target_z, 2));
+//
+//    while(ros::ok() && abs(dist_1) > 0.2) {
+//        ROS_INFO("Distance to waypoint 1: %f", dist_1);
+//        uam_manager.setTargetConfig(waypoint_1_x, waypoint_1_y, waypoint_1_z, 0.0, 0.0);
+//        Eigen::Vector3d pos_current = uam_manager.getConfig().head(3);
+//        dist_1 = sqrt(pow(waypoint_1_x - pos_current[0], 2) + pow(waypoint_1_y - pos_current[1], 2) + pow(waypoint_1_z - pos_current[2], 2));
+//        ros::spinOnce();
+//        rate.sleep();
+//    }
+//
+//    double waypoint_2_x = 25.0;
+//    double waypoint_2_y = -50.0;
+//    double waypoint_2_z = 4.0;
+//
+//    double dist_2 = sqrt(pow(waypoint_1_x - target_x, 2) + pow(waypoint_1_y - target_y, 2) + pow(waypoint_1_z - target_z, 2));
+//
+//    while(ros::ok() /** && abs(dist_2) > 0.2 */) {
+//        ROS_INFO("Distance to waypoint 2: %f", dist_2);
+//        uam_manager.setTargetConfig(waypoint_2_x, waypoint_2_y, waypoint_2_z, 0.0, 0.0);
+//        Eigen::Vector3d pos_current = uam_manager.getConfig().head(3);
+//        dist_2 = sqrt(pow(waypoint_2_x - pos_current[0], 2) + pow(waypoint_2_y - pos_current[1], 2) + pow(waypoint_2_z - pos_current[2], 2));
+//        ros::spinOnce();
+//        rate.sleep();
+//    }
 
 
     // Wait for contact point message
@@ -74,7 +70,7 @@ int main(int argc, char **argv){
         double y_error = target_y - pos_current[1];
         double z_error = target_z - pos_current[2];
         double psi_error = target_psi - pos_current[3];
- 
+
         double x_vel = Kp_pos * x_error;
         double y_vel = Kp_pos * y_error;
         double z_vel = Kp_pos * z_error;

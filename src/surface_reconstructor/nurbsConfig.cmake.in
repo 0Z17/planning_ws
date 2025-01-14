@@ -1,0 +1,5 @@
+set(NURBS_FOUND TRUE)
+set(NURBS_LIB_DIRS @INSTALL_DIR@/lib)
+set(NURBS_INCLUDE_DIRS @INSTALL_DIR@/include)
+
+set(NURBS_LIBRARIES @INSTALL_DIR@/libnurbs_class.so)

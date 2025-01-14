@@ -1,6 +1,0 @@
-/usr/bin/ld: CMakeFiles/uam_manager_test.dir/src/uam_manager_test.cpp.o: in function `main':
-uam_manager_test.cpp:(.text+0xd1): undefined reference to `uam_control::UamManager::takeoff()'
-collect2: error: ld returned 1 exit status
-make[2]: *** [CMakeFiles/uam_manager_test.dir/build.make:119: /home/wsl/proj/planning_ws/devel/.private/uam_control_interface/lib/uam_control_interface/uam_manager_test] Error 1
-make[1]: *** [CMakeFiles/Makefile2:872: CMakeFiles/uam_manager_test.dir/all] Error 2
-make: *** [Makefile:141: all] Error 2

@@ -8,9 +8,10 @@ project(surface_reconstructor)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 set(PCL_DIR /usr/local/share/pcl-1.14)
-list(APPEND CMAKE_MODULE_PATH /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules)
+# list(APPEND CMAKE_MODULE_PATH /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules)
+list(APPEND CMAKE_MODULE_PATH /usr/local/share/pcl-1.14/Modules)
 find_package(FLANN REQUIRED)
-find_package(PCL REQUIRED COMPONENTS
+find_package(PCL 1.14 REQUIRED COMPONENTS
   surface
   common
   filters
@@ -49,6 +50,9 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   sensor_msgs
   visualization_msgs
+  pcl_conversions
+  pcl_ros
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -166,7 +170,7 @@ add_library(
 )
 
 add_library(
-    viz_tool src/VizTool.cpp
+  viz_tool src/VizTool.cpp
 )
 
 ## Add cmake target dependencies of the library
@@ -181,6 +185,7 @@ add_executable(${PROJECT_NAME}_node src/visualize_surface.cpp
         include/VizTool.h)
 add_executable(${PROJECT_NAME}_node_test src/test_demo.cpp)
 add_executable(pointcloud_process src/pointcloud_process.cpp)
+add_executable(pcd_saver src/pcd_saver.cpp)
 
 
 ## Rename C++ executable without prefix
@@ -215,6 +220,14 @@ target_link_libraries(pointcloud_process
   ${PCL_FILTERS_LIBRARIES}
   ${VTK_LIBRARIES}
   nurbs_class
+)
+
+target_link_libraries(pcd_saver
+  ${catkin_LIBRARIES}
+  ${PCL_COMMON_LIBRARIES}
+  ${PCL_SURFACE_LIBRARIES}
+  ${PCL_FILTERS_LIBRARIES}
+  ${VTK_LIBRARIES}
 )
 
 target_link_libraries(${PROJECT_NAME}_node_test
@@ -273,6 +286,21 @@ target_link_libraries(viz_tool
 #   # myfile2
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
+
+set(INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/nurbs)
+
+configure_file(nurbsConfig.cmake.in
+        nurbsConfig.cmake @ONLY)
+
+install(TARGETS nurbs_class
+        LIBRARY DESTINATION ${INSTALL_DIR}/lib)
+
+install(DIRECTORY include
+        DESTINATION ${INSTALL_DIR})
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/nurbsConfig.cmake
+        DESTINATION ${INSTALL_DIR}/cmake)
+
 
 #############
 ## Testing ##

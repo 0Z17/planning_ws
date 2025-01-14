@@ -142,6 +142,7 @@ include_directories(
 #add_executable(uam_pose_control src/uam_pose_control.cpp
 #        src/uam_manager.cpp)
 add_executable(uam_manager_test src/uam_manager_test.cpp)
+add_executable(uam_manager_test_2 src/uam_manager_test_2.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -166,6 +167,11 @@ target_link_libraries(uam_manager_test
    ${catkin_LIBRARIES}
    uam_manager
  )
+
+target_link_libraries(uam_manager_test_2
+        ${catkin_LIBRARIES}
+        uam_manager
+)
 
 
 

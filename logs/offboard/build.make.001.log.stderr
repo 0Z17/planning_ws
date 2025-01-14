@@ -1,6 +1,0 @@
-[01m[K/home/wsl/proj/planning_ws/src/offboard/src/offboard_node.cpp:194:10:[m[K [01;31m[Kerror: [m[Kextra qualification ‘[01m[KGEOMETRY_CONTROL::[m[K’ on member ‘[01m[Ktarget_callback[m[K’ [[01;31m[K-fpermissive[m[K]
-  194 |     void [01;31m[KGEOMETRY_CONTROL[m[K::target_callback(const std_msgs::Float32MultiArray::ConstPtr& msg) {
-      |          [01;31m[K^~~~~~~~~~~~~~~~[m[K
-make[2]: *** [CMakeFiles/offboard_node.dir/build.make:63: CMakeFiles/offboard_node.dir/src/offboard_node.cpp.o] Error 1
-make[1]: *** [CMakeFiles/Makefile2:254: CMakeFiles/offboard_node.dir/all] Error 2
-make: *** [Makefile:141: all] Error 2

@@ -1,5 +1,0 @@
-[31m[1mCMake Error[0m at /home/wsl/proj/planning_ws/src/dynamic_planning/CMakeLists.txt:150 (target_link_libraries):
-  Cannot specify link libraries for target "/usr/local/lib/libpcl_kdtree.so"
-  which is not built by this project.
-
-

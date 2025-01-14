@@ -1,0 +1,5 @@
+/usr/bin/ld: CMakeFiles/pointcloud_process.dir/src/pointcloud_process.cpp.o:(.data.rel.ro._ZTVN3pcl15BilateralFilterINS_8PointXYZEEE[_ZTVN3pcl15BilateralFilterINS_8PointXYZEEE]+0x48): undefined reference to `pcl::BilateralFilter<pcl::PointXYZ>::applyFilter(pcl::PointCloud<pcl::PointXYZ>&)'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/pointcloud_process.dir/build.make:445: /home/wsl/proj/planning_ws/devel/.private/surface_reconstructor/lib/surface_reconstructor/pointcloud_process] Error 1
+make[1]: *** [CMakeFiles/Makefile2:212: CMakeFiles/pointcloud_process.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

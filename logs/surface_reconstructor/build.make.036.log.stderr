@@ -1,0 +1,17 @@
+/usr/bin/ld: CMakeFiles/pcd_saver.dir/src/pcd_saver.cpp.o: in function `PCDSaver::PCDSaver()':
+pcd_saver.cpp:(.text._ZN8PCDSaverC2Ev[_ZN8PCDSaverC5Ev]+0x11d): undefined reference to `tf2_ros::Buffer::Buffer(ros::Duration, bool)'
+/usr/bin/ld: pcd_saver.cpp:(.text._ZN8PCDSaverC2Ev[_ZN8PCDSaverC5Ev]+0x1b9): undefined reference to `tf2_ros::TransformListener::TransformListener(tf2::BufferCore&, bool, ros::TransportHints)'
+/usr/bin/ld: pcd_saver.cpp:(.text._ZN8PCDSaverC2Ev[_ZN8PCDSaverC5Ev]+0x5bd): undefined reference to `tf2_ros::TransformListener::~TransformListener()'
+/usr/bin/ld: CMakeFiles/pcd_saver.dir/src/pcd_saver.cpp.o: in function `PCDSaver::pointcloud_callback(boost::shared_ptr<sensor_msgs::PointCloud2_<std::allocator<void> > const> const&)':
+pcd_saver.cpp:(.text._ZN8PCDSaver19pointcloud_callbackERKN5boost10shared_ptrIKN11sensor_msgs12PointCloud2_ISaIvEEEEE[_ZN8PCDSaver19pointcloud_callbackERKN5boost10shared_ptrIKN11sensor_msgs12PointCloud2_ISaIvEEEEE]+0xce): undefined reference to `tf2::BufferCore::lookupTransform(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, ros::Time const&) const'
+/usr/bin/ld: pcd_saver.cpp:(.text._ZN8PCDSaver19pointcloud_callbackERKN5boost10shared_ptrIKN11sensor_msgs12PointCloud2_ISaIvEEEEE[_ZN8PCDSaver19pointcloud_callbackERKN5boost10shared_ptrIKN11sensor_msgs12PointCloud2_ISaIvEEEEE]+0x181): undefined reference to `pcl_ros::transformPointCloud(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sensor_msgs::PointCloud2_<std::allocator<void> > const&, sensor_msgs::PointCloud2_<std::allocator<void> >&, tf2_ros::Buffer const&)'
+/usr/bin/ld: CMakeFiles/pcd_saver.dir/src/pcd_saver.cpp.o: in function `PCDSaver::~PCDSaver()':
+pcd_saver.cpp:(.text._ZN8PCDSaverD2Ev[_ZN8PCDSaverD5Ev]+0x42): undefined reference to `tf2_ros::TransformListener::~TransformListener()'
+/usr/bin/ld: CMakeFiles/pcd_saver.dir/src/pcd_saver.cpp.o: in function `tf2_ros::Buffer::~Buffer()':
+pcd_saver.cpp:(.text._ZN7tf2_ros6BufferD2Ev[_ZN7tf2_ros6BufferD5Ev]+0x13): undefined reference to `vtable for tf2_ros::Buffer'
+/usr/bin/ld: pcd_saver.cpp:(.text._ZN7tf2_ros6BufferD2Ev[_ZN7tf2_ros6BufferD5Ev]+0x25): undefined reference to `vtable for tf2_ros::Buffer'
+/usr/bin/ld: pcd_saver.cpp:(.text._ZN7tf2_ros6BufferD2Ev[_ZN7tf2_ros6BufferD5Ev]+0x53): undefined reference to `tf2::BufferCore::~BufferCore()'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/pcd_saver.dir/build.make:361: /home/wsl/proj/planning_ws/devel/.private/surface_reconstructor/lib/surface_reconstructor/pcd_saver] Error 1
+make[1]: *** [CMakeFiles/Makefile2:185: CMakeFiles/pcd_saver.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

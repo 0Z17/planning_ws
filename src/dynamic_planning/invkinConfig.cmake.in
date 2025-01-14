@@ -1,0 +1,49 @@
+set(INVKIN_FOUND TRUE)
+set(INVKIN_LIB_DIRS @INSTALL_DIR@/lib)
+set(INVKIN_INCLUDE_DIRS @INSTALL_DIR@/include)
+
+find_package(FLANN REQUIRED)
+find_package(PCL REQUIRED COMPONENTS
+  surface
+  common
+  filters
+)
+find_package(VTK REQUIRED)
+
+if(VTK_FOUND)
+    message(STATUS "VTK found: ${VTK_VERSION}")
+    message(STATUS "VTK_INCLUDE_DIRS: ${VTK_INCLUDE_DIRS}")
+    message(STATUS "VTK_LIBRARIES: ${VTK_LIBRARIES}")
+else()
+    message(FATAL_ERROR "VTK not found. Please check VTK_DIR.")
+endif()
+
+if(PCL_FOUND)
+    message(STATUS "PCL found: ${PCL_VERSION}")
+    message(STATUS "PCL_INCLUDE_DIRS: ${PCL_INCLUDE_DIRS}")
+    message(STATUS "PCL_LIBRARIES: ${PCL_LIBRARIES}")
+else()
+    message(FATAL_ERROR "PCL not found. Please check PCL_DIR.")
+endif()
+
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  rospy
+  std_msgs
+  sensor_msgs
+  visualization_msgs
+)
+
+include_directories(
+  include
+  ${catkin_INCLUDE_DIRS}
+  ${PCL_INCLUDE_DIRS}
+  ${VTK_INCLUDE_DIRS}
+)
+
+set(INVKIN_LIBRARIES
+    @INSTALL_DIR@/libinvkin.so
+    ${catkin_LIBRARIES}
+    ${PCL_COMMON_LIBRARIES}
+    ${PCL_SURFACE_LIBRARIES}
+    ${VTK_LIBRARIES})

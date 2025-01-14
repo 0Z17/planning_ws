@@ -160,6 +160,10 @@ add_executable(contact_test
    src/contact_test.cpp
  )
 
+add_executable(contact_test_fixed
+   src/contact_test_fixed.cpp
+ )
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -183,12 +187,20 @@ target_link_libraries(surface_info_test
   ${PCL_LIBRARIES}
 )
 
+target_link_libraries(contact_test_fixed
+  invkin
+  ${catkin_LIBRARIES}
+  ${surface_reconstructor_LIBRARIES}
+  ${PCL_LIBRARIES}
+)
+
 target_link_libraries(contact_test
   invkin
   ${catkin_LIBRARIES}
   ${surface_reconstructor_LIBRARIES}
   ${PCL_LIBRARIES}
 )
+
 
 #############
 ## Install ##
@@ -231,7 +243,19 @@ target_link_libraries(contact_test
 #   # myfile2
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
+set(INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/invkin)
 
+configure_file(invkinConfig.cmake.in
+        invkinConfig.cmake @ONLY)
+
+install(TARGETS invkin
+  LIBRARY DESTINATION ${INSTALL_DIR}/lib)
+
+install(DIRECTORY include
+  DESTINATION ${INSTALL_DIR})
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/invkinConfig.cmake
+  DESTINATION ${INSTALL_DIR}/cmake)
 #############
 ## Testing ##
 #############

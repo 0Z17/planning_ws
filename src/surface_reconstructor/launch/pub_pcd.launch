@@ -1,0 +1,8 @@
+<launch>
+    <node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud" output="screen"
+        args="/home/wsl/proj/planning_ws/src/surface_reconstructor/data/pointcloud_blade_trans.pcd 1">
+        <param name="frame_id" value="map" />
+        <param name="publish_rate" value="1.0" />
+        <remap from="/cloud_pcd" to="/filtered_point_cloud" />
+    </node>
+</launch>
