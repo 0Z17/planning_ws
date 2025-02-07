@@ -12,6 +12,7 @@ class ImpedenceControl:
 
         # The measured force
         self.fe = 0.0
+        self.f_offset = -1
 
         # Reference pos and vel in the previous time step
         self.pr_last = 0.0
@@ -23,18 +24,20 @@ class ImpedenceControl:
         self.ad = 0.0
 
         # The peremeter of the impedence dynamic model
-        self.M = 5.0
+        self.M = 1.0
         self.D = 50.0
-        self.K = 10.0
+        # self.K = 30.0
+        # self.K = 5.0   # //// a feasible parameter ////
+        self.K = 15.0
 
-        # The time step
+       # The time step
         self.dt = 0.01
 
     def wrench_callback(self, msg):
         """
         The callback function for the force topic
         """
-        self.fe = msg.wrench.force.z
+        self.fe = msg.wrench.force.z + self.f_offset
 
 
     def update(self):

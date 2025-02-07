@@ -1,0 +1,10 @@
+[01m[K/home/wsl/proj/planning_ws/src/uam_control_interface/src/uam_manager_test.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/wsl/proj/planning_ws/src/uam_control_interface/src/uam_manager_test.cpp:40:12:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kdouble waypoint_1_x[m[K’
+   40 |     double [01;31m[Kwaypoint_1_x[m[K = waypoint_1_x - 0.1;
+      |            [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/wsl/proj/planning_ws/src/uam_control_interface/src/uam_manager_test.cpp:36:12:[m[K [01;36m[Knote: [m[K‘[01m[Kdouble waypoint_1_x[m[K’ previously declared here
+   36 |     double [01;36m[Kwaypoint_1_x[m[K, waypoint_1_y, waypoint_1_z;
+      |            [01;36m[K^~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/uam_manager_test.dir/build.make:63: CMakeFiles/uam_manager_test.dir/src/uam_manager_test.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:901: CMakeFiles/uam_manager_test.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

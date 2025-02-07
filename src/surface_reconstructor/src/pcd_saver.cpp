@@ -33,8 +33,8 @@ private:
     void pointcloud_callback(const sensor_msgs::PointCloud2::ConstPtr& msg)
     {
         // Get the frame transform
-        // geometry_msgs::TransformStamped transform_stamped = tf_buffer_.lookupTransform("map", "depth_optical_frame", ros::Time(0));
-        geometry_msgs::TransformStamped transform_stamped = tf_buffer_.lookupTransform("map", "camera_depth_optical_frame", ros::Time(0));
+        geometry_msgs::TransformStamped transform_stamped = tf_buffer_.lookupTransform("map", "depth_optical_frame", ros::Time(0));
+        // geometry_msgs::TransformStamped transform_stamped = tf_buffer_.lookupTransform("map", "camera_depth_optical_frame", ros::Time(0));
 
         sensor_msgs::PointCloud2 transformed_msg;
         pcl_ros::transformPointCloud("map", *msg, transformed_msg, tf_buffer_);

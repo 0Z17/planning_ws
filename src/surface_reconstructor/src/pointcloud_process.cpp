@@ -73,17 +73,18 @@ private:
         sor.filter(*cloud_downsampled);  // filter the cloud
 
         // Apply statistical outlier removal filter
-        // pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZ>());
-        // pcl::StatisticalOutlierRemoval<pcl::PointXYZ> sor_outlier;
-        // sor_outlier.setInputCloud(cloud_downsampled);
-        // sor_outlier.setMeanK(20);  // Set the number of nearest neighbors to use for mean distance estimation
-        // sor_outlier.setStddevMulThresh(1.0);  // Set the standard deviation multiplier for the distance threshold
-        // sor_outlier.filter(*cloud_filtered);  // filter the outliers
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZ>());
+        pcl::StatisticalOutlierRemoval<pcl::PointXYZ> sor_outlier;
+        sor_outlier.setInputCloud(cloud_downsampled);
+        sor_outlier.setMeanK(20);  // Set the number of nearest neighbors to use for mean distance estimation
+        sor_outlier.setStddevMulThresh(1.0);  // Set the standard deviation multiplier for the distance threshold
+        sor_outlier.filter(*cloud_filtered);  // filter the outliers
 
         // convert PCL point cloud to ROS PointCloud2 message
         sensor_msgs::PointCloud2 output_cloud_msg;
         sensor_msgs::PointCloud2 compare_cloud_msg;
-        pcl::toROSMsg(*cloud_downsampled, output_cloud_msg);
+        pcl::toROSMsg(*cloud_filtered, output_cloud_msg);
+        // pcl::toROSMsg(*cloud_downsampled, output_cloud_msg);
         pcl::toROSMsg(*cloud, compare_cloud_msg);
         // pcl::toROSMsg(*cloud_filtered, output_cloud_msg);
         output_cloud_msg.header = input_cloud_msg->header;
@@ -96,8 +97,8 @@ private:
 
         // Fit NURBS surface
         // ROS_INFO("Fitting NURBS surface...");
-        // surface_reconstructor::Nurbs surface(cloud_filtered);
-        surface_reconstructor::Nurbs surface(cloud_downsampled);
+        surface_reconstructor::Nurbs surface(cloud_filtered);
+        // surface_reconstructor::Nurbs surface(cloud_downsampled);
         surface.fitSurface();
 
         // Initialize mesh marker

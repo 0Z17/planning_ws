@@ -163,7 +163,7 @@ int Nurbs::fitSurface()
     {
         data.interior.emplace_back(point.x, point.y, point.z);
     }
-    surface_ = pcl::on_nurbs::FittingSurface::initNurbsPCABoundingBox(3, &data, Eigen::Vector3d(-1, 0, 0));
+    surface_ = pcl::on_nurbs::FittingSurface::initNurbsPCABoundingBox(3, &data, Eigen::Vector3d(0, 0, -1));
     pcl::on_nurbs::FittingSurface fit (&data, surface_);
 
     // NURBS refinement

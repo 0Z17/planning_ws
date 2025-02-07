@@ -1,0 +1,6 @@
+<launch>
+  <!-- launch the ft sensor filter node -->
+  <node pkg="uam_control_interface" type="ft_sensor_filter.py" name="ft_sensor_filter" output="screen" />
+  <!-- launch the impedance control node -->
+  <node pkg="uam_control_interface" type="impedance_control.py" name="impedance_control" output="screen" />
+</launch>
