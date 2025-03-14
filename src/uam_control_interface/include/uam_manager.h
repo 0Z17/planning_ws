@@ -117,8 +117,8 @@ namespace uam_control {
         // parameters
         double joint_offset_ = -M_PI/6;
         double loop_rate_ = 20.0;
-        // double takeoff_height_ = 2.0;
-        double takeoff_height_ = 65.0;
+        double takeoff_height_ = 2.0;
+        // double takeoff_height_ = 65.0;
         bool is_takeoff_{false};
     };
 }// namespace uam_control

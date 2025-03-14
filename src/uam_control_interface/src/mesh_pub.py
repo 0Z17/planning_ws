@@ -24,21 +24,23 @@ def mesh_publisher():
     marker = Marker()
     marker.header.frame_id = "floor"  # 设置坐标系
     marker.type = Marker.MESH_RESOURCE
-    # marker.mesh_resource = "file:///home/wsl/firmware_ws/src/Firmware/Tools/sitl_gazebo/models/NURBS/meshes/NURBS_test.stl"
-    marker.mesh_resource = "file:///home/wsl/firmware_ws/src/Firmware/Tools/sitl_gazebo/models/WindTURBINE/meshes/wind_turbine.stl"
+    marker.mesh_resource = "file:///home/wsl/firmware_ws/src/Firmware/Tools/sitl_gazebo/models/NURBS/meshes/NURBS_test.stl"
+    # marker.mesh_resource = "file:///home/wsl/firmware_ws/src/Firmware/Tools/sitl_gazebo/models/WindTURBINE/meshes/wind_turbine.stl"
     marker.action = Marker.ADD
     
     # 设置姿态和缩放
-    # marker.pose.position.x = 1.500000
-    marker.pose.position.x = 10.000000
-    marker.pose.position.y = 10.0
+    marker.pose.position.x = 1.500000
+    # marker.pose.position.x = 10.000000
+    marker.pose.position.y = 0.0
+    # marker.pose.position.y = 10.0
     marker.pose.position.z = 0.0
-    # marker.pose.orientation.w = 0.7853981
-    marker.pose.orientation.w = 0.0
+
+    marker.pose.orientation.w = 0.7853981
+    # marker.pose.orientation.w = 0.0
     marker.pose.orientation.x = 0.0
     marker.pose.orientation.y = 0.0
-    # marker.pose.orientation.z = -0.7853981
-    marker.pose.orientation.z = 0.0
+    marker.pose.orientation.z = -0.7853981
+    # marker.pose.orientation.z = 0.0
     marker.scale.x = marker.scale.y = marker.scale.z = 1.0  # 缩放比例
     
     # 设置颜色（RGBA，0-1）
