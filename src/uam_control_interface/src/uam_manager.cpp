@@ -45,6 +45,7 @@ void UamManager::takeoff(double height) {
     // send a few setpoints before starting
     for(int i = 100; ros::ok() && i > 0; --i){
         setTargetConfig(0.0, 0.0, height, 0.0, 0.0);
+        // setTargetConfig(-2.0, 1.5, height, 0.0, 0.0);
         ros::spinOnce();
         loop_rate.sleep();
     }

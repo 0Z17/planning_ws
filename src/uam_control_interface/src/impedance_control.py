@@ -12,7 +12,8 @@ class ImpedenceControl:
 
         # The measured force
         self.fe = 0.0
-        self.f_offset = -1
+        # self.f_offset = -1.5
+        self.f_offset = -2.5
 
         # Reference pos and vel in the previous time step
         self.pr_last = 0.0
@@ -27,8 +28,8 @@ class ImpedenceControl:
         self.M = 1.0
         self.D = 50.0
         # self.K = 30.0
-        # self.K = 5.0   # //// a feasible parameter ////
-        self.K = 15.0
+        self.K = 5.0   # //// a feasible parameter ////
+        # self.K = 10.0
 
        # The time step
         self.dt = 0.01

@@ -1,0 +1,10 @@
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pcd_saver.cpp:[m[K In constructor ‘[01m[KPCDSaver::PCDSaver()[m[K’:
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pcd_saver.cpp:21:35:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[Ksaver_sub[m[K’
+   21 |         publish_static_transform()
+      |                                   [01;31m[K^[m[K
+      |                                   [32m[K;[m[K
+   22 |         [32m[Ksaver_sub[m[K = nh_.subscribe("/save_signal", 1, &PCDSaver::save_callback, this);
+      |         [32m[K~~~~~~~~~[m[K                  
+make[2]: *** [CMakeFiles/pcd_saver.dir/build.make:63: CMakeFiles/pcd_saver.dir/src/pcd_saver.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:233: CMakeFiles/pcd_saver.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

@@ -2,7 +2,8 @@
 
 import rospy
 import tf
-from geometry_msgs.msg import PoseStamped
+from geometry_msgs.msg import PoseStamped, TransformStamped
+from tf2_ros import StaticTransformBroadcaster
 from tf.transformations import quaternion_from_euler
 
 class MavrosTfPublisher:
@@ -24,6 +25,9 @@ class MavrosTfPublisher:
 
         # parameters
         self.pos_offset = rospy.get_param('~pos_offset', [0.0, 0.0, 0.0])
+        # self.pos_offset = rospy.get_param('~pos_offset', [2.0, -1.5, 0.0])
+
+        self.static_transform()  # publish static transform
 
     def pose_callback(self, msg):
         # get pose data
@@ -44,6 +48,27 @@ class MavrosTfPublisher:
 
     def run(self):
         rospy.spin()
+
+    def static_transform(self):
+        static_broadcaster = StaticTransformBroadcaster()
+        static_transform = TransformStamped()
+        static_transform.header.stamp = rospy.Time.now()
+        static_transform.header.frame_id = "floor"  # 父坐标系
+        static_transform.child_frame_id = "map"     # 子坐标系
+
+        static_transform.transform.translation.x = -2.0
+        static_transform.transform.translation.y = 1.5
+        static_transform.transform.translation.z = 0.4
+
+        quat = quaternion_from_euler(0, 0, 0)
+        static_transform.transform.rotation.x = quat[0]
+        static_transform.transform.rotation.y = quat[1]
+        static_transform.transform.rotation.z = quat[2]
+        static_transform.transform.rotation.w = quat[3]
+
+        static_broadcaster.sendTransform(static_transform)
+        rospy.loginfo("Static transform published: floor -> map")
+
 
 if __name__ == '__main__':
     try:

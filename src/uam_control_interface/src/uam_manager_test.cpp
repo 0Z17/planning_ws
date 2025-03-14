@@ -39,6 +39,7 @@ int main(int argc, char **argv){
     ros::param::get("/control_node/ref_p_z", waypoint_1_z);
     waypoint_1_x = waypoint_1_x - 0.1;
     double waypoint_1_psi = 0.0;
+    // double waypoint_1_psi = 3.14;
     double waypoint_1_theta = 0.0;
 
     // double waypoint_1_x = 0.746377 - 0.1;

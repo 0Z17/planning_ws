@@ -1,0 +1,74 @@
+In file included from [01m[K/opt/ros/noetic/include/ros/ros.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:1[m[K:
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:[m[K In member function ‘[01m[Kvoid PointCloudProcessor::pointCloudCallback(const PointCloud2ConstPtr&) const[m[K’:
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:49:18:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 8 has type ‘[01m[Kstd::size_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wformat=[m[K]
+   49 |         ROS_INFO([01;35m[K"Before crop box filter: %d points"[m[K, [32m[Kcloud->size()[m[K);
+      |                  [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K  [32m[K~~~~~~~~~~~~~[m[K
+      |                                                                  [32m[K|[m[K
+      |                                                                  [32m[Kstd::size_t {aka long unsigned int}[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:351:165:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
+  351 |     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, [01;36m[K__VA_ARGS__[m[K)
+      |                                                                                                                                                                     [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:390:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K’
+  390 |       [01;36m[KROSCONSOLE_PRINT_AT_LOCATION[m[K(__VA_ARGS__); \
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:575:35:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG_COND[m[K’
+  575 | #define ROS_LOG(level, name, ...) [01;36m[KROS_LOG_COND[m[K(true, level, name, __VA_ARGS__)
+      |                                   [01;36m[K^~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/rosconsole/macros_generated.h:110:23:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
+  110 | #define ROS_INFO(...) [01;36m[KROS_LOG[m[K(::ros::console::levels::Info, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+      |                       [01;36m[K^~~~~~~[m[K
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:49:9:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
+   49 |         [01;36m[KROS_INFO[m[K("Before crop box filter: %d points", cloud->size());
+      |         [01;36m[K^~~~~~~~[m[K
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:49:44:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   49 |         ROS_INFO("Before crop box filter: [01;36m[K%d[m[K points", cloud->size());
+      |                                           [01;36m[K~^[m[K
+      |                                            [01;36m[K|[m[K
+      |                                            [01;36m[Kint[m[K
+      |                                           [32m[K%ld[m[K
+In file included from [01m[K/opt/ros/noetic/include/ros/ros.h:40[m[K,
+                 from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:1[m[K:
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:55:18:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 8 has type ‘[01m[Kstd::size_t[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wformat=[m[K]
+   55 |         ROS_INFO([01;35m[K"Cropped cloud: %d points"[m[K, [32m[Kcloud_cropped->size()[m[K);
+      |                  [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K  [32m[K~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                                                                 [32m[K|[m[K
+      |                                                                 [32m[Kstd::size_t {aka long unsigned int}[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:351:165:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
+  351 |     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, [01;36m[K__VA_ARGS__[m[K)
+      |                                                                                                                                                                     [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:390:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K’
+  390 |       [01;36m[KROSCONSOLE_PRINT_AT_LOCATION[m[K(__VA_ARGS__); \
+      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/console.h:575:35:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG_COND[m[K’
+  575 | #define ROS_LOG(level, name, ...) [01;36m[KROS_LOG_COND[m[K(true, level, name, __VA_ARGS__)
+      |                                   [01;36m[K^~~~~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/rosconsole/macros_generated.h:110:23:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
+  110 | #define ROS_INFO(...) [01;36m[KROS_LOG[m[K(::ros::console::levels::Info, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+      |                       [01;36m[K^~~~~~~[m[K
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:55:9:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
+   55 |         [01;36m[KROS_INFO[m[K("Cropped cloud: %d points", cloud_cropped->size());
+      |         [01;36m[K^~~~~~~~[m[K
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:55:35:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   55 |         ROS_INFO("Cropped cloud: [01;36m[K%d[m[K points", cloud_cropped->size());
+      |                                  [01;36m[K~^[m[K
+      |                                   [01;36m[K|[m[K
+      |                                   [01;36m[Kint[m[K
+      |                                  [32m[K%ld[m[K
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:102:60:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Ksurface_reconstructor::Nurbs::Nurbs(pcl::PointCloud<pcl::PointXYZRGB>::Ptr&)[m[K’
+  102 |         surface_reconstructor::Nurbs surface(cloud_filtered[01;31m[K)[m[K;
+      |                                                            [01;31m[K^[m[K
+In file included from [01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/src/pointcloud_process.cpp:9[m[K:
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:18:14:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ksurface_reconstructor::Nurbs::Nurbs(pcl::PointCloud<pcl::PointXYZ>::Ptr)[m[K’
+   18 |     explicit [01;36m[KNurbs[m[K(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud);
+      |              [01;36m[K^~~~~[m[K
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:18:56:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kshared_ptr<PointCloud<[01;32m[Kpcl::PointXYZRGB[m[K>>[m[K’ to ‘[01m[Kshared_ptr<PointCloud<[01;32m[Kpcl::PointXYZ[m[K>>[m[K’
+   18 |     explicit Nurbs([01;36m[Kpcl::PointCloud<pcl::PointXYZ>::Ptr cloud[m[K);
+      |                    [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~[m[K
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:15:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ksurface_reconstructor::Nurbs::Nurbs(const surface_reconstructor::Nurbs&)[m[K’
+   15 | class [01;36m[KNurbs[m[K
+      |       [01;36m[K^~~~~[m[K
+[01m[K/home/wsl/proj/planning_ws/src/surface_reconstructor/include/nurbs_class.h:15:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kpcl::PointCloud<pcl::PointXYZRGB>::Ptr[m[K’ {aka ‘[01m[Kstd::shared_ptr<pcl::PointCloud<pcl::PointXYZRGB> >[m[K’} to ‘[01m[Kconst surface_reconstructor::Nurbs&[m[K’
+make[2]: *** [CMakeFiles/pointcloud_process.dir/build.make:63: CMakeFiles/pointcloud_process.dir/src/pointcloud_process.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:260: CMakeFiles/pointcloud_process.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

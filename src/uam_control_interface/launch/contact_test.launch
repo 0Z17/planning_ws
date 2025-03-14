@@ -1,6 +1,15 @@
 <launch>
+  <param  name="robot_description"  textfile="$(find uam_control_interface)/urdf/skyvortex.urdf" />
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find uam_control_interface)/config/traj_tracking.rviz" output="screen" />
+  <node pkg="uam_control_interface" type="uam_pose_pub.py" name="uam_pose_pub" output="screen" />
   <!-- launch the ft sensor filter node -->
   <node pkg="uam_control_interface" type="ft_sensor_filter.py" name="ft_sensor_filter" output="screen" />
   <!-- launch the impedance control node -->
   <node pkg="uam_control_interface" type="impedance_control.py" name="impedance_control" output="screen" />
+  <node pkg="uam_control_interface" type="end_pose_pub.py" name="end_pose_pub" output="screen" />
+  <!-- Publish the states -->
+  <node pkg="uam_control_interface" type="tf_pub.py" name="tf_pub" output="screen" />
+  <node pkg="uam_control_interface" type="mesh_pub.py" name="mesh_pub" output="screen" />
+  <!-- <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" /> -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" args="$(find uam_control_interface)/urdf/skyvortex.urdf" />
 </launch>

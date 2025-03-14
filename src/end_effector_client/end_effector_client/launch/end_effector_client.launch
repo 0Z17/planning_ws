@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="end_effector_client" type="end_effector_client.py" name="end_effector_client" output="screen">
+    <param name="port" value="/dev/ttyUSB4"/>
+    <param name="baud_rate" value="115200"/>
+  </node>
+</launch>
