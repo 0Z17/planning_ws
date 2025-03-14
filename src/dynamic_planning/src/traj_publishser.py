@@ -108,7 +108,7 @@ if __name__ == '__main__':
 
     # publish the start position for 10 seconds
     start_time = rospy.Time.now()
-    while ((rospy.Time.now() - start_time).to_sec() < 10 ) and (not rospy.is_shutdown()) :
+    while ((rospy.Time.now() - start_time).to_sec() < 10) and (not rospy.is_shutdown()) :
         tp.publish_target_start()
         rate.sleep()
 
